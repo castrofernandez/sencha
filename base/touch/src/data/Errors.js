@@ -3,20 +3,22 @@
  * @class Ext.data.Errors
  * @extends Ext.util.Collection
  *
- * Wraps a collection of validation error responses and provides convenient functions for
- * accessing and errors for specific fields.
+ * <p>Wraps a collection of validation error responses and provides convenient functions for
+ * accessing and errors for specific fields.</p>
  *
- * Usually this class does not need to be instantiated directly - instances are instead created
- * automatically when {@link Ext.data.Model#validate validate} on a model instance:
+ * <p>Usually this class does not need to be instantiated directly - instances are instead created
+ * automatically when {@link Ext.data.Model#validate validate} on a model instance:</p>
  *
- *     //validate some existing model instance - in this case it returned two failures messages
- *     var errors = myModel.validate();
- *
- *     errors.isValid(); // false
- *
- *     errors.length; // 2
- *     errors.getByField('name');  // [{field: 'name',  message: 'must be present'}]
- *     errors.getByField('title'); // [{field: 'title', message: 'is too short'}]
+<pre><code>
+//validate some existing model instance - in this case it returned 2 failures messages
+var errors = myModel.validate();
+
+errors.isValid(); //false
+
+errors.length; //2
+errors.getByField('name');  // [{field: 'name',  message: 'must be present'}]
+errors.getByField('title'); // [{field: 'title', message: 'is too short'}]
+</code></pre>
  */
 Ext.define('Ext.data.Errors', {
     extend: 'Ext.util.Collection',
@@ -24,7 +26,7 @@ Ext.define('Ext.data.Errors', {
     requires: 'Ext.data.Error',
 
     /**
-     * Returns `true` if there are no errors in the collection.
+     * Returns true if there are no errors in the collection
      * @return {Boolean}
      */
     isValid: function() {
@@ -32,9 +34,9 @@ Ext.define('Ext.data.Errors', {
     },
 
     /**
-     * Returns all of the errors for the given field.
-     * @param {String} fieldName The field to get errors for.
-     * @return {Object[]} All errors for the given field.
+     * Returns all of the errors for the given field
+     * @param {String} fieldName The field to get errors for
+     * @return {Object[]} All errors for the given field
      */
     getByField: function(fieldName) {
         var errors = [],

@@ -53,7 +53,7 @@
  *
  * The new getCategory function will also accept an object containing success, failure and callback properties
  * - callback will always be called, success will only be called if the associated model was loaded successfully
- * and failure will only be called if the associated model could not be loaded:
+ * and failure will only be called if the associatied model could not be loaded:
  *
  *     product.getCategory({
  *         reload: true, // force a reload if the owner model is already cached
@@ -93,13 +93,13 @@
  *
  *     //alternative syntax:
  *     product.setCategory(10, {
- *         callback: function(product, operation) {}, // a function that will always be called
- *         success : function(product, operation) {}, // a function that will only be called if the load succeeded
- *         failure : function(product, operation) {}, // a function that will only be called if the load did not succeed
+ *         callback: function(product, operation), // a function that will always be called
+ *         success : function(product, operation), // a function that will only be called if the load succeeded
+ *         failure : function(product, operation), // a function that will only be called if the load did not succeed
  *         scope   : this //optionally pass in a scope object to execute the callbacks in
- *     });
+ *     })
  *
- * ## Customization
+ * ## Customisation
  *
  * Associations reflect on the models they are linking to automatically set up properties such as the
  * {@link #primaryKey} and {@link #foreignKey}. These can alternatively be specified:
@@ -107,8 +107,7 @@
  *     Ext.define('Product', {
  *         extend: 'Ext.data.Model',
  *         config: {
- *             fields: [
- *                 // ...
+ *             fields: [ // ...
  *             ],
  *
  *             associations: [
@@ -253,65 +252,40 @@ Ext.define('Ext.data.association.BelongsTo', {
      */
     createSetter: function() {
         var me = this,
-            foreignKey = me.getForeignKey(),
-            associatedModel = me.getAssociatedModel(),
-            currentOwner, newOwner, store;
+            foreignKey = me.getForeignKey();
 
         //'this' refers to the Model instance inside this function
         return function(value, options, scope) {
-            var inverse = me.getInverseAssociation(),
-                record = this;
+            var inverse = me.getInverseAssociation();
 
             // If we pass in an instance, pull the id out
             if (value && value.isModel) {
                 value = value.getId();
             }
+            this.set(foreignKey, value);
 
             if (Ext.isFunction(options)) {
                 options = {
                     callback: options,
-                    scope: scope || record
+                    scope: scope || this
                 };
             }
 
-            // Remove the current belongsToInstance
-            delete record[me.getInstanceName()];
-
-            currentOwner = Ext.data.Model.cache[Ext.data.Model.generateCacheId(associatedModel.modelName, this.get(foreignKey))];
-            newOwner     = Ext.data.Model.cache[Ext.data.Model.generateCacheId(associatedModel.modelName, value)];
-
-            record.set(foreignKey, value);
-
             if (inverse) {
-                // We first add it to the new owner so that the record wouldnt be destroyed if it was the last store it was in
-                if (newOwner) {
+                value = Ext.data.Model.cache.get(Ext.data.Model.generateCacheId(inverse.getOwnerModel().modelName, value));
+                if (value) {
                     if (inverse.getType().toLowerCase() === 'hasmany') {
-                        store = newOwner[inverse.getName()]();
-                        store.add(record);
+                        var store = value[inverse.getName()]();
+                        store.add(this);
                     } else {
-                        newOwner[inverse.getInstanceName()] = record;
+                        value[inverse.getInstanceName()] = this;
                     }
                 }
-
-                if (currentOwner) {
-                    if (inverse.getType().toLowerCase() === 'hasmany') {
-                        store = currentOwner[inverse.getName()]();
-                        store.remove(record);
-                    } else {
-                        delete value[inverse.getInstanceName()];
-                    }
-                }
-            }
-
-            if (newOwner) {
-                record[me.getInstanceName()] = newOwner;
             }
 
             if (Ext.isObject(options)) {
-                return record.save(options);
+                return this.save(options);
             }
-
-            return record;
         };
     },
 
@@ -338,9 +312,8 @@ Ext.define('Ext.data.association.BelongsTo', {
                 args;
 
             instance = model[instanceName];
-
             if (!instance) {
-                instance = Ext.data.Model.cache[Ext.data.Model.generateCacheId(associatedModel.modelName, foreignKeyId)];
+                instance = Ext.data.Model.cache.get(Ext.data.Model.generateCacheId(associatedModel.modelName, foreignKeyId));
                 if (instance) {
                     model[instanceName] = instance;
                 }
@@ -359,7 +332,7 @@ Ext.define('Ext.data.association.BelongsTo', {
                 options.success = function(rec) {
                     model[instanceName] = rec;
                     if (success) {
-                        success.apply(this, arguments);
+                        success.call(this, arguments);
                     }
                 };
 

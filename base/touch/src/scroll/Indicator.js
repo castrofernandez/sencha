@@ -3,25 +3,22 @@
  */
 Ext.define('Ext.scroll.Indicator', {
     requires: [
-        'Ext.scroll.indicator.CssTransform',
+        'Ext.scroll.indicator.Default',
         'Ext.scroll.indicator.ScrollPosition',
-        'Ext.scroll.indicator.Rounded'
+        'Ext.scroll.indicator.CssTransform'
     ],
 
     alternateClassName: 'Ext.util.Indicator',
 
     constructor: function(config) {
-        var namespace = Ext.scroll.indicator;
-
-        switch (Ext.browser.getPreferredTranslationMethod(config)) {
-        case 'scrollposition':
-            return new namespace.ScrollPosition(config);
-        case 'csstransform':
-            if (Ext.browser.is.AndroidStock4) {
-                return new namespace.CssTransform(config);
-            } else {
-                return new namespace.Rounded(config);
-            }
+        if (Ext.os.is.Android2 || Ext.browser.is.ChromeMobile) {
+            return new Ext.scroll.indicator.ScrollPosition(config);
+        }
+        else if (Ext.os.is.iOS) {
+            return new Ext.scroll.indicator.CssTransform(config);
+        }
+        else {
+            return new Ext.scroll.indicator.Default(config);
         }
     }
 });

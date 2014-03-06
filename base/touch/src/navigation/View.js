@@ -18,9 +18,9 @@
  *                 xtype: 'button',
  *                 text: 'Push a new view!',
  *                 handler: function() {
- *                     // use the push() method to push another view. It works much like
- *                     // add() or setActiveItem(). it accepts a view instance, or you can give it
- *                     // a view config.
+ *                     //use the push() method to push another view. It works much like
+ *                     //add() or setActiveItem(). it accepts a view instance, or you can give it
+ *                     //a view config.
  *                     view.push({
  *                         title: 'Second',
  *                         html: 'Second view!'
@@ -41,13 +41,10 @@
  *
  * As you can see, it is as simple as calling the {@link #method-push} method, with a new view (instance or object). Done.
  *
- * You can also `pop` a view at any time. This will remove the top-most view from the NavigationView, and animate back
+ * You can also `pop` a view at any time. This will remove the top-most view from the NavigationView, and amimate back
  * to the previous view. You can do this using the {@link #method-pop} method (which requires no arguments).
  *
  *     view.pop();
- *
- *  Applications that need compatibility with ##Older Android## devices will want to see the {@link #layout} config for details on
- *  disabling navigation view animations as these devices have poor animation support and performance.
  *
  * @aside guide navigation_view
  */
@@ -92,17 +89,16 @@ Ext.define('Ext.navigation.View', {
         /**
          * @cfg {String} defaultBackButtonText
          * The text to be displayed on the back button if:
-         *
-         * - The previous view does not have a title.
-         * - The {@link #useTitleForBackButtonText} configuration is `true`.
+         * a) The previous view does not have a title
+         * b) The {@link #useTitleForBackButtonText} configuration is true.
          * @accessor
          */
         defaultBackButtonText: 'Back',
 
         /**
          * @cfg {Boolean} useTitleForBackButtonText
-         * Set to `false` if you always want to display the {@link #defaultBackButtonText} as the text
-         * on the back button. `true` if you want to use the previous views title.
+         * Set to false if you always want to display the {@link #defaultBackButtonText} as the text
+         * on the back button. True if you want to use the previous views title.
          * @accessor
          */
         useTitleForBackButtonText: false,
@@ -111,35 +107,27 @@ Ext.define('Ext.navigation.View', {
          * @cfg {Array/Object} items The child items to add to this NavigationView. This is usually an array of Component
          * configurations or instances, for example:
          *
-         *     Ext.create('Ext.Container', {
-         *         items: [
-         *             {
-         *                 xtype: 'panel',
-         *                 title: 'My title',
-         *                 html: 'This is an item'
-         *             }
-         *         ]
-         *     });
+         *    Ext.create('Ext.Container', {
+         *        items: [
+         *            {
+         *                xtype: 'panel',
+         *                title: 'My title',
+         *                html: 'This is an item'
+         *            }
+         *        ]
+         *    });
          *
          * If you want a title to be displayed in the {@link #navigationBar}, you must specify a `title` configuration in your
          * view, like above.
          *
-         * __Note:__ Only one view will be visible at a time. If you want to change to another view, use the {@link #method-push} or
+         * Note: only one view will be visible at a time. If you want to change to another view, use the {@link #method-push} or
          * {@link #setActiveItem} methods.
          * @accessor
          */
 
         /**
-         * @cfg {Object}
-         * Layout used in this navigation view, type must be set to 'card'.
-         * **Android NOTE:** Older Android devices have poor animation performance. It is recommended to set the animation to null, for example:
-         *
-         *      layout: {
-         *          type: 'card',
-         *          animation: null
-         *      }
-         *
-         * @accessor
+         * @cfg
+         * @hide
          */
         layout: {
             type: 'card',
@@ -150,6 +138,12 @@ Ext.define('Ext.navigation.View', {
                 direction: 'left'
             }
         }
+
+        // See https://sencha.jira.com/browse/TOUCH-1568
+        // If you do, add to #navigationBar config docs:
+        //
+        //     If you want to add a button on the right of the NavigationBar,
+        //     use the {@link #rightButton} configuration.
     },
 
     /**
@@ -172,35 +166,21 @@ Ext.define('Ext.navigation.View', {
      * @param {Ext.navigation.View} this The component instance\
      */
 
-    platformConfig: [{
-        theme: ['Blackberry'],
-        navigationBar: {
-            splitNavigation: true
-        }
-    }],
-
     // @private
     initialize: function() {
-        var me     = this,
-            navBar = me.getNavigationBar();
-
         //add a listener onto the back button in the navigationbar
-        if (navBar) {
-            navBar.on({
-                back: me.onBackButtonTap,
-                scope: me
-            });
+        this.getNavigationBar().on({
+            back: this.onBackButtonTap,
+            scope: this
+        });
 
-            me.relayEvents(navBar, 'rightbuttontap');
-
-            me.relayEvents(me, {
-                add: 'push',
-                remove: 'pop'
-            });
-        }
+        this.relayEvents(this, {
+            add: 'push',
+            remove: 'pop'
+        });
 
         //<debug>
-        var layout = me.getLayout();
+        var layout = this.getLayout();
         if (layout && !layout.isCard) {
             Ext.Logger.error('The base layout for a NavigationView must always be a Card Layout');
         }
@@ -209,9 +189,15 @@ Ext.define('Ext.navigation.View', {
 
     /**
      * @private
+     * Disable all animations on Android
      */
     applyLayout: function(config) {
         config = config || {};
+
+        // TODO: This should be a configuration
+        if (Ext.os.is.Android) {
+            config.animation = false;
+        }
 
         return config;
     },
@@ -227,8 +213,8 @@ Ext.define('Ext.navigation.View', {
 
     /**
      * Pushes a new view into this navigation view using the default animation that this view has.
-     * @param {Object} view The view to push.
-     * @return {Ext.Component} The new item you just pushed.
+     * @param {Object} view The view to push
+     * @return {Ext.Component} The new item you just pushed
      */
     push: function(view) {
         return this.add(view);
@@ -236,9 +222,8 @@ Ext.define('Ext.navigation.View', {
 
     /**
      * Removes the current active view from the stack and sets the previous view using the default animation
-     * of this view. You can also pass a {@link Ext.ComponentQuery} selector to target what inner item to pop to.
-     * @param {Number/String/Object} count If a Number, the number of views you want to pop. If a String, the pops to a matching
-     * component query. If an Object, the pops to a matching view instance.
+     * of this view.
+     * @param {Number} count The number of views you want to pop
      * @return {Ext.Component} The new active item
      */
     pop: function(count) {
@@ -251,30 +236,13 @@ Ext.define('Ext.navigation.View', {
      * @private
      * Calculates whether it needs to remove any items from the stack when you are popping more than 1
      * item. If it does, it removes those views from the stack and returns `true`.
-     * @return {Boolean} `true` if it has removed views.
+     * @return {Boolean} True if it has removed views
      */
     beforePop: function(count) {
         var me = this,
-            innerItems = me.getInnerItems();
-
-        if (Ext.isString(count) || Ext.isObject(count)) {
-            var last = innerItems.length - 1,
-                i;
-
-            for (i = last; i >= 0; i--) {
-                if ((Ext.isString(count) && Ext.ComponentQuery.is(innerItems[i], count)) || (Ext.isObject(count) && count == innerItems[i])) {
-                    count = last - i;
-                    break;
-                }
-            }
-
-            if (!Ext.isNumber(count)) {
-                return false;
-            }
-        }
-
-        var ln = innerItems.length,
-            toRemove;
+            innerItems = this.getInnerItems(),
+            ln = innerItems.length,
+            toRemove, i;
 
         //default to 1 pop
         if (!Ext.isNumber(count) || count < 1) {
@@ -309,26 +277,6 @@ Ext.define('Ext.navigation.View', {
 
         //set the new active item to be the new last item of the stack
         me.remove(innerItems[innerItems.length - 1]);
-
-        // Hide the backButton
-        if (innerItems.length < 3 && this.$backButton) {
-            this.$backButton.hide();
-        }
-
-        // Update the title container
-        if (this.$titleContainer) {
-            //<debug>
-            if (!this.$titleContainer.setTitle) {
-                Ext.Logger.error('You have selected to display a title in a component that does not \
-                    support titles in NavigationView. Please remove the `title` configuration from your \
-                    NavigationView item, or change it to a component that has a `setTitle` method.');
-            }
-            //</debug>
-
-            var item = innerItems[innerItems.length - 2];
-            this.$titleContainer.setTitle((item.getTitle) ? item.getTitle() : item.config.title);
-        }
-
         return this.getActiveItem();
     },
 
@@ -381,40 +329,6 @@ Ext.define('Ext.navigation.View', {
         }
 
         config.view = this;
-        config.useTitleForBackButtonText = this.getUseTitleForBackButtonText();
-
-        if (config.splitNavigation) {
-            this.$titleContainer = this.add({
-                docked: 'top',
-                xtype: 'titlebar',
-                ui: 'light',
-                title: this.$currentTitle || ''
-            });
-
-            var containerConfig = (config.splitNavigation === true) ? {} : config.splitNavigation;
-
-            this.$backButtonContainer = this.add(Ext.apply({
-                xtype: 'toolbar',
-                docked: 'bottom'
-            }, containerConfig));
-
-            this.$backButton = this.$backButtonContainer.add({
-                xtype: 'button',
-                text: 'Back',
-                hidden: true,
-                ui: 'back'
-            });
-
-            this.$backButton.on({
-                scope: this,
-                tap: this.onBackButtonTap
-            });
-
-            config = {
-                hidden: true,
-                docked: 'top'
-            };
-        }
 
         return Ext.factory(config, Ext.navigation.Bar, this.getNavigationBar());
     },
@@ -426,6 +340,12 @@ Ext.define('Ext.navigation.View', {
         }
 
         if (newNavigationBar) {
+            var layout = this.getLayout(),
+                animation = (layout && layout.isLayout) ? layout.getAnimation() : false;
+
+            if (animation && animation.isAnimation) {
+                newNavigationBar.setAnimation(animation.config);
+            }
             this.add(newNavigationBar);
         }
     },
@@ -479,58 +399,15 @@ Ext.define('Ext.navigation.View', {
      * @private
      */
     onItemAdd: function(item, index) {
-
-        // Check for title configuration
-        if (item && item.getDocked() && item.config.title === true) {
-            this.$titleContainer = item;
-        }
-
         this.doItemLayoutAdd(item, index);
-
-        var navigaitonBar = this.getInitialConfig().navigationBar;
 
         if (!this.isItemsInitializing && item.isInnerItem()) {
             this.setActiveItem(item);
-
-            // Update the navigationBar
-            if (navigaitonBar) {
-                this.getNavigationBar().onViewAdd(this, item, index);
-            }
-
-            // Update the custom backButton
-            if (this.$backButtonContainer) {
-                this.$backButton.show();
-            }
-        }
-
-        if (item && item.isInnerItem()) {
-            // Update the title container title
-            this.updateTitleContainerTitle((item.getTitle) ? item.getTitle() : item.config.title);
+            this.getNavigationBar().onViewAdd(this, item, index);
         }
 
         if (this.initialized) {
             this.fireEvent('add', this, item, index);
-        }
-    },
-
-    /**
-     * @private
-     * Updates the title of the titleContainer, if it exists
-     */
-    updateTitleContainerTitle: function(title) {
-        if (this.$titleContainer) {
-            //<debug>
-            if (!this.$titleContainer.setTitle) {
-                Ext.Logger.error('You have selected to display a title in a component that does not \
-                    support titles in NavigationView. Please remove the `title` configuration from your \
-                    NavigationView item, or change it to a component that has a `setTitle` method.');
-            }
-            //</debug>
-
-            this.$titleContainer.setTitle(title);
-        }
-        else {
-            this.$currentTitle = title;
         }
     },
 

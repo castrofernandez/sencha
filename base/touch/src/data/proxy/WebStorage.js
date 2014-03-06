@@ -19,24 +19,8 @@ Ext.define('Ext.data.proxy.WebStorage', {
         id: undefined,
 
         // WebStorage proxies dont use readers and writers
-        /**
-         * @cfg
-         * @hide
-         */
         reader: null,
-        /**
-         * @cfg
-         * @hide
-         */
-        writer: null,
-
-        /**
-         * @cfg {Boolean} enablePagingParams This can be set to true if you want the webstorage proxy to comply
-         * to the paging params set on the store.
-         */
-        enablePagingParams: false,
-
-		defaultDateFormat: 'Y-m-d H:i:s.u'
+        writer: null
     },
 
     /**
@@ -63,8 +47,6 @@ Ext.define('Ext.data.proxy.WebStorage', {
         if (!this.getId()) {
             this.setId(model.modelName);
         }
-
-        this.callParent(arguments);
     },
 
     //inherit docs
@@ -78,15 +60,15 @@ Ext.define('Ext.data.proxy.WebStorage', {
 
         for (i = 0; i < length; i++) {
             record = records[i];
-            // <debug>
-            if (!this.getModel().getIdentifier().isUnique) {
-                Ext.Logger.warn('Your identifier generation strategy for the model does not ensure unique id\'s. Please use the UUID strategy, or implement your own identifier strategy with the flag isUnique.');
 
+            if (record.phantom) {
+                record.phantom = false;
+                id = this.getNextId();
+            } else {
+                id = record.getId();
             }
-            // </debug>
-            id = record.getId();
 
-            this.setRecord(record);
+            this.setRecord(record, id);
             ids.push(id);
         }
 
@@ -107,12 +89,8 @@ Ext.define('Ext.data.proxy.WebStorage', {
             model      = this.getModel(),
             idProperty = model.getIdProperty(),
             params     = operation.getParams() || {},
-            sorters = operation.getSorters(),
-            filters = operation.getFilters(),
-            start = operation.getStart(),
-            limit = operation.getLimit(),
             length     = ids.length,
-            i, record, collection;
+            i, record;
 
         //read a single record
         if (params[idProperty] !== undefined) {
@@ -121,34 +99,10 @@ Ext.define('Ext.data.proxy.WebStorage', {
                 records.push(record);
                 operation.setSuccessful();
             }
-        }
-        else {
+        } else {
             for (i = 0; i < length; i++) {
-                record = this.getRecord(ids[i]);
-                if (record) {
-                    records.push(record);
-                }
+                records.push(this.getRecord(ids[i]));
             }
-
-            collection = Ext.create('Ext.util.Collection');
-
-            // First we comply to filters
-            if (filters && filters.length) {
-                collection.setFilters(filters);
-            }
-            // Then we comply to sorters
-            if (sorters && sorters.length) {
-                collection.setSorters(sorters);
-            }
-
-            collection.addAll(records);
-
-            if (this.getEnablePagingParams() && start !== undefined && limit !== undefined) {
-                records = collection.items.slice(start, start + limit);
-            } else {
-                records = collection.items.slice();
-            }
-
             operation.setSuccessful();
         }
 
@@ -206,8 +160,6 @@ Ext.define('Ext.data.proxy.WebStorage', {
             newIds  = [].concat(ids),
             i;
 
-        operation.setStarted();
-
         for (i = 0; i < length; i++) {
             Ext.Array.remove(newIds, records[i].getId());
             this.removeRecord(records[i], false);
@@ -237,10 +189,10 @@ Ext.define('Ext.data.proxy.WebStorage', {
                 Model   = this.getModel(),
                 fields  = Model.getFields().items,
                 length  = fields.length,
-                i, field, name, record, rawData, rawValue;
+                i, field, name, record, rawData, dateFormat;
 
             if (!item) {
-                return undefined;
+                return;
             }
 
             rawData = Ext.decode(item);
@@ -248,15 +200,19 @@ Ext.define('Ext.data.proxy.WebStorage', {
             for (i = 0; i < length; i++) {
                 field = fields[i];
                 name  = field.getName();
-				rawValue = rawData[name];
 
                 if (typeof field.getDecode() == 'function') {
-                    data[name] = field.getDecode()(rawValue);
+                    data[name] = field.getDecode()(rawData[name]);
                 } else {
                     if (field.getType().type == 'date') {
-						data[name] = this.readDate(field, rawValue);
+                        dateFormat = field.getDateFormat();
+                        if (dateFormat) {
+                            data[name] = Ext.Date.parse(rawData[name], dateFormat);
+                        } else {
+                            data[name] = new Date(rawData[name]);
+                        }
                     } else {
-                        data[name] = rawValue;
+                        data[name] = rawData[name];
                     }
                 }
             }
@@ -287,24 +243,24 @@ Ext.define('Ext.data.proxy.WebStorage', {
             fields  = Model.getFields().items,
             length  = fields.length,
             i = 0,
-            rawValue, field, name, obj, key;
+            field, name, obj, key, dateFormat;
 
         for (; i < length; i++) {
             field = fields[i];
             name  = field.getName();
-			rawValue = rawData[name];
-
-            if (field.getPersist() === false) {
-                continue;
-            }
 
             if (typeof field.getEncode() == 'function') {
-                data[name] = field.getEncode()(rawValue, record);
+                data[name] = field.getEncode()(rawData[name], record);
             } else {
-                if (field.getType().type == 'date' && Ext.isDate(rawValue)) {
-					data[name] = this.writeDate(field, rawValue);
+                if (field.getType().type == 'date' && Ext.isDate(rawData[name])) {
+                    dateFormat = field.getDateFormat();
+                    if (dateFormat) {
+                        data[name] = Ext.Date.format(rawData[name], dateFormat);
+                    } else {
+                        data[name] = rawData[name].getTime();
+                    }
                 } else {
-                    data[name] = rawValue;
+                    data[name] = rawData[name];
                 }
             }
         }
@@ -317,24 +273,14 @@ Ext.define('Ext.data.proxy.WebStorage', {
 
         //iPad bug requires that we remove the item before setting it
         obj.removeItem(key);
-        try {
-            obj.setItem(key, Ext.encode(data));
-        } catch(e){
-            this.fireEvent('exception', this, e);
-        }
-
-        record.commit();
+        obj.setItem(key, Ext.encode(data));
     },
 
     /**
      * @private
-     * Physically removes a given record from the local storage. Used internally
-     * by {@link #destroy}, which you should use instead because it updates the
-     * list of currently-stored record ids.
-     * @param {String/Number/Ext.data.Model} id The id of the record to remove,
-     * or an Ext.data.Model instance.
-     * @param {Boolean} [updateIds] False to skip saving the array of ids
-     * representing the set of all records in the Proxy.
+     * Physically removes a given record from the local storage. Used internally by {@link #destroy}, which you should
+     * use instead because it updates the list of currently-stored record ids
+     * @param {String/Number/Ext.data.Model} id The id of the record to remove, or an Ext.data.Model instance
      */
     removeRecord: function(id, updateIds) {
         var me = this,
@@ -350,7 +296,6 @@ Ext.define('Ext.data.proxy.WebStorage', {
             me.setIds(ids);
         }
 
-        delete this.cache[id];
         me.getStorageObject().removeItem(me.getRecordKey(id));
     },
 
@@ -371,6 +316,16 @@ Ext.define('Ext.data.proxy.WebStorage', {
 
     /**
      * @private
+     * Returns the unique key used to store the current record counter for this proxy. This is used internally when
+     * realizing models (creating them when they used to be phantoms), in order to give each model instance a unique id.
+     * @return {String} The counter key
+     */
+    getRecordCounterKey: function() {
+        return Ext.String.format("{0}-counter", this.getId());
+    },
+
+    /**
+     * @private
      * Returns the array of record IDs stored in this Proxy
      * @return {Number[]} The record IDs. Each is cast as a Number
      */
@@ -381,6 +336,10 @@ Ext.define('Ext.data.proxy.WebStorage', {
 
         if (length == 1 && ids[0] === "") {
             ids = [];
+        } else {
+            for (i = 0; i < length; i++) {
+                ids[i] = parseInt(ids[i], 10);
+            }
         }
 
         return ids;
@@ -394,50 +353,40 @@ Ext.define('Ext.data.proxy.WebStorage', {
     setIds: function(ids) {
         var obj = this.getStorageObject(),
             str = ids.join(","),
-            id  = this.getId();
+            id  = this.getId(),
+            key = this.getRecordCounterKey();
 
         obj.removeItem(id);
 
-        if (!Ext.isEmpty(str)) {
-            try {
-                obj.setItem(id, str);
-            } catch(e){
-                this.fireEvent('exception', this, e);
-            }
+        if (Ext.isEmpty(str)) {
+            obj.removeItem(key);
+        } else {
+            obj.setItem(id, str);
         }
     },
 
-	writeDate: function(field, date) {
-		if (Ext.isEmpty(date)) {
-			return null;
-		}
+    /**
+     * @private
+     * Returns the next numerical ID that can be used when realizing a model instance (see getRecordCounterKey).
+     * Increments the counter.
+     * @return {Number} The id
+     */
+    getNextId: function() {
+        var obj  = this.getStorageObject(),
+            key  = this.getRecordCounterKey(),
+            last = obj.getItem(key),
+            ids, id;
 
-		var dateFormat = field.getDateFormat() || this.getDefaultDateFormat();
-		switch (dateFormat) {
-			case 'timestamp':
-				return date.getTime() / 1000;
-			case 'time':
-				return date.getTime();
-			default:
-				return Ext.Date.format(date, dateFormat);
-		}
-	},
+        if (last === null) {
+            ids = this.getIds();
+            last = ids[ids.length - 1] || 0;
+        }
 
-	readDate: function(field, date) {
-		if (Ext.isEmpty(date)) {
-			return null;
-		}
+        id = parseInt(last, 10) + 1;
+        obj.setItem(key, id);
 
-		var dateFormat = field.getDateFormat() || this.getDefaultDateFormat();
-		switch (dateFormat) {
-			case 'timestamp':
-				return new Date(date * 1000);
-			case 'time':
-				return new Date(date);
-            default:
-                return Ext.isDate(date) ? date : Ext.Date.parse(date, dateFormat);
-		}
-	},
+        return id;
+    },
 
     /**
      * @private
@@ -447,11 +396,7 @@ Ext.define('Ext.data.proxy.WebStorage', {
     initialize: function() {
         this.callParent(arguments);
         var storageObject = this.getStorageObject();
-        try {
-            storageObject.setItem(this.getId(), storageObject.getItem(this.getId()) || "");
-        } catch(e){
-            this.fireEvent('exception', this, e);
-        }
+        storageObject.setItem(this.getId(), storageObject.getItem(this.getId()) || "");
     },
 
     /**
@@ -466,10 +411,11 @@ Ext.define('Ext.data.proxy.WebStorage', {
 
         //remove all the records
         for (i = 0; i < len; i++) {
-            this.removeRecord(ids[i], false);
+            this.removeRecord(ids[i]);
         }
 
         //remove the supporting objects
+        obj.removeItem(this.getRecordCounterKey());
         obj.removeItem(this.getId());
     },
 

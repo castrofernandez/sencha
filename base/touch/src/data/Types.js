@@ -1,54 +1,52 @@
 /**
  * @class Ext.data.Types
- *
- * This is a static class containing the system-supplied data types which may be given to a {@link Ext.data.Field Field}.
- *
- * The properties in this class are used as type indicators in the {@link Ext.data.Field Field} class, so to
+ * <p>This is s static class containing the system-supplied data types which may be given to a {@link Ext.data.Field Field}.<p/>
+ * <p>The properties in this class are used as type indicators in the {@link Ext.data.Field Field} class, so to
  * test whether a Field is of a certain type, compare the {@link Ext.data.Field#type type} property against properties
- * of this class.
- *
- * Developers may add their own application-specific data types to this class. Definition names must be UPPERCASE.
- * each type definition must contain three properties:
- *
- * - `convert`: {Function} - A function to convert raw data values from a data block into the data
- * to be stored in the Field. The function is passed the following parameters:
- *   + `v`: {Mixed} - The data value as read by the Reader, if `undefined` will use
- * the configured `{@link Ext.data.Field#defaultValue defaultValue}`.
- *   + `rec`: {Mixed} - The data object containing the row as read by the Reader.
+ * of this class.</p>
+ * <p>Developers may add their own application-specific data types to this class. Definition names must be UPPERCASE.
+ * each type definition must contain three properties:</p>
+ * <div class="mdetail-params"><ul>
+ * <li><code>convert</code> : <i>Function</i><div class="sub-desc">A function to convert raw data values from a data block into the data
+ * to be stored in the Field. The function is passed the collowing parameters:
+ * <div class="mdetail-params"><ul>
+ * <li><b>v</b> : Mixed<div class="sub-desc">The data value as read by the Reader, if undefined will use
+ * the configured <tt>{@link Ext.data.Field#defaultValue defaultValue}</tt>.</div></li>
+ * <li><b>rec</b> : Mixed<div class="sub-desc">The data object containing the row as read by the Reader.
  * Depending on the Reader type, this could be an Array ({@link Ext.data.reader.Array ArrayReader}), an object
- * ({@link Ext.data.reader.Json JsonReader}), or an XML element.
- * - `sortType`: {Function} - A function to convert the stored data into comparable form, as defined by {@link Ext.data.SortTypes}.
- * - `type`: {String} - A textual data type name.
- *
- * For example, to create a VELatLong field (See the Microsoft Bing Mapping API) containing the latitude/longitude value of a datapoint on a map from a JsonReader data block
- * which contained the properties `lat` and `long`, you would define a new data type like this:
- *
- *     // Add a new Field data type which stores a VELatLong object in the Record.
- *     Ext.data.Types.VELATLONG = {
- *         convert: function(v, data) {
- *             return new VELatLong(data.lat, data.long);
- *         },
- *         sortType: function(v) {
- *             return v.Latitude;  // When sorting, order by latitude
- *         },
- *         type: 'VELatLong'
- *     };
- *
- * Then, when declaring a Model, use:
- *
- *     var types = Ext.data.Types; // allow shorthand type access
- *     Ext.define('Unit', {
- *         extend: 'Ext.data.Model',
- *         config: {
- *             fields: [
- *                 { name: 'unitName', mapping: 'UnitName' },
- *                 { name: 'curSpeed', mapping: 'CurSpeed', type: types.INT },
- *                 { name: 'latitude', mapping: 'lat', type: types.FLOAT },
- *                 { name: 'position', type: types.VELATLONG }
- *             ]
- *         }
- *     });
- *
+ * ({@link Ext.data.reader.Json JsonReader}), or an XML element.</div></li>
+ * </ul></div></div></li>
+ * <li><code>sortType</code> : <i>Function</i> <div class="sub-desc">A function to convert the stored data into comparable form, as defined by {@link Ext.data.SortTypes}.</div></li>
+ * <li><code>type</code> : <i>String</i> <div class="sub-desc">A textual data type name.</div></li>
+ * </ul></div>
+ * <p>For example, to create a VELatLong field (See the Microsoft Bing Mapping API) containing the latitude/longitude value of a datapoint on a map from a JsonReader data block
+ * which contained the properties <code>lat</code> and <code>long</code>, you would define a new data type like this:</p>
+ *<pre><code>
+// Add a new Field data type which stores a VELatLong object in the Record.
+Ext.data.Types.VELATLONG = {
+    convert: function(v, data) {
+        return new VELatLong(data.lat, data.long);
+    },
+    sortType: function(v) {
+        return v.Latitude;  // When sorting, order by latitude
+    },
+    type: 'VELatLong'
+};
+</code></pre>
+ * <p>Then, when declaring a Model, use <pre><code>
+var types = Ext.data.Types; // allow shorthand type access
+Ext.define('Unit', {
+    extend: 'Ext.data.Model',
+    config: {
+        fields: [
+            { name: 'unitName', mapping: 'UnitName' },
+            { name: 'curSpeed', mapping: 'CurSpeed', type: types.INT },
+            { name: 'latitude', mapping: 'lat', type: types.FLOAT },
+            { name: 'position', type: types.VELATLONG }
+        ]
+    }
+});
+</code></pre>
  * @singleton
  */
 Ext.define('Ext.data.Types', {
@@ -57,7 +55,7 @@ Ext.define('Ext.data.Types', {
 
     /**
      * @property {RegExp} stripRe
-     * A regular expression for stripping non-numeric characters from a numeric value.
+     * A regular expression for stripping non-numeric characters from a numeric value. Defaults to <tt>/[\$,%]/g</tt>.
      * This should be overridden for localization.
      */
     stripRe: /[\$,%]/g,
@@ -100,9 +98,7 @@ Ext.define('Ext.data.Types', {
         /**
          * @property {Object} INT
          * This data type means that the raw data is converted into an integer before it is placed into a Record.
-         * A standard javascript parseInt(foo, 10) is enforced.
-         *
-         * The synonym `INTEGER` is equivalent.
+         * <p>The synonym <code>INTEGER</code> is equivalent.</p>
          */
         INT: {
             convert: function(value) {
@@ -120,9 +116,7 @@ Ext.define('Ext.data.Types', {
         /**
          * @property {Object} FLOAT
          * This data type means that the raw data is converted into a number before it is placed into a Record.
-         * A standard javascript parseFloat(foo, 10) is enforced.
-         *
-         * The synonym `NUMBER` is equivalent.
+         * <p>The synonym <code>NUMBER</code> is equivalent.</p>
          */
         FLOAT: {
             convert: function(value) {
@@ -139,17 +133,16 @@ Ext.define('Ext.data.Types', {
 
         /**
          * @property {Object} BOOL
-         * This data type means that the raw data is converted into a Boolean before it is placed into
-         * a Record. The string "true", "1" and the number 1 are converted to Boolean `true`. The String "0" will be converted to Boolean 'false'.
-         *
-         * The synonym `BOOLEAN` is equivalent.
+         * <p>This data type means that the raw data is converted into a boolean before it is placed into
+         * a Record. The string "true" and the number 1 are converted to boolean <code>true</code>.</p>
+         * <p>The synonym <code>BOOLEAN</code> is equivalent.</p>
          */
         BOOL: {
             convert: function(value) {
                 if ((value === undefined || value === null || value === '') && this.getAllowNull()) {
                     return null;
                 }
-                return value !== 'false' && value !== '0' && !!value;
+                return value === true || value === 'true' || value == 1;
             },
             sortType: sortTypes.none,
             type: 'bool'
@@ -192,7 +185,7 @@ Ext.define('Ext.data.Types', {
                     if (isNaN(parsed)) {
                         // Dates with the format "2012-01-20" fail, but "2012/01/20" work in some browsers. We'll try and
                         // get around that.
-                        parsed = new Date(Date.parse(value.replace(Types.dashesRe, "/")));
+                        parsed = new Date(Date.parse(value.replace(this.dashesRe, "/")));
                         //<debug>
                         if (isNaN(parsed)) {
                             Ext.Logger.warn("Cannot parse the passed value (" + value + ") into a valid date");
@@ -211,26 +204,23 @@ Ext.define('Ext.data.Types', {
     Ext.apply(Types, {
         /**
          * @property {Object} BOOLEAN
-         * This data type means that the raw data is converted into a Boolean before it is placed into
-         * a Record. The string "true" and the number 1 are converted to Boolean `true`.
-         *
-         * The synonym `BOOL` is equivalent.
+         * <p>This data type means that the raw data is converted into a boolean before it is placed into
+         * a Record. The string "true" and the number 1 are converted to boolean <code>true</code>.</p>
+         * <p>The synonym <code>BOOL</code> is equivalent.</p>
          */
         BOOLEAN: this.BOOL,
 
         /**
          * @property {Object} INTEGER
          * This data type means that the raw data is converted into an integer before it is placed into a Record.
-         *
-         *The synonym `INT` is equivalent.
+         * <p>The synonym <code>INT</code> is equivalent.</p>
          */
         INTEGER: this.INT,
 
         /**
          * @property {Object} NUMBER
          * This data type means that the raw data is converted into a number before it is placed into a Record.
-         *
-         * The synonym `FLOAT` is equivalent.
+         * <p>The synonym <code>FLOAT</code> is equivalent.</p>
          */
         NUMBER: this.FLOAT
     });

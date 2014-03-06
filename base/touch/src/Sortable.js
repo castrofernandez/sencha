@@ -1,6 +1,5 @@
 /**
  * A mixin which allows a data component to be sorted
- * @ignore
  */
 Ext.define('Ext.Sortable', {
     mixins: {
@@ -19,7 +18,7 @@ Ext.define('Ext.Sortable', {
         /**
          * @cfg {Number} delay
          * How many milliseconds a user must hold the draggable before starting a
-         * drag operation.
+         * drag operation. Defaults to 0 or immediate.
          * @private
          * @accessor
          */
@@ -29,7 +28,8 @@ Ext.define('Ext.Sortable', {
 
     /**
      * @cfg {String} direction
-     * Possible values: 'vertical', 'horizontal'.
+     * Possible values: 'vertical', 'horizontal'
+     * Defaults to 'vertical'
      */
     direction: 'vertical',
 
@@ -47,15 +47,15 @@ Ext.define('Ext.Sortable', {
 
     /**
      * @cfg {HTMLElement/Boolean} constrain
-     * An Element to constrain the Sortable dragging to.
-     * If `true` is specified, the dragging will be constrained to the element
+     * An Element to constrain the Sortable dragging to. Defaults to <tt>window</tt>.
+     * If <tt>true</tt> is specified, the dragging will be constrained to the element
      * of the sortable.
      */
     constrain: window,
     /**
      * @cfg {String} group
      * Draggable and Droppable objects can participate in a group which are
-     * capable of interacting.
+     * capable of interacting. Defaults to 'base'
      */
     group: 'base',
 
@@ -80,7 +80,7 @@ Ext.define('Ext.Sortable', {
 
     /**
      * @cfg {Boolean} disabled
-     * Passing in `true` will disable this Sortable.
+     * Passing in true will disable this Sortable.
      */
     disabled: false,
 
@@ -90,7 +90,6 @@ Ext.define('Ext.Sortable', {
      * Read-only property that indicates whether a Sortable is currently sorting.
      * @type Boolean
      * @private
-     * @readonly
      */
     sorting: false,
 
@@ -99,7 +98,6 @@ Ext.define('Ext.Sortable', {
      * This is automatically calculated by Draggable by the direction configuration.
      * @type Boolean
      * @private
-     * @readonly
      */
     vertical: false,
 
@@ -279,7 +277,7 @@ Ext.define('Ext.Sortable', {
     /**
      * Enables sorting for this Sortable.
      * This method is invoked immediately after construction of a Sortable unless
-     * the disabled configuration is set to `true`.
+     * the disabled configuration is set to true.
      */
     enable : function() {
         this.el.on(this.startEventName, this.onStart, this, {delegate: this.itemSelector, holdThreshold: this.getDelay()});
@@ -296,7 +294,7 @@ Ext.define('Ext.Sortable', {
 
     /**
      * Method to determine whether this Sortable is currently disabled.
-     * @return {Boolean} The disabled state of this Sortable.
+     * @return {Boolean} the disabled state of this Sortable.
      */
     isDisabled: function() {
         return this.disabled;
@@ -304,7 +302,7 @@ Ext.define('Ext.Sortable', {
 
     /**
      * Method to determine whether this Sortable is currently sorting.
-     * @return {Boolean} The sorting state of this Sortable.
+     * @return {Boolean} the sorting state of this Sortable.
      */
     isSorting : function() {
         return this.sorting;
@@ -312,7 +310,7 @@ Ext.define('Ext.Sortable', {
 
     /**
      * Method to determine whether this Sortable is currently disabled.
-     * @return {Boolean} The disabled state of this Sortable.
+     * @return {Boolean} the disabled state of this Sortable.
      */
     isVertical : function() {
         return this.vertical;
@@ -320,7 +318,7 @@ Ext.define('Ext.Sortable', {
 
     /**
      * Method to determine whether this Sortable is currently sorting.
-     * @return {Boolean} The sorting state of this Sortable.
+     * @return {Boolean} the sorting state of this Sortable.
      */
     isHorizontal : function() {
         return this.horizontal;

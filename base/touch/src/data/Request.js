@@ -45,7 +45,8 @@ Ext.define('Ext.data.Request', {
 
         /**
          * @cfg {Boolean} disableCaching
-         * Whether or not to disable caching for this request.
+         * Wether or not to disable caching for this request.
+         * Defaults to false.
          */
         disableCaching: false,
 
@@ -89,22 +90,6 @@ Ext.define('Ext.data.Request', {
          */
         withCredentials: null,
 
-        /**
-         * @cfg {String} username
-         * Most oData feeds require basic HTTP authentication. This configuration allows
-         * you to specify the username.
-         * @accessor
-         */
-        username: null,
-
-        /**
-         * @cfg {String} password
-         * Most oData feeds require basic HTTP authentication. This configuration allows
-         * you to specify the password.
-         * @accessor
-         */
-        password: null,
-
         callback: null,
         scope: null,
         timeout: 30000,
@@ -113,8 +98,7 @@ Ext.define('Ext.data.Request', {
         // The following two configurations are only used by Ext.data.proxy.Direct and are just
         // for being able to retrieve them after the request comes back from the server.
         directFn: null,
-        args: null,
-        useDefaultXhrHeader: null
+        args: null
     },
 
     /**

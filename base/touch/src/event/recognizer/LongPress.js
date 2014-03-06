@@ -1,5 +1,5 @@
 /**
- * A event recognizer which knows when you tap and hold for more than 1 second.
+ * A event recogniser which knows when you tap and hold for more than 1 second.
  *
  * @private
  */
@@ -29,6 +29,7 @@ Ext.define('Ext.event.recognizer.LongPress', {
      * @member Ext.dom.Element
      * @event taphold
      * @inheritdoc Ext.dom.Element#longpress
+     * @deprecated 2.0.0 Please add listener to 'longpress' event instead
      */
 
     fireLongPress: function(e) {
@@ -73,6 +74,7 @@ Ext.define('Ext.event.recognizer.LongPress', {
     }
 
 }, function() {
+    //<deprecated product=touch since=2.0>
     this.override({
         handledEvents: ['longpress', 'taphold'],
 
@@ -87,4 +89,5 @@ Ext.define('Ext.event.recognizer.LongPress', {
             return this.callOverridden(arguments);
         }
     });
+    //</deprecated>
 });

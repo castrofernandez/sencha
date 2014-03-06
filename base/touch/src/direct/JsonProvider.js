@@ -1,8 +1,10 @@
 /**
  * @class Ext.direct.JsonProvider
- *
- * A base provider for communicating using JSON. This is an abstract class
- * and should not be instanced directly.
+
+A base provider for communicating using JSON. This is an abstract class
+and should not be instanced directly.
+
+ * @markdown
  * @abstract
  */
 
@@ -14,9 +16,9 @@ Ext.define('Ext.direct.JsonProvider', {
     uses: ['Ext.direct.ExceptionEvent'],
 
     /**
-     * Parse the JSON response.
+     * Parse the JSON response
      * @private
-     * @param {Object} response The XHR response object.
+     * @param {Object} response The XHR response object
      * @return {Object} The data in the response.
      */
     parseResponse: function(response) {
@@ -30,10 +32,10 @@ Ext.define('Ext.direct.JsonProvider', {
     },
 
     /**
-     * Creates a set of events based on the XHR response.
+     * Creates a set of events based on the XHR response
      * @private
-     * @param {Object} response The XHR response.
-     * @return {Ext.direct.Event[]} An array of {@link Ext.direct.Event} objects.
+     * @param {Object} response The XHR response
+     * @return {Ext.direct.Event[]} An array of Ext.direct.Event
      */
     createEvents: function(response) {
         var data = null,
@@ -64,9 +66,9 @@ Ext.define('Ext.direct.JsonProvider', {
     },
 
     /**
-     * Create an event from a response object.
-     * @param {Object} response The XHR response object.
-     * @return {Ext.direct.Event} The event.
+     * Create an event from a response object
+     * @param {Object} response The XHR response object
+     * @return {Ext.direct.Event} The event
      */
     createEvent: function(response) {
         return Ext.create('direct.' + response.type, response);

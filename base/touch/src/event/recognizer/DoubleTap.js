@@ -1,15 +1,11 @@
 /**
- * A simple event recognizer which knows when you double tap.
+ * A simple event recogniser which knows when you double tap.
  *
  * @private
  */
 Ext.define('Ext.event.recognizer.DoubleTap', {
 
     extend: 'Ext.event.recognizer.SingleTouch',
-
-    inheritableStatics: {
-        DIFFERENT_TARGET: 0x03
-    },
 
     config: {
         maxDuration: 300
@@ -37,17 +33,12 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
 
     singleTapTimer: null,
 
-    startTime: 0,
-
-    lastTapTime: 0,
-
     onTouchStart: function(e) {
         if (this.callParent(arguments) === false) {
             return false;
         }
 
         this.startTime = e.time;
-
         clearTimeout(this.singleTapTimer);
     },
 
@@ -60,23 +51,15 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
             maxDuration = this.getMaxDuration(),
             touch = e.changedTouches[0],
             time = e.time,
-            target = e.target,
             lastTapTime = this.lastTapTime,
-            lastTarget = this.lastTarget,
             duration;
 
         this.lastTapTime = time;
-        this.lastTarget = target;
 
         if (lastTapTime) {
             duration = time - lastTapTime;
 
             if (duration <= maxDuration) {
-                if (target !== lastTarget) {
-                    return this.fail(this.self.DIFFERENT_TARGET);
-                }
-
-                this.lastTarget = null;
                 this.lastTapTime = 0;
 
                 this.fire('doubletap', e, [touch], {

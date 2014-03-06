@@ -7,7 +7,7 @@
  *
  * The {@link #defaultType} of {@link Ext.Toolbar} is {@link Ext.Button}.
  *
- * You can alternatively use {@link Ext.TitleBar} if you want the title to automatically adjust the size of its items.
+ * You can alterntively use {@link Ext.TitleBar} if you want the title to automatically adjust the size of its items.
  *
  * ## Examples
  *
@@ -35,7 +35,7 @@
  *                         text: 'Toggle docked',
  *                         handler: function() {
  *                             var toolbar = Ext.ComponentQuery.query('toolbar')[0],
- *                                 newDocked = (toolbar.getDocked() === 'top') ? 'bottom' : 'top';
+ *                                 newDocked = (toolbar.getDocked() == 'top') ? 'bottom' : 'top';
  *
  *                             toolbar.setDocked(newDocked);
  *                         }
@@ -44,7 +44,7 @@
  *                         text: 'Toggle UI',
  *                         handler: function() {
  *                             var toolbar = Ext.ComponentQuery.query('toolbar')[0],
- *                                 newUi = (toolbar.getUi() === 'light') ? 'dark' : 'light';
+ *                                 newUi = (toolbar.getUi() == 'light') ? 'dark' : 'light';
  *
  *                             toolbar.setUi(newUi);
  *                         }
@@ -89,23 +89,22 @@ Ext.define('Ext.Toolbar', {
     requires: [
         'Ext.Button',
         'Ext.Title',
-        'Ext.Spacer',
-        'Ext.layout.HBox'
+        'Ext.Spacer'
     ],
 
-    // @private
+    // private
     isToolbar: true,
 
     config: {
         /**
-         * @cfg baseCls
+         * @cfg
          * @inheritdoc
          */
         baseCls: Ext.baseCSSPrefix + 'toolbar',
 
         /**
          * @cfg {String} ui
-         * The ui for this {@link Ext.Toolbar}. Either 'light' or 'dark'. You can create more UIs by using using the CSS Mixin {@link #sencha-toolbar-ui}
+         * The ui for this {@link Ext.Toolbar}. Either 'light' or 'dark'. Cou can create more UIs by using using the CSS Mixin {@link #sencha-toolbar-ui}
          * @accessor
          */
         ui: 'dark',
@@ -133,37 +132,30 @@ Ext.define('Ext.Toolbar', {
          */
 
         /**
-         * @cfg {String} minHeight
-         * The minimum height height of the Toolbar.
-         * @accessor
-         */
-        minHeight: null,
-
-        /**
          * @cfg {Object/String} layout Configuration for this Container's layout. Example:
          *
-         *     Ext.create('Ext.Container', {
-         *         layout: {
-         *             type: 'hbox',
-         *             align: 'middle'
-         *         },
-         *         items: [
-         *             {
-         *                 xtype: 'panel',
-         *                 flex: 1,
-         *                 style: 'background-color: red;'
-         *             },
-         *             {
-         *                 xtype: 'panel',
-         *                 flex: 2,
-         *                 style: 'background-color: green'
-         *             }
-         *         ]
-         *     });
+         *    Ext.create('Ext.Container', {
+         *        layout: {
+         *            type: 'hbox',
+         *            align: 'middle'
+         *        },
+         *        items: [
+         *            {
+         *                xtype: 'panel',
+         *                flex: 1,
+         *                style: 'background-color: red;'
+         *            },
+         *            {
+         *                xtype: 'panel',
+         *                flex: 2,
+         *                style: 'background-color: green'
+         *            }
+         *        ]
+         *    });
          *
-         * See the [layouts guide](#!/guides/layouts) for more information
+         * See the layouts guide for more information
          *
-         * __Note:__ If you set the {@link #docked} configuration to `left` or `right`, the default layout will change from the
+         * Please note, if you set the {@link #docked} configuration to `left` or `right`, the default layout will change from the
          * `hbox` to a `vbox`.
          *
          * @accessor
@@ -173,8 +165,6 @@ Ext.define('Ext.Toolbar', {
             align: 'center'
         }
     },
-
-    hasCSSMinHeight: true,
 
     constructor: function(config) {
         config = config || {};
@@ -194,7 +184,7 @@ Ext.define('Ext.Toolbar', {
         if (typeof title == 'string') {
             title = {
                 title: title,
-                centered : Ext.theme.is.Tizen ? false : true
+                centered: true
             };
         }
 
@@ -205,6 +195,7 @@ Ext.define('Ext.Toolbar', {
     updateTitle: function(newTitle, oldTitle) {
         if (newTitle) {
             this.add(newTitle);
+            this.getLayout().setItemFlex(newTitle, 1);
         }
 
         if (oldTitle) {
@@ -213,7 +204,7 @@ Ext.define('Ext.Toolbar', {
     },
 
     /**
-     * Shows the title, if it exists.
+     * Shows the title if it exists.
      */
     showTitle: function() {
         var title = this.getTitle();
@@ -224,7 +215,7 @@ Ext.define('Ext.Toolbar', {
     },
 
     /**
-     * Hides the title, if it exists.
+     * Hides the title if it exists.
      */
     hideTitle: function() {
         var title = this.getTitle();
@@ -245,7 +236,7 @@ Ext.define('Ext.Toolbar', {
      * Use this to update the {@link #title} configuration.
      * @member Ext.Toolbar
      * @method setTitle
-     * @param {String/Ext.Title} title You can either pass a String, or a config/instance of {@link Ext.Title}.
+     * @param {String/Ext.Title} title You can either pass a String, or a config/instance of Ext.Title
      */
 
 }, function() {
@@ -253,7 +244,7 @@ Ext.define('Ext.Toolbar', {
     /**
      * @member Ext.Toolbar
      * @cfg {Boolean} titleCls
-     * The CSS class to apply to the `titleEl`.
+     * The CSS class to apply to the titleEl.
      * @removed 2.0.0 Title class is now a config option of the title
      */
     Ext.deprecateProperty(this, 'titleCls', null, "Ext.Toolbar.titleCls has been removed. Use #cls config of title instead.");

@@ -111,56 +111,24 @@ Ext.define('Ext.field.Number', {
         stepValue: null
     },
 
-    applyPlaceHolder: function(value) {
-        // Android 4.1 & lower require a hack for placeholder text in number fields when using the Stock Browser
-        // details here https://code.google.com/p/android/issues/detail?id=24626
-        this._enableNumericPlaceHolderHack = ((!Ext.feature.has.NumericInputPlaceHolder) && (!Ext.isEmpty(value)));
-        return value;
-    },
-
-    onFocus: function(e) {
-        if (this._enableNumericPlaceHolderHack) {
-            this.getComponent().input.dom.setAttribute("type", "number");
-        }
-        this.callParent(arguments);
-    },
-
-    onBlur: function(e) {
-        if (this._enableNumericPlaceHolderHack) {
-            this.getComponent().input.dom.setAttribute("type", "text");
-        }
-        this.callParent(arguments);
-    },
-
-    doInitValue : function() {
-        var value = this.getInitialConfig().value;
-
-        if (value) {
-            value = this.applyValue(value);
-        }
-
-        this.originalValue = value;
-    },
-
     applyValue: function(value) {
         var minValue = this.getMinValue(),
             maxValue = this.getMaxValue();
 
-        if (Ext.isNumber(minValue) && Ext.isNumber(value)) {
+        if (Ext.isNumber(minValue)) {
             value = Math.max(value, minValue);
         }
 
-        if (Ext.isNumber(maxValue) && Ext.isNumber(value)) {
+        if (Ext.isNumber(maxValue)) {
             value = Math.min(value, maxValue);
         }
 
-        value = parseFloat(value);
-        return (isNaN(value)) ? '' : value;
+        return parseFloat(value);
     },
 
     getValue: function() {
-        var value = parseFloat(this.callParent(), 10);
-        return (isNaN(value)) ? null : value;
+        var value = this.callParent();
+        return parseFloat(value || 0);
     },
 
     doClearIconTap: function(me, e) {

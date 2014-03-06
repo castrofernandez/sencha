@@ -4,13 +4,22 @@
  * CSS Transform implementation
  */
 Ext.define('Ext.util.translatable.CssTransform', {
-    extend: 'Ext.util.translatable.Dom',
+    extend: 'Ext.util.translatable.Abstract',
 
     doTranslate: function(x, y) {
-        var element = this.getElement();
-        if (!this.isDestroyed && !element.isDestroyed) {
-            element.translate(x, y);
+        var domStyle = this.getElement().dom.style;
+
+        if (typeof x != 'number') {
+            x = this.x;
         }
+
+        if (typeof y != 'number') {
+            y = this.y;
+        }
+
+        domStyle.webkitTransform = 'translate3d(' + x + 'px, ' + y + 'px, 0px)';
+
+        return this.callParent(arguments);
     },
 
     destroy: function() {
@@ -20,6 +29,6 @@ Ext.define('Ext.util.translatable.CssTransform', {
             element.dom.style.webkitTransform = null;
         }
 
-        this.callSuper();
+        this.callParent(arguments);
     }
 });

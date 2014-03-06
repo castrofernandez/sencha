@@ -51,8 +51,10 @@ Ext.define('Ext.device.geolocation.Sencha', {
     },
 
     clearWatch: function() {
-        Ext.device.Communicator.send({
-            command: 'Geolocation#clearWatch'
-        });
+        if (this.geolocation) {
+            this.geolocation.destroy();
+        }
+
+        this.geolocation = null;
     }
 });

@@ -1,61 +1,41 @@
-/*
-    This file is generated and updated by Sencha Cmd. You can edit this file as
-    needed for your application, but these edits will have to be merged by
-    Sencha Cmd when it performs code generation tasks such as generating new
-    models, controllers or views and when running "sencha app upgrade".
-
-    Ideally changes to this file would be limited and most work would be done
-    in other places (such as Controllers). If Sencha Cmd cannot merge your
-    changes and its generated code, it will produce a "merge conflict" that you
-    will need to resolve manually.
-*/
+Ext.Loader.setPath({
+    'Ext': 'touch/src',
+    'Universal': 'app',
+    'AkoLib': 'AkoLib'
+});
 
 Ext.application({
-    name: 'Ejemplo2',
+    name: 'Base',
 
     requires: [
         'Ext.MessageBox'
     ],
 
-    views: [
-        'Main'
-    ],
+    views: ['Main'],
 
     icon: {
-        '57': 'resources/icons/Icon.png',
-        '72': 'resources/icons/Icon~ipad.png',
-        '114': 'resources/icons/Icon@2x.png',
-        '144': 'resources/icons/Icon~ipad@2x.png'
+        57: '../img/icons/Icon.png',
+        72: '../img/icons/Icon-iPad.png',
+        114: '../img/icons/Icon@2x.png',     // Retina iPhone
+        144: '../img/icons/Icon-iPad@2x.png' // Retina iPad
     },
 
     isIconPrecomposed: true,
-
+    
     startupImage: {
-        '320x460': 'resources/startup/320x460.jpg',
-        '640x920': 'resources/startup/640x920.png',
-        '768x1004': 'resources/startup/768x1004.png',
-        '748x1024': 'resources/startup/748x1024.png',
-        '1536x2008': 'resources/startup/1536x2008.png',
-        '1496x2048': 'resources/startup/1496x2048.png'
+        '320x460': '../img/loading/Default.png',
+        '640x920': '../img/loading/Default@2x.png', // Retina iPhone
+        '640x1096': '../img/loading/Default-568@2x.png', // Retina 4-inch iPhone
+        '768x1004': '../img/loading/Default-Portrait.png',
+        '748x1024': '../img/loading/Default-Landscape.png',
+        '1536x2008': '../img/loading/Default-Portrait@2x.png', // Retina iPad, Portrait
+        '1496x2048': '../img/loading/Default-Landscape@2x.png' // Retina iPad, Landscape
     },
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('Ejemplo2.view.Main'));
+        Ext.Viewport.add({
+            xclass: 'Base.view.Main'
+        });    
     },
 
-    onUpdated: function() {
-        Ext.Msg.confirm(
-            "Application Update",
-            "This application has just successfully been updated to the latest version. Reload now?",
-            function(buttonId) {
-                if (buttonId === 'yes') {
-                    window.location.reload();
-                }
-            }
-        );
-    }
 });

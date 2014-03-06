@@ -1,7 +1,3 @@
-//@require Ext.Class
-//@require Ext.ClassManager
-//@require Ext.Loader
-
 /**
  * Base class for all mixins.
  * @private

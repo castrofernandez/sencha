@@ -3,10 +3,10 @@
  * @extends Object
  * @singleton
  *
- * Provides searching of Components within {@link Ext.ComponentManager} (globally) or a specific
- * {@link Ext.Container} on the document with a similar syntax to a CSS selector.
+ * Provides searching of Components within Ext.ComponentManager (globally) or a specific
+ * Ext.container.Container on the document with a similar syntax to a CSS selector.
  *
- * Components can be retrieved by using their {@link Ext.Component xtype} with an optional '.' prefix
+ * Components can be retrieved by using their {@link Ext.Component xtype} with an optional . prefix
  *
  * - `component` or `.component`
  * - `gridpanel` or `.gridpanel`
@@ -364,8 +364,8 @@ Ext.define('Ext.ComponentQuery', {
          * @param {Ext.Container} root The Container within which to perform the query.
          * If omitted, all Components within the document are included in the search.
          *
-         * This parameter may also be an array of Components to filter according to the selector.
-         * @return {Ext.Component[]} The matched Components.
+         * This parameter may also be an array of Components to filter according to the selector.</p>
+         * @returns {Ext.Component[]} The matched Components.
          *
          * @member Ext.ComponentQuery
          */
@@ -406,9 +406,9 @@ Ext.define('Ext.ComponentQuery', {
 
         /**
          * Tests whether the passed Component matches the selector string.
-         * @param {Ext.Component} component The Component to test.
+         * @param {Ext.Component} component The Component to test
          * @param {String} selector The selector string to test against.
-         * @return {Boolean} `true` if the Component matches the selector.
+         * @return {Boolean} True if the Component matches the selector.
          * @member Ext.ComponentQuery
          */
         is: function(component, selector) {

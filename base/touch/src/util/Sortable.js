@@ -3,28 +3,20 @@
  *
  * A mixin which allows a data component to be sorted. This is used by e.g. {@link Ext.data.Store} and {@link Ext.data.TreeStore}.
  *
- * __Note:__ This mixin is mainly for internal library use and most users should not need to use it directly. It
+ * **NOTE**: This mixin is mainly for internal library use and most users should not need to use it directly. It
  * is more likely you will want to use one of the component classes that import this mixin, such as
  * {@link Ext.data.Store} or {@link Ext.data.TreeStore}.
  */
 Ext.define("Ext.util.Sortable", {
-    extend: 'Ext.mixin.Mixin',
     /**
      * @property {Boolean} isSortable
-     * Flag denoting that this object is sortable. Always `true`.
-     * @readonly
+     * Flag denoting that this object is sortable. Always true.
      */
     isSortable: true,
     
-    mixinConfig: {
-        hooks: {
-            destroy: 'destroy'
-        }
-    },
-    
     /**
      * @property {String} defaultSortDirection
-     * The default sort direction to use if one is not specified.
+     * The default sort direction to use if one is not specified (defaults to "ASC")
      */
     defaultSortDirection: "ASC",
     
@@ -91,9 +83,7 @@ Ext.define("Ext.util.Sortable", {
      *
      * @param {String/Ext.util.Sorter[]} sorters Either a string name of one of the fields in this Store's configured
      * {@link Ext.data.Model Model}, or an array of sorter configurations.
-     * @param {String} [direction="ASC"] The overall direction to sort the data by.
-     * @param {String} [where]
-     * @param {Boolean} [doSort]
+     * @param {String} direction The overall direction to sort the data by. Defaults to "ASC".
      * @return {Ext.util.Sorter[]}
      */
     sort: function(sorters, direction, where, doSort) {
@@ -181,9 +171,9 @@ Ext.define("Ext.util.Sortable", {
         
     /**
      * @private
-     * Normalizes an array of sorter objects, ensuring that they are all {@link Ext.util.Sorter} instances.
-     * @param {Array} sorters The sorters array.
-     * @return {Array} Array of {@link Ext.util.Sorter} objects.
+     * Normalizes an array of sorter objects, ensuring that they are all Ext.util.Sorter instances
+     * @param {Array} sorters The sorters array
+     * @return {Array} Array of Ext.util.Sorter objects
      */
     decodeSorters: function(sorters) {
         if (!Ext.isArray(sorters)) {
@@ -240,10 +230,5 @@ Ext.define("Ext.util.Sortable", {
     
     getSorters: function() {
         return this.sorters.items;
-    },
-    
-    destroy: function () {
-        this.callSuper();
-        Ext.destroy(this.sorters);
     }
 });

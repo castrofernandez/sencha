@@ -4,18 +4,16 @@
  * Newly added items are added to the end of the collection. This class is similar to {@link Ext.util.HashMap} however
  * it is heavier and provides more functionality. Sample usage:
  *
- *     @example
  *     var coll = new Ext.util.MixedCollection();
  *     coll.add('key1', 'val1');
  *     coll.add('key2', 'val2');
  *     coll.add('key3', 'val3');
  *
- *     alert(coll.get('key1')); // 'val1'
- *     alert(coll.indexOfKey('key3')); // 2
+ *     console.log(coll.get('key1')); // prints 'val1'
+ *     console.log(coll.indexOfKey('key3')); // prints 2
  *
  * The MixedCollection also has support for sorting and filtering of the values in the collection.
  *
- *     @example
  *     var coll = new Ext.util.MixedCollection();
  *     coll.add('key1', 100);
  *     coll.add('key2', -100);
@@ -24,7 +22,7 @@
  *     var biggerThanZero = coll.filterBy(function(value){
  *         return value > 0;
  *     });
- *     alert(biggerThanZero.getCount()); // 2
+ *     console.log(biggerThanZero.getCount()); // prints 2
  */
 Ext.define('Ext.util.MixedCollection', {
     extend: 'Ext.util.AbstractMixedCollection',
@@ -34,7 +32,7 @@ Ext.define('Ext.util.MixedCollection', {
 
     /**
      * @event sort
-     * Fires whenever MixedCollection is sorted.
+     * Fires whenever MixedCollection is sorted
      * @param {Ext.util.MixedCollection} this
      */
 
@@ -52,9 +50,9 @@ Ext.define('Ext.util.MixedCollection', {
      * @private
      * Performs the actual sorting based on a direction and a sorting function. Internally,
      * this creates a temporary array of all items in the MixedCollection, sorts it and then writes
-     * the sorted array data back into `this.items` and `this.keys`.
+     * the sorted array data back into this.items and this.keys
      * @param {String} property Property to sort by ('key', 'value', or 'index')
-     * @param {String} [dir=ASC] (optional) Direction to sort 'ASC' or 'DESC'.
+     * @param {String} dir (optional) Direction to sort 'ASC' or 'DESC'. Defaults to 'ASC'.
      * @param {Function} fn (optional) Comparison function that defines the sort order.
      * Defaults to sorting by numeric value.
      */
@@ -101,8 +99,8 @@ Ext.define('Ext.util.MixedCollection', {
     },
 
     /**
-     * Sorts the collection by a single sorter function.
-     * @param {Function} sorterFn The function to sort by.
+     * Sorts the collection by a single sorter function
+     * @param {Function} sorterFn The function to sort by
      */
     sortBy: function(sorterFn) {
         var me     = this,
@@ -141,8 +139,8 @@ Ext.define('Ext.util.MixedCollection', {
 
     /**
      * Reorders each of the items based on a mapping from old index to new index. Internally this just translates into a
-     * sort. The `sort` event is fired whenever reordering has occured.
-     * @param {Object} mapping Mapping from old item index to new item index.
+     * sort. The 'sort' event is fired whenever reordering has occured.
+     * @param {Object} mapping Mapping from old item index to new item index
      */
     reorder: function(mapping) {
         var me = this,
@@ -181,8 +179,8 @@ Ext.define('Ext.util.MixedCollection', {
 
     /**
      * Sorts this collection by **key**s.
-     * @param {String} [dir=ASC] Sorting direction: 'ASC' or 'DESC'.
-     * @param {Function} [fn] Comparison function that defines the sort order. Defaults to sorting by case insensitive
+     * @param {String} direction 'ASC' or 'DESC'. Defaults to 'ASC'.
+     * @param {Function} fn Comparison function that defines the sort order. Defaults to sorting by case insensitive
      * string.
      */
     sortByKey: function(dir, fn){

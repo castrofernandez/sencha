@@ -67,9 +67,8 @@
  * ## Further Reading
  *
  * For more information about Carousels see the [Carousel guide](#!/guide/carousel).
- *
+ * 
  * @aside guide carousel
- * @aside example carousel
  */
 Ext.define('Ext.carousel.Carousel', {
     extend: 'Ext.Container',
@@ -81,8 +80,7 @@ Ext.define('Ext.carousel.Carousel', {
     requires: [
         'Ext.fx.easing.EaseOut',
         'Ext.carousel.Item',
-        'Ext.carousel.Indicator',
-        'Ext.util.TranslatableGroup'
+        'Ext.carousel.Indicator'
     ],
 
     config: {
@@ -93,15 +91,11 @@ Ext.define('Ext.carousel.Carousel', {
          * @private
          */
 
-        /**
-         * @cfg
-         * @inheritdoc
-         */
         baseCls: 'x-carousel',
 
         /**
          * @cfg {String} direction
-         * The direction of the Carousel, either 'horizontal' or 'vertical'.
+         * The direction of the Carousel, either 'horizontal' or 'vertical'
          * @accessor
          */
         direction: 'horizontal',
@@ -114,11 +108,6 @@ Ext.define('Ext.carousel.Carousel', {
                 type: 'ease-out'
             }
         },
-
-        /**
-         * @cfg draggable
-         * @hide
-         */
 
         /**
          * @cfg {Boolean} indicator
@@ -159,6 +148,12 @@ Ext.define('Ext.carousel.Carousel', {
     activeIndex: -1,
 
     beforeInitialize: function() {
+        this.animationListeners = {
+            animationframe: 'onActiveItemAnimationFrame',
+            animationend: 'onActiveItemAnimationEnd',
+            scope: this
+        };
+
         this.element.on({
             dragstart: 'onDragStart',
             drag: 'onDrag',
@@ -166,7 +161,11 @@ Ext.define('Ext.carousel.Carousel', {
             scope: this
         });
 
-        this.element.on('resize', 'onSizeChange', this);
+        this.on({
+            painted: 'onPainted',
+            erased: 'onErased',
+            resize: 'onSizeChange'
+        });
 
         this.carouselItems = [];
 
@@ -196,7 +195,7 @@ Ext.define('Ext.carousel.Carousel', {
             if (itemLength) {
                 item[setterName].call(item, itemLength);
             }
-            item.setLayoutSizeFlags(this.LAYOUT_BOTH);
+
             items.push(item);
             innerElement.append(item.renderElement);
 
@@ -204,8 +203,10 @@ Ext.define('Ext.carousel.Carousel', {
                 item.fireEvent('renderedchange', this, item, true);
             }
         }
+    },
 
-        this.getTranslatable().setActiveIndex(size);
+    getActiveCarouselItem: function() {
+        return this.orderedCarouselItems[this.getBufferSize()];
     },
 
     setRendered: function(rendered) {
@@ -236,10 +237,20 @@ Ext.define('Ext.carousel.Carousel', {
         return false;
     },
 
+    onPainted: function() {
+        this.painted = true;
+        this.refresh();
+        this.refreshCarouselItems();
+    },
+
+    onErased: function() {
+        this.painted = false;
+    },
+
     onSizeChange: function() {
         this.refreshSizing();
         this.refreshCarouselItems();
-        this.refreshActiveItem();
+        this.refreshOffset();
     },
 
     onItemAdd: function(item, index) {
@@ -256,7 +267,7 @@ Ext.define('Ext.carousel.Carousel', {
             this.refreshActiveIndex();
         }
 
-        if (this.isIndexDirty(innerIndex) && !this.isItemsInitializing) {
+        if (this.painted && this.isIndexDirty(innerIndex)) {
             this.refreshActiveItem();
         }
     },
@@ -294,7 +305,9 @@ Ext.define('Ext.carousel.Carousel', {
                 }
             }
 
-            this.refreshActiveItem();
+            if (this.painted) {
+                this.refreshActiveItem();
+            }
         }
     },
 
@@ -307,7 +320,7 @@ Ext.define('Ext.carousel.Carousel', {
     },
 
     onInnerItemMove: function(item, toIndex, fromIndex) {
-        if ((this.isIndexDirty(toIndex) || this.isIndexDirty(fromIndex))) {
+        if (this.painted && (this.isIndexDirty(toIndex) || this.isIndexDirty(fromIndex))) {
             this.refreshActiveItem();
         }
     },
@@ -325,18 +338,6 @@ Ext.define('Ext.carousel.Carousel', {
             bufferSize = this.getBufferSize();
 
         return (index >= activeIndex - bufferSize && index <= activeIndex + bufferSize);
-    },
-
-    getTranslatable: function() {
-        var translatable = this.translatable;
-
-        if (!translatable) {
-            this.translatable = translatable = new Ext.util.TranslatableGroup;
-            translatable.setItems(this.orderedCarouselItems);
-            translatable.on('animationend', 'onAnimationEnd', this);
-        }
-
-        return translatable;
     },
 
     onDragStart: function(e) {
@@ -358,7 +359,9 @@ Ext.define('Ext.carousel.Carousel', {
             }
         }
 
-        this.getTranslatable().stopAnimation();
+        if (this.isAnimating) {
+            this.getActiveCarouselItem().getTranslatable().stopAnimation();
+        }
 
         this.dragStartOffset = this.offset;
         this.dragDirection = 0;
@@ -472,46 +475,102 @@ Ext.define('Ext.carousel.Carousel', {
         }
     },
 
-    /**
-     * @private
-     * @chainable
-     */
     setOffset: function(offset) {
+        var orderedCarouselItems = this.orderedCarouselItems,
+            bufferSize = this.getBufferSize(),
+            activeItem = orderedCarouselItems[bufferSize],
+            itemLength = this.itemLength,
+            axis = this.currentAxis,
+            nextItem, previousItem, distance, i;
+
         this.offset = offset;
 
-        if (Ext.isNumber(this.itemOffset)) {
-            this.getTranslatable().translateAxis(this.currentAxis, offset + this.itemOffset);
+        offset += this.itemOffset;
+
+        if (activeItem) {
+            activeItem.translateAxis(axis, offset);
+
+            for (i = 1,distance = 0; i <= bufferSize; i++) {
+                previousItem = orderedCarouselItems[bufferSize - i];
+
+                if (previousItem) {
+                    distance += itemLength;
+                    previousItem.translateAxis(axis, offset - distance);
+                }
+            }
+
+            for (i = 1,distance = 0; i <= bufferSize; i++) {
+                nextItem = orderedCarouselItems[bufferSize + i];
+
+                if (nextItem) {
+                    distance += itemLength;
+                    nextItem.translateAxis(axis, offset + distance);
+                }
+            }
         }
 
         return this;
     },
 
-    /**
-     * @private
-     * @return {Ext.carousel.Carousel} this
-     * @chainable
-     */
     setOffsetAnimated: function(offset) {
-        var indicator = this.getIndicator();
+        var activeCarouselItem = this.orderedCarouselItems[this.getBufferSize()],
+            indicator = this.getIndicator();
 
         if (indicator) {
             indicator.setActiveIndex(this.getActiveIndex() - this.animationDirection);
         }
 
         this.offset = offset;
+        offset += this.itemOffset;
 
-        this.getTranslatable().translateAxis(this.currentAxis, offset + this.itemOffset, this.getAnimation());
+        if (activeCarouselItem) {
+            this.isAnimating = true;
+
+            activeCarouselItem.getTranslatable().on(this.animationListeners);
+            activeCarouselItem.translateAxis(this.currentAxis, offset, this.getAnimation());
+        }
 
         return this;
     },
 
-    onAnimationEnd: function(translatable) {
+    onActiveItemAnimationFrame: function(translatable) {
+        var orderedCarouselItems = this.orderedCarouselItems,
+            bufferSize = this.getBufferSize(),
+            itemLength = this.itemLength,
+            axis = this.currentAxis,
+            offset = translatable[axis],
+            previousItem, nextItem, i, distance;
+
+        for (i = 1,distance = 0; i <= bufferSize; i++) {
+            previousItem = orderedCarouselItems[bufferSize - i];
+
+            if (previousItem) {
+                distance += itemLength;
+                previousItem.translateAxis(axis, offset - distance);
+            }
+        }
+
+        for (i = 1,distance = 0; i <= bufferSize; i++) {
+            nextItem = orderedCarouselItems[bufferSize + i];
+
+            if (nextItem) {
+                distance += itemLength;
+                nextItem.translateAxis(axis, offset + distance);
+            }
+        }
+    },
+
+    onActiveItemAnimationEnd: function(translatable) {
         var currentActiveIndex = this.getActiveIndex(),
             animationDirection = this.animationDirection,
             axis = this.currentAxis,
             currentOffset = translatable[axis],
             itemLength = this.itemLength,
             offset;
+
+        this.isAnimating = false;
+
+        translatable.un(this.animationListeners);
 
         if (animationDirection === -1) {
             offset = itemLength + currentOffset;
@@ -536,10 +595,6 @@ Ext.define('Ext.carousel.Carousel', {
     refreshSizing: function() {
         var element = this.element,
             itemLength = this.getItemLength(),
-            translatableItemLength = {
-                x: 0,
-                y: 0
-            },
             itemOffset, containerSize;
 
         if (this.getDirection() === 'horizontal') {
@@ -561,8 +616,6 @@ Ext.define('Ext.carousel.Carousel', {
 
         this.itemLength = itemLength;
         this.itemOffset = itemOffset;
-        translatableItemLength[this.currentAxis] = itemLength;
-        this.getTranslatable().setItemLength(translatableItemLength);
     },
 
     refreshOffset: function() {
@@ -609,34 +662,18 @@ Ext.define('Ext.carousel.Carousel', {
         }
     },
 
-    /**
-     * @private
-     * @return {Number}
-     */
     getMaxItemIndex: function() {
         return this.innerItems.length - 1;
     },
 
-    /**
-     * @private
-     * @return {Number}
-     */
     getInnerItemIndex: function(item) {
         return this.innerItems.indexOf(item);
     },
 
-    /**
-     * @private
-     * @return {Object}
-     */
     getInnerItemAt: function(index) {
         return this.innerItems[index];
     },
 
-    /**
-     * @private
-     * @return {Object}
-     */
     applyActiveItem: function() {
         var activeItem = this.callParent(arguments),
             activeIndex;
@@ -743,12 +780,14 @@ Ext.define('Ext.carousel.Carousel', {
     },
 
     /**
-     * Switches to the next card.
+     * Switches to the next card
      * @return {Ext.carousel.Carousel} this
-     * @chainable
      */
     next: function() {
-        this.setOffset(0);
+        if (this.isAnimating) {
+            this.getActiveCarouselItem().getTranslatable().stopAnimation();
+            this.setOffset(0);
+        }
 
         if (this.activeIndex === this.getMaxItemIndex()) {
             return this;
@@ -760,12 +799,14 @@ Ext.define('Ext.carousel.Carousel', {
     },
 
     /**
-     * Switches to the previous card.
+     * Switches to the previous card
      * @return {Ext.carousel.Carousel} this
-     * @chainable
      */
     previous: function() {
-        this.setOffset(0);
+        if (this.isAnimating) {
+            this.getActiveCarouselItem().getTranslatable().stopAnimation();
+            this.setOffset(0);
+        }
 
         if (this.activeIndex === 0) {
             return this;
@@ -800,7 +841,7 @@ Ext.define('Ext.carousel.Carousel', {
 
         this.carouselItems.length = 0;
 
-        Ext.destroy(carouselItems, this.getIndicator(), this.translatable);
+        Ext.destroy(carouselItems, this.getIndicator());
 
         this.callParent();
         delete this.carouselItems;
@@ -824,17 +865,17 @@ Ext.define('Ext.carousel.Carousel', {
 
     Ext.deprecateClassMethod(this, {
         /**
-         * Returns `true` when {@link #direction} is 'vertical'.
+         * Returns true when direction is vertical.
          * @return {Boolean}
-         * @deprecated 2.0.0 Use `getDirection() === 'vertical'` instead.
+         * @deprecated 2.0.0 Use getDirection() === 'vertical' instead.
          */
         isVertical: function getDirection() {
             return this.getDirection() === 'vertical';
         },
         /**
-         * Returns `true` when {@link #direction} is 'horizontal'.
+         * Returns true when direction is horizontal.
          * @return {Boolean}
-         * @deprecated 2.0.0 Use `getDirection() === 'horizontal'` instead.
+         * @deprecated 2.0.0 Use getDirection() === 'horizontal' instead.
          */
         isHorizontal: function getDirection() {
             return this.getDirection() === 'horizontal';

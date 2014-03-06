@@ -20,7 +20,6 @@
 Ext.define('Ext.Mask', {
     extend: 'Ext.Component',
     xtype: 'mask',
-    requires: ['Ext.util.InputBlocker'],
 
     config: {
         /**
@@ -66,25 +65,20 @@ Ext.define('Ext.Mask', {
      * @param {Ext.EventObject} e The event object
      */
     initialize: function() {
-        this.callSuper();
-
-        this.element.on('*', 'onEvent', this);
+        this.callParent();
 
         this.on({
-            hide: 'onHide'
-        });
+            painted: 'onPainted',
+            erased: 'onErased'
+        })
     },
 
-    onHide: function(){
-        Ext.util.InputBlocker.unblockInputs();
+    onPainted: function() {
+        this.element.on('*', 'onEvent', this);
+    },
 
-        // Oh how I loves the Android
-        if (Ext.browser.is.AndroidStock4 && Ext.os.version.getMinor() === 0) {
-            var firstChild = this.element.getFirstChild();
-            if (firstChild) {
-                firstChild.redraw();
-            }
-        }
+    onErased: function() {
+        this.element.un('*', 'onEvent', this);
     },
 
     onEvent: function(e) {

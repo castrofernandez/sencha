@@ -22,17 +22,6 @@ Ext.define('Ext.slider.Thumb', {
         }
     },
 
-    // Strange issue where the thumbs translation value is not being set when it is not visible. Happens when the thumb 
-    // is contained within a modal panel.
-    platformConfig: [{
-        platform: ['ie10'],
-        draggable: {
-            translatable: {
-                translationMethod: 'csstransform'
-            }
-        }
-    }],
-
     elementWidth: 0,
 
     initialize: function() {
@@ -45,7 +34,7 @@ Ext.define('Ext.slider.Thumb', {
             scope: this
         });
 
-        this.element.on('resize', 'onElementResize', this);
+        this.on('painted', 'onPainted');
     },
 
     onDragStart: function() {
@@ -72,8 +61,8 @@ Ext.define('Ext.slider.Thumb', {
         this.relayEvent(arguments);
     },
 
-    onElementResize: function(element, info) {
-        this.elementWidth = info.width;
+    onPainted: function() {
+        this.elementWidth = this.element.dom.offsetWidth;
     },
 
     getElementWidth: function() {

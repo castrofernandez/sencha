@@ -1,6 +1,3 @@
-//@tag foundation,core
-//@define Ext
-
 /**
  * @class Ext
  * @singleton
@@ -30,7 +27,7 @@
     }
 
     /**
-     * An array containing extra enumerables for old browsers.
+     * An array containing extra enumerables for old browsers
      * @property {String[]}
      */
     Ext.enumerables = enumerables;
@@ -39,9 +36,9 @@
      * Copies all the properties of config to the specified object.
      * Note that if recursive merging and cloning without referencing the original objects / arrays is needed, use
      * {@link Ext.Object#merge} instead.
-     * @param {Object} object The receiver of the properties.
-     * @param {Object} config The source of the properties.
-     * @param {Object} [defaults] A different object that will also be applied for default values.
+     * @param {Object} object The receiver of the properties
+     * @param {Object} config The source of the properties
+     * @param {Object} defaults A different object that will also be applied for default values
      * @return {Object} returns obj
      */
     Ext.apply = function(object, config, defaults) {
@@ -76,7 +73,6 @@
 
     Ext.apply(Ext, {
         /**
-         * @property {Function}
          * A reusable empty function
          */
         emptyFn: emptyFn,
@@ -85,8 +81,8 @@
 
         /**
          * Copies all the properties of config to object if they don't already exist.
-         * @param {Object} object The receiver of the properties.
-         * @param {Object} config The source of the properties.
+         * @param {Object} object The receiver of the properties
+         * @param {Object} config The source of the properties
          * @return {Object} returns obj
          */
         applyIf: function(object, config) {
@@ -113,6 +109,7 @@
          * type that is being iterated.
          * @param {Object} scope (Optional) The scope (`this` reference) in which the specified function is executed.
          * Defaults to the object being iterated itself.
+         * @markdown
          */
         iterate: function(object, fn, scope) {
             if (Ext.isEmpty(object)) {
@@ -139,8 +136,8 @@
          * @method
          * @param {Function} superclass
          * @param {Object} overrides
-         * @return {Function} The subclass constructor from the `overrides` parameter, or a generated one if not provided.
-         * @deprecated 2.0.0 Please use {@link Ext#define Ext.define} instead
+         * @return {Function} The subclass constructor from the <tt>overrides</tt> parameter, or a generated one if not provided.
+         * @deprecated 4.0.0 Please use {@link Ext#define Ext.define} instead
          */
         extend: function() {
             // inline overrides
@@ -207,10 +204,11 @@
          * Proxy to {@link Ext.Base#override}. Please refer {@link Ext.Base#override} for further details.
          *
          * @param {Object} cls The class to override
-         * @param {Object} overrides The properties to add to `origClass`. This should be specified as an object literal
+         * @param {Object} overrides The properties to add to origClass. This should be specified as an object literal
          * containing one or more properties.
          * @method override
-         * @deprecated 2.0.0 Please use {@link Ext#define Ext.define} instead.
+         * @markdown
+         * @deprecated 4.1.0 Please use {@link Ext#define Ext.define} instead
          */
         override: function(cls, overrides) {
             if (cls.$isClass) {
@@ -229,10 +227,10 @@
          * Returns the given value itself if it's not empty, as described in {@link Ext#isEmpty}; returns the default
          * value (second argument) otherwise.
          *
-         * @param {Object} value The value to test.
-         * @param {Object} defaultValue The value to return if the original value is empty.
-         * @param {Boolean} [allowBlank=false] (optional) `true` to allow zero length strings to qualify as non-empty.
-         * @return {Object} `value`, if non-empty, else `defaultValue`.
+         * @param {Object} value The value to test
+         * @param {Object} defaultValue The value to return if the original value is empty
+         * @param {Boolean} allowBlank (optional) true to allow zero length strings to qualify as non-empty (defaults to false)
+         * @return {Object} value, if non-empty, else defaultValue
          */
         valueFrom: function(value, defaultValue, allowBlank){
             return Ext.isEmpty(value, allowBlank) ? defaultValue : value;
@@ -257,6 +255,7 @@
          *
          * @param {Object} value
          * @return {String}
+         * @markdown
          */
         typeOf: function(value) {
             if (value === null) {
@@ -311,25 +310,26 @@
         },
 
         /**
-         * Returns `true` if the passed value is empty, `false` otherwise. The value is deemed to be empty if it is either:
+         * Returns true if the passed value is empty, false otherwise. The value is deemed to be empty if it is either:
          *
          * - `null`
          * - `undefined`
-         * - a zero-length array.
-         * - a zero-length string (Unless the `allowEmptyString` parameter is set to `true`).
+         * - a zero-length array
+         * - a zero-length string (Unless the `allowEmptyString` parameter is set to `true`)
          *
-         * @param {Object} value The value to test.
-         * @param {Boolean} [allowEmptyString=false] (optional) `true` to allow empty strings.
+         * @param {Object} value The value to test
+         * @param {Boolean} allowEmptyString (optional) true to allow empty strings (defaults to false)
          * @return {Boolean}
+         * @markdown
          */
         isEmpty: function(value, allowEmptyString) {
             return (value === null) || (value === undefined) || (!allowEmptyString ? value === '' : false) || (Ext.isArray(value) && value.length === 0);
         },
 
         /**
-         * Returns `true` if the passed value is a JavaScript Array, `false` otherwise.
+         * Returns true if the passed value is a JavaScript Array, false otherwise.
          *
-         * @param {Object} target The target to test.
+         * @param {Object} target The target to test
          * @return {Boolean}
          * @method
          */
@@ -338,8 +338,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is a JavaScript Date object, `false` otherwise.
-         * @param {Object} object The object to test.
+         * Returns true if the passed value is a JavaScript Date object, false otherwise.
+         * @param {Object} object The object to test
          * @return {Boolean}
          */
         isDate: function(value) {
@@ -347,21 +347,8 @@
         },
 
         /**
-         * Returns 'true' if the passed value is a String that matches the MS Date JSON encoding format
-         * @param {String} value The string to test
-         * @return {Boolean}
-         */
-        isMSDate: function(value) {
-            if (!Ext.isString(value)) {
-                return false;
-            } else {
-                return value.match("\\\\?/Date\\(([-+])?(\\d+)(?:[+-]\\d{4})?\\)\\\\?/") !== null;
-            }
-        },
-
-        /**
-         * Returns `true` if the passed value is a JavaScript Object, `false` otherwise.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a JavaScript Object, false otherwise.
+         * @param {Object} value The value to test
          * @return {Boolean}
          * @method
          */
@@ -381,8 +368,8 @@
             return value instanceof Object && value.constructor === Object;
         },
         /**
-         * Returns `true` if the passed value is a JavaScript 'primitive', a string, number or Boolean.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a JavaScript 'primitive', a string, number or boolean.
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isPrimitive: function(value) {
@@ -392,8 +379,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is a JavaScript Function, `false` otherwise.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a JavaScript Function, false otherwise.
+         * @param {Object} value The value to test
          * @return {Boolean}
          * @method
          */
@@ -407,8 +394,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is a number. Returns `false` for non-finite numbers.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a number. Returns false for non-finite numbers.
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isNumber: function(value) {
@@ -418,15 +405,15 @@
         /**
          * Validates that a value is numeric.
          * @param {Object} value Examples: 1, '1', '2.34'
-         * @return {Boolean} `true` if numeric, `false` otherwise.
+         * @return {Boolean} True if numeric, false otherwise
          */
         isNumeric: function(value) {
             return !isNaN(parseFloat(value)) && isFinite(value);
         },
 
         /**
-         * Returns `true` if the passed value is a string.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a string.
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isString: function(value) {
@@ -434,9 +421,9 @@
         },
 
         /**
-         * Returns `true` if the passed value is a Boolean.
+         * Returns true if the passed value is a boolean.
          *
-         * @param {Object} value The value to test.
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isBoolean: function(value) {
@@ -444,8 +431,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is an HTMLElement.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is an HTMLElement
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isElement: function(value) {
@@ -453,8 +440,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is a TextNode.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is a TextNode
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isTextNode: function(value) {
@@ -462,8 +449,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is defined.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is defined.
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isDefined: function(value) {
@@ -471,8 +458,8 @@
         },
 
         /**
-         * Returns `true` if the passed value is iterable, `false` otherwise.
-         * @param {Object} value The value to test.
+         * Returns true if the passed value is iterable, false otherwise
+         * @param {Object} value The value to test
          * @return {Boolean}
          */
         isIterable: function(value) {
@@ -483,8 +470,8 @@
     Ext.apply(Ext, {
 
         /**
-         * Clone almost any type of variable including array, object, DOM nodes and Date without keeping the old reference.
-         * @param {Object} item The variable to clone.
+         * Clone almost any type of variable including array, object, DOM nodes and Date without keeping the old reference
+         * @param {Object} item The variable to clone
          * @return {Object} clone
          */
         clone: function(item) {
@@ -538,7 +525,7 @@
 
         /**
          * @private
-         * Generate a unique reference of Ext in the global scope, useful for sandboxing.
+         * Generate a unique reference of Ext in the global scope, useful for sandboxing
          */
         getUniqueGlobalNamespace: function() {
             var uniqueGlobalNamespace = this.uniqueGlobalNamespace;
@@ -580,14 +567,14 @@
             (function(){
                 eval(code);
             })();
-        }
+        },
 
         //<feature logger>
         /**
          * @private
          * @property
          */
-        ,Logger: {
+        Logger: {
             log: function(message, priority) {
                 if ('console' in global) {
                     if (!priority || !(priority in global.console)) {
@@ -617,8 +604,8 @@
     });
 
     /**
-     * Old alias to {@link Ext#typeOf}.
-     * @deprecated 2.0.0 Please use {@link Ext#typeOf} instead.
+     * Old alias to {@link Ext#typeOf}
+     * @deprecated 4.0.0 Please use {@link Ext#typeOf} instead
      * @method
      * @alias Ext#typeOf
      */

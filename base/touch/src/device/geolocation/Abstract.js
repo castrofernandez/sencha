@@ -137,5 +137,5 @@ Ext.define('Ext.device.geolocation.Abstract', {
     /**
      * If you are currently watching for the current position, this will stop that task.
      */
-    clearWatch: function() {}
+    clearWatch: Ext.emptyFn
 });

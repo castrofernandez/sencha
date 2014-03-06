@@ -8,9 +8,9 @@
  *
  * For information on how to use routes we suggest reading the following guides:
  *
- * - [Using History Support](#!/guide/history_support)
- * - [Intro to Applications](#!/guide/apps_intro)
- * - [Using Controllers](#!/guide/controllers)
+ * * <a href="#!/guide/history_support">Using History Support</a>
+ * * <a href="#!/guide/apps_intro">Intro to Applications</a>
+ * * <a href="#!/guide/controllers">Using Controllers</a>
  *
  */
 Ext.define('Ext.app.Route', {
@@ -30,19 +30,19 @@ Ext.define('Ext.app.Route', {
         conditions: {},
 
         /**
-         * @cfg {String} url (required) The url regex to match against.
+         * @cfg {String} url The url regex to match against. Required
          */
         url: null,
 
         /**
          * @cfg {String} controller The name of the Controller whose {@link #action} will be called if this route is
-         * matched.
+         * matched
          */
         controller: null,
 
         /**
          * @cfg {String} action The name of the action that will be called on the {@link #controller} if this route is
-         * matched.
+         * matched
          */
         action: null,
 
@@ -59,9 +59,9 @@ Ext.define('Ext.app.Route', {
     },
 
     /**
-     * Attempts to recognize a given url string and return controller/action pair for it.
-     * @param {String} url The url to recognize.
-     * @return {Object/Boolean} The matched data, or `false` if no match.
+     * Attempts to recognize a given url string and return controller/action pair for it
+     * @param {String} url The url to recognize
+     * @return {Object} The matched data, or false if no match
      */
     recognize: function(url) {
         if (!this.getInitialized()) {
@@ -77,24 +77,21 @@ Ext.define('Ext.app.Route', {
             return Ext.applyIf(matches, {
                 controller: this.getController(),
                 action    : this.getAction(),
-                url       : url,
-                args      : args,
-
-                // We keep the historyUrl in here for backwards compatibility
-                historyUrl: url
+                historyUrl: url,
+                args      : args
             });
         }
     },
 
     /**
      * @private
-     * Sets up the relevant regular expressions used to match against this route.
+     * Sets up the relevant regular expressions used to match against this route
      */
     initialize: function() {
         /*
          * The regular expression we use to match a segment of a route mapping
-         * this will recognize segments starting with a colon,
-         * e.g. on 'namespace/:controller/:action', :controller and :action will be recognized
+         * this will recognise segments starting with a colon,
+         * e.g. on 'namespace/:controller/:action', :controller and :action will be recognised
          */
         this.paramMatchingRegex = new RegExp(/:([0-9A-Za-z\_]*)/g);
 
@@ -200,7 +197,7 @@ Ext.define('Ext.app.Route', {
 
         for (i = 0; i < length; i++) {
             cond    = this.getConditions()[paramsInMatchString[i]];
-            matcher = Ext.util.Format.format("({0})", cond || "[%a-zA-Z0-9\\-\\_\\s,]+");
+            matcher = Ext.util.Format.format("({0})", cond || "[%a-zA-Z0-9\-\\_\\s,]+");
 
             url = url.replace(new RegExp(paramsInMatchString[i]), matcher);
         }

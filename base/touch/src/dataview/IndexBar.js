@@ -39,6 +39,7 @@
  *            {firstName: 'Nigel',   lastName: 'White'},
  *            {firstName: 'Don',     lastName: 'Griffin'},
  *            {firstName: 'Nico',    lastName: 'Ferrero'},
+ *            {firstName: 'Nicolas', lastName: 'Belmonte'},
  *            {firstName: 'Jason',   lastName: 'Johnston'}
  *        ]
  *     });
@@ -87,12 +88,13 @@ Ext.define('Ext.dataview.IndexBar', {
 
         /**
          * @cfg {String} listPrefix
-         * The prefix string to be used at the beginning of the list.
+         * The prefix string to be appended at the beginning of the list.
          * E.g: useful to add a "#" prefix before numbers.
          * @accessor
          */
         listPrefix: null
     },
+
     // @private
     itemCls: Ext.baseCSSPrefix + '',
 
@@ -139,26 +141,27 @@ Ext.define('Ext.dataview.IndexBar', {
 
         this.innerElement.on({
             touchstart: this.onTouchStart,
-            dragend: this.onDragEnd,
-            drag: this.onDrag,
+            touchend: this.onTouchEnd,
+            touchmove: this.onTouchMove,
             scope: this
         });
     },
 
-    onTouchStart: function(e) {
+    // @private
+    onTouchStart: function(e, t) {
         e.stopPropagation();
         this.innerElement.addCls(this.getBaseCls() + '-pressed');
         this.pageBox = this.innerElement.getPageBox();
-        this.onDrag(e);
+        this.onTouchMove(e);
     },
 
     // @private
-    onDragEnd: function() {
+    onTouchEnd: function(e, t) {
         this.innerElement.removeCls(this.getBaseCls() + '-pressed');
     },
 
     // @private
-    onDrag: function(e) {
+    onTouchMove: function(e) {
         var point = Ext.util.Point.fromEvent(e),
             target,
             pageBox = this.pageBox;
@@ -203,7 +206,7 @@ Ext.define('Ext.dataview.IndexBar', {
     /**
      * @member Ext.dataview.IndexBar
      * @method isHorizontal
-     * Returns `true` when direction is horizontal.
+     * Returns true when direction is horizontal.
      * @removed 2.0.0
      */
     Ext.deprecateMethod(this, 'isHorizontal', null, "Ext.dataview.IndexBar.isHorizontal() has been removed");
@@ -211,7 +214,7 @@ Ext.define('Ext.dataview.IndexBar', {
     /**
      * @member Ext.dataview.IndexBar
      * @method isVertical
-     * Returns `true` when direction is vertical.
+     * Returns true when direction is vertical.
      * @removed 2.0.0
      */
     Ext.deprecateMethod(this, 'isVertical', null, "Ext.dataview.IndexBar.isVertical() has been removed");
@@ -225,9 +228,9 @@ Ext.define('Ext.dataview.IndexBar', {
     Ext.deprecateMethod(this, 'refresh', null, "Ext.dataview.IndexBar.refresh() has been removed");
 
     /**
-     * @member Ext.dataview.IndexBar
+     * @Member Ext.dataview.IndexBar
      * @cfg {Boolean} alphabet
-     * `true` to use the letters property to show a list of the alphabet.
+     * True to use the letters property to show a list of the alphabet.
      * @removed 2.0.0
      */
     Ext.deprecateProperty(this, 'alphabet', null, "Ext.dataview.IndexBar.alphabet has been removed");

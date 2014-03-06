@@ -1,20 +1,17 @@
 /**
  * @private
  *
- * Provides a registry of all Components (instances of {@link Ext.Component} or any subclass
+ * <p>Provides a registry of all Components (instances of {@link Ext.Component} or any subclass
  * thereof) on a page so that they can be easily accessed by {@link Ext.Component component}
- * {@link Ext.Component#getId id} (see {@link #get}, or the convenience method {@link Ext#getCmp Ext.getCmp}).
- *
- * This object also provides a registry of available Component _classes_
+ * {@link Ext.Component#getId id} (see {@link #get}, or the convenience method {@link Ext#getCmp Ext.getCmp}).</p>
+ * <p>This object also provides a registry of available Component <i>classes</i>
  * indexed by a mnemonic code known as the Component's `xtype`.
- * The `xtype` provides a way to avoid instantiating child Components
- * when creating a full, nested config object for a complete Ext page.
- *
- * A child Component may be specified simply as a _config object_
+ * The <code>xtype</code> provides a way to avoid instantiating child Components
+ * when creating a full, nested config object for a complete Ext page.</p>
+ * <p>A child Component may be specified simply as a <i>config object</i>
  * as long as the correct `xtype` is specified so that if and when the Component
- * needs rendering, the correct type can be looked up for lazy instantiation.
- *
- * For a list of all available `xtype`, see {@link Ext.Component}.
+ * needs rendering, the correct type can be looked up for lazy instantiation.</p>
+ * <p>For a list of all available `xtype`, see {@link Ext.Component}.</p>
  */
 Ext.define('Ext.ComponentManager', {
     alternateClassName: 'Ext.ComponentMgr',
@@ -32,10 +29,9 @@ Ext.define('Ext.ComponentManager', {
                     id;
 
                 for (id in map) {
-                    if (map.hasOwnProperty(id)) {
-                        list.push(map[id]);
-                    }
+                    list.push(map[id]);
                 }
+
                 return list;
             }
         };
@@ -44,8 +40,8 @@ Ext.define('Ext.ComponentManager', {
     },
 
     /**
-     * Registers an item to be managed.
-     * @param {Object} component The item to register.
+     * Registers an item to be managed
+     * @param {Object} component The item to register
      */
     register: function(component) {
         var id = component.getId();
@@ -60,8 +56,8 @@ Ext.define('Ext.ComponentManager', {
     },
 
     /**
-     * Unregisters an item by removing it from this manager.
-     * @param {Object} component The item to unregister.
+     * Unregisters an item by removing it from this manager
+     * @param {Object} component The item to unregister
      */
     unregister: function(component) {
         delete this.map[component.getId()];
@@ -69,7 +65,7 @@ Ext.define('Ext.ComponentManager', {
 
     /**
      * Checks if an item type is registered.
-     * @param {String} component The mnemonic string by which the class may be looked up.
+     * @param {String} component The mnemonic string by which the class may be looked up
      * @return {Boolean} Whether the type is registered.
      */
     isRegistered : function(component){
@@ -79,8 +75,8 @@ Ext.define('Ext.ComponentManager', {
     /**
      * Returns an item by id.
      * For additional details see {@link Ext.util.HashMap#get}.
-     * @param {String} id The `id` of the item.
-     * @return {Object} The item, or `undefined` if not found.
+     * @param {String} id The id of the item
+     * @return {Object} The item, undefined if not found.
      */
     get: function(id) {
         return this.map[id];
@@ -88,10 +84,10 @@ Ext.define('Ext.ComponentManager', {
 
     /**
      * Creates a new Component from the specified config object using the
-     * config object's `xtype` to determine the class to instantiate.
-     * @param {Object} component A configuration object for the Component you wish to create.
-     * @param {Function} [defaultType] The constructor to provide the default Component type if
-     * the config object does not contain a `xtype`. (Optional if the config contains an `xtype`).
+     * config object's xtype to determine the class to instantiate.
+     * @param {Object} config A configuration object for the Component you wish to create.
+     * @param {Function} defaultType (optional) The constructor to provide the default Component type if
+     * the config object does not contain a <code>xtype</code>. (Optional if the config contains a <code>xtype</code>).
      * @return {Ext.Component} The newly instantiated Component.
      */
     create: function(component, defaultType) {

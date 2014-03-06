@@ -1,12 +1,7 @@
-//@tag foundation,core
-//@define Ext.Date
-//@require Ext.Error
-
 /**
- * Note: Date values are zero-based.
+ *
  */
 Ext.Date = {
-    /** @ignore */
     now: Date.now,
 
     /**

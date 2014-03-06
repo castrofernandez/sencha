@@ -12,8 +12,6 @@ Ext.define('Ext.Label', {
     xtype: 'label',
 
     config: {
-        baseCls: Ext.baseCSSPrefix + 'label'
-
         /**
          * @cfg {String} html
          * The label of this component.

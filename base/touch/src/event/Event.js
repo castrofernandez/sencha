@@ -41,11 +41,11 @@
  *         }
  *     });
  *
- * ## Recognizers
+ * ## Recgonisers
  *
- * Sencha Touch includes a bunch of default event recognizers to know when a user taps, swipes, etc.
+ * Sencha Touch includes a bunch of default event recognisers to know when a user taps, swipes, etc.
  *
- * For a full list of default recognizers, and more information, please view the {@link Ext.event.recognizer.Recognizer} documentation.
+ * For a full list of default recognisers, and more information, please view the {@link Ext.event.recognizer.Recognizer} documentation
  */
 Ext.define('Ext.event.Event', {
     alternateClassName: 'Ext.EventObject',
@@ -67,8 +67,7 @@ Ext.define('Ext.event.Event', {
     },
 
     /**
-     * Stop the event (`preventDefault` and `{@link #stopPropagation}`).
-     * @chainable
+     * Stop the event (preventDefault and stopPropagation)
      */
     stopEvent: function() {
         return this.stopPropagation();
@@ -76,7 +75,6 @@ Ext.define('Ext.event.Event', {
 
     /**
      * Cancels bubbling of the event.
-     * @chainable
      */
     stopPropagation: function() {
         this.isStopped = true;

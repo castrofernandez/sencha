@@ -1,13 +1,13 @@
 /**
  * A base class used for both {@link Ext.event.recognizer.VerticalSwipe} and {@link Ext.event.recognizer.HorizontalSwipe}
- * event recognizers.
+ * event recognisers.
  *
  * @private
  */
 Ext.define('Ext.event.recognizer.Swipe', {
     extend: 'Ext.event.recognizer.SingleTouch',
 
-    handledEvents: ['swipestart', 'swipe'],
+    handledEvents: ['swipe'],
 
     /**
      * @member Ext.dom.Element
@@ -23,12 +23,12 @@ Ext.define('Ext.event.recognizer.Swipe', {
      * @property {Number} direction
      * The direction of the swipe. Available options are:
      *
-     * - up
-     * - down
-     * - left
-     * - right
+     * * up
+     * * down
+     * * left
+     * * right
      *
-     * __Note:__ In order to recognize swiping up and down, you must enable the vertical swipe recognizer.
+     * Note: In order to recognise swiping up and down, you must enable the vertical swipe recogniser.
      *
      * **This is only available when the event type is `swipe`**
      * @member Ext.event.Event
@@ -74,47 +74,20 @@ Ext.define('Ext.event.recognizer.Swipe', {
         var touch = e.changedTouches[0],
             x = touch.pageX,
             y = touch.pageY,
-            deltaX = x - this.startX,
-            deltaY = y - this.startY,
             absDeltaX = Math.abs(x - this.startX),
             absDeltaY = Math.abs(y - this.startY),
-            duration = e.time - this.startTime,
-            minDistance = this.getMinDistance(),
-            time = e.time,
-            direction, distance;
+            time = e.time;
 
         if (time - this.startTime > this.getMaxDuration()) {
             return this.fail(this.self.MAX_DURATION_EXCEEDED);
-        }
-
-        if (this.isHorizontal && absDeltaY > this.getMaxOffset()) {
-            this.isHorizontal = false;
         }
 
         if (this.isVertical && absDeltaX > this.getMaxOffset()) {
             this.isVertical = false;
         }
 
-        if (!this.isVertical || !this.isHorizontal) {
-            if (this.isHorizontal && absDeltaX < minDistance) {
-                direction = (deltaX < 0) ? 'left' : 'right';
-                distance = absDeltaX;
-            }
-            else if (this.isVertical && absDeltaY < minDistance) {
-                direction = (deltaY < 0) ? 'up' : 'down';
-                distance = absDeltaY;
-            }
-        }
-
-        if (direction && !this.started) {
-            this.started = true;
-
-            this.fire('swipestart', e, [touch], {
-                touch: touch,
-                direction: direction,
-                distance: distance,
-                duration: duration
-            });
+        if (this.isHorizontal && absDeltaY > this.getMaxOffset()) {
+            this.isHorizontal = false;
         }
 
         if (!this.isHorizontal && !this.isVertical) {
@@ -157,8 +130,6 @@ Ext.define('Ext.event.recognizer.Swipe', {
         else {
             return this.fail(this.self.DISTANCE_NOT_ENOUGH);
         }
-
-        this.started = false;
 
         this.fire('swipe', e, [touch], {
             touch: touch,

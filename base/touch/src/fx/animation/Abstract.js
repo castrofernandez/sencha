@@ -130,15 +130,6 @@ Ext.define('Ext.fx.animation.Abstract', {
         return this.states;
     },
 
-    stop: function() {
-        this.fireEvent('stop', this);
-    },
-
-    destroy: function() {
-        this.stop();
-        this.callParent();
-    },
-
     setState: function(name, state) {
         var states = this.getStates(),
             stateInstance;
@@ -180,7 +171,7 @@ Ext.define('Ext.fx.animation.Abstract', {
             }
         }
 
-        if (Ext.browser.is.AndroidStock2) {
+        if (Ext.os.is.Android2) {
             statesData['0.0001%'] = fromData;
         }
 

@@ -488,7 +488,6 @@ replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
  * mess with the Object prototype
  * http://www.json.org/js.html
  * @singleton
- * @ignore
  */
 Ext.util.JSON = {
     encode: function(o) {
@@ -506,7 +505,6 @@ Ext.util.JSON = {
  * @return {String} The JSON string
  * @member Ext
  * @method encode
- * @ignore
  */
 Ext.encode = Ext.util.JSON.encode;
 /**
@@ -516,6 +514,5 @@ Ext.encode = Ext.util.JSON.encode;
  * @return {Object} The resulting object
  * @member Ext
  * @method decode
- * @ignore
  */
 Ext.decode = Ext.util.JSON.decode;

@@ -48,22 +48,22 @@ Ext.define('Ext.data.proxy.Proxy', {
         /**
          * @cfg {String} batchOrder
          * Comma-separated ordering 'create', 'update' and 'destroy' actions when batching. Override this to set a different
-         * order for the batched CRUD actions to be executed in.
+         * order for the batched CRUD actions to be executed in. Defaults to 'create,update,destroy'.
          * @accessor
          */
         batchOrder: 'create,update,destroy',
 
         /**
          * @cfg {Boolean} batchActions
-         * True to batch actions of a particular type when synchronizing the store.
+         * True to batch actions of a particular type when synchronizing the store. Defaults to true.
          * @accessor
          */
         batchActions: true,
 
         /**
-         * @cfg {String/Ext.data.Model} model (required)
+         * @cfg {String/Ext.data.Model} model
          * The name of the Model to tie to this Proxy. Can be either the string name of the Model, or a reference to the
-         * Model constructor.
+         * Model constructor. Required.
          * @accessor
          */
         model: null,
@@ -199,7 +199,6 @@ Ext.define('Ext.data.proxy.Proxy', {
 
     onDestroy: function() {
         Ext.destroy(this.getReader(), this.getWriter());
-        Ext.Evented.prototype.destroy.apply(this, arguments);
     },
 
     /**
@@ -255,7 +254,7 @@ Ext.define('Ext.data.proxy.Proxy', {
     batch: function(options, /* deprecated */listeners) {
         var me = this,
             useBatch = me.getBatchActions(),
-            model = me.getModel(),
+            model = this.getModel(),
             batch,
             records;
 
@@ -264,7 +263,9 @@ Ext.define('Ext.data.proxy.Proxy', {
             // so convert to the single options argument syntax
             options = {
                 operations: options,
-                listeners: listeners
+                batch: {
+                    listeners: listeners
+                }
             };
 
             // <debug warn>
@@ -272,18 +273,24 @@ Ext.define('Ext.data.proxy.Proxy', {
             // </debug>
         }
 
-        if (options.batch && options.batch.isBatch) {
-            batch = options.batch;
+        if (options.batch) {
+             if (options.batch.isBatch) {
+                 options.batch.setProxy(me);
+             } else {
+                 options.batch.proxy = me;
+             }
         } else {
-            batch = new Ext.data.Batch(options.batch || {});
+             options.batch = {
+                 proxy: me,
+                 listeners: options.listeners || {}
+             };
         }
 
-        batch.setProxy(me);
+        if (!batch) {
+            batch = new Ext.data.Batch(options.batch);
+        }
 
         batch.on('complete', Ext.bind(me.onBatchComplete, me, [options], 0));
-        if (options.listeners) {
-            batch.on(options.listeners);
-        }
 
         Ext.each(me.getBatchOrder().split(','), function(action) {
              records = options.operations[action];
@@ -328,8 +335,6 @@ Ext.define('Ext.data.proxy.Proxy', {
          if (Ext.isFunction(batchOptions.callback)) {
              Ext.callback(batchOptions.callback, scope, [batch, batchOptions]);
          }
-
-         Ext.destroy(batch);
     }
 
     // <deprecated product=touch since=2.0>

@@ -91,7 +91,6 @@ Ext.define('Ext.dataview.component.Container', {
             touchstart: 'onItemTouchStart',
             touchend: 'onItemTouchEnd',
             tap: 'onItemTap',
-            taphold: 'onItemTapHold',
             touchmove: 'onItemTouchMove',
             singletap: 'onItemSingleTap',
             doubletap: 'onItemDoubleTap',
@@ -240,7 +239,7 @@ Ext.define('Ext.dataview.component.Container', {
             else {
                 item = me.getDataItemConfig(xtype, record, itemConfig);
             }
-            item = this.insert(record._tmpIndex, item);
+            this.insert(record._tmpIndex, item);
             delete record._tmpIndex;
         }
         return items;
@@ -252,11 +251,7 @@ Ext.define('Ext.dataview.component.Container', {
 
     updateListItem: function(record, item) {
         if (item.updateRecord) {
-            if (item.getRecord() === record) {
-                item.updateRecord(record);
-            } else {
-                item.setRecord(record);
-            }
+            item.updateRecord(record);
         }
     },
 
@@ -265,9 +260,9 @@ Ext.define('Ext.dataview.component.Container', {
             dataItemConfig = {
                 xtype: xtype,
                 record: record,
+                dataview: dataview,
                 itemCls: dataview.getItemCls(),
-                defaults: itemConfig,
-                dataview: dataview
+                defaults: itemConfig
             };
         return Ext.merge(dataItemConfig, itemConfig);
     },
@@ -290,11 +285,6 @@ Ext.define('Ext.dataview.component.Container', {
         for (; i < ln; i++) {
             items[i].addCls(cls);
         }
-    },
-
-    updateAtNewIndex: function(oldIndex, newIndex, record) {
-        this.moveItemsToCache(oldIndex, oldIndex);
-        this.moveItemsFromCache([record]);
     },
 
     destroy: function() {

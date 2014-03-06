@@ -169,24 +169,18 @@ Ext.define('Ext.data.association.HasMany', {
         storeName: undefined,
 
         /**
-         * @cfg {String} filterProperty
+         * @cfg {String} [filterProperty=null]
          * Optionally overrides the default filter that is set up on the associated Store. If this is not set, a filter
          * is automatically created which filters the association based on the configured {@link #foreignKey}. See intro
-         * docs for more details.
+         * docs for more details. Defaults to null.
          */
         filterProperty: null,
 
         /**
-         * @cfg {Boolean} autoLoad
-         * `true` to automatically load the related store from a remote source when instantiated.
+         * @cfg {Boolean} [autoLoad=false]
+         * True to automatically load the related store from a remote source when instantiated. Defaults to false.
          */
-        autoLoad: false,
-
-        /**
-         * @cfg {Boolean} autoSync
-         * true to automatically synchronize the related store with the remote source
-         */
-        autoSync: false
+        autoLoad: false
     },
 
     constructor: function(config) {
@@ -260,91 +254,60 @@ Ext.define('Ext.data.association.HasMany', {
 
     /**
      * @private
-     * @deprecated as of v2.0.0 on an association. Instead use the store configuration.
-     *
      * Creates a function that returns an Ext.data.Store which is configured to load a set of data filtered
-     * by the owner model's primary key - e.g. in a `hasMany` association where Group `hasMany` Users, this function
+     * by the owner model's primary key - e.g. in a hasMany association where Group hasMany Users, this function
      * returns a Store configured to return the filtered set of a single Group's Users.
-     * @return {Function} The store-generating function.
+     * @return {Function} The store-generating function
      */
     applyStore: function(storeConfig) {
         var me = this,
+            association     = me,
             associatedModel = me.getAssociatedModel(),
             storeName       = me.getStoreName(),
             foreignKey      = me.getForeignKey(),
             primaryKey      = me.getPrimaryKey(),
             filterProperty  = me.getFilterProperty(),
-            autoLoad        = me.getAutoLoad(),
-            autoSync        = me.getAutoSync();
+            autoLoad        = me.getAutoLoad();
 
         return function() {
-            var record = this,
-                config, filter, store,
-                modelDefaults = {},
-                listeners = {
-                    addrecords: me.onAddRecords,
-                    removerecords: me.onRemoveRecords,
-                    scope: me
-                };
+            var me = this,
+                config, filter,
+                modelDefaults = {};
 
-            if (record[storeName] === undefined) {
+            if (me[storeName] === undefined) {
                 if (filterProperty) {
                     filter = {
                         property  : filterProperty,
-                        value     : record.get(filterProperty),
+                        value     : me.get(filterProperty),
                         exactMatch: true
                     };
                 } else {
                     filter = {
                         property  : foreignKey,
-                        value     : record.get(primaryKey),
+                        value     : me.get(primaryKey),
                         exactMatch: true
                     };
                 }
 
-                modelDefaults[foreignKey] = record.get(primaryKey);
+                modelDefaults[foreignKey] = me.get(primaryKey);
 
                 config = Ext.apply({}, storeConfig, {
                     model        : associatedModel,
                     filters      : [filter],
                     remoteFilter : true,
-                    autoSync     : autoSync,
                     modelDefaults: modelDefaults
                 });
 
-                store = record[storeName] = Ext.create('Ext.data.Store', config);
-                store.boundTo = record;
-
-                store.onAfter(listeners);
-
+                me[storeName] = Ext.create('Ext.data.Store', config);
                 if (autoLoad) {
-                    record[storeName].load();
+                    me[storeName].load(function(records, operation) {
+                        association.updateInverseInstances(me);
+                    });
                 }
             }
 
-            return record[storeName];
+            return me[storeName];
         };
-    },
-
-    onAddRecords: function(store, records) {
-        var ln = records.length,
-            id = store.boundTo.getId(),
-            i, record;
-
-        for (i = 0; i < ln; i++) {
-            record = records[i];
-            record.set(this.getForeignKey(), id);
-        }
-        this.updateInverseInstances(store.boundTo);
-    },
-
-    onRemoveRecords: function(store, records) {
-        var ln = records.length,
-            i, record;
-        for (i = 0; i < ln; i++) {
-            record = records[i];
-            record.set(this.getForeignKey(), null);
-        }
     },
 
     updateStore: function(store) {
@@ -354,15 +317,16 @@ Ext.define('Ext.data.association.HasMany', {
     /**
      * Read associated data
      * @private
-     * @param {Ext.data.Model} record The record we're writing to.
-     * @param {Ext.data.reader.Reader} reader The reader for the associated model.
-     * @param {Object} associationData The raw associated data.
+     * @param {Ext.data.Model} record The record we're writing to
+     * @param {Ext.data.reader.Reader} reader The reader for the associated model
+     * @param {Object} associationData The raw associated data
      */
     read: function(record, reader, associationData) {
         var store = record[this.getName()](),
             records = reader.read(associationData).getRecords();
 
         store.add(records);
+        this.updateInverseInstances(record);
     },
 
     updateInverseInstances: function(record) {
@@ -391,7 +355,6 @@ Ext.define('Ext.data.association.HasMany', {
 }, function() {
     /**
      * @cfg {Object} storeConfig
-     * @deprecated 2.0.0 Use `store` instead.
      */
     Ext.deprecateProperty(this, 'storeConfig', 'store');
     // </deprecated>

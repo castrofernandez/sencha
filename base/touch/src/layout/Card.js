@@ -1,6 +1,5 @@
 /**
  * @aside guide layouts
- * @aside video layouts
  *
  * Sometimes you want to show several screens worth of information but you've only got a small screen to work with.
  * TabPanels and Carousels both enable you to see one screen of many at a time, and underneath they both use a Card
@@ -44,12 +43,9 @@
  * For a more detailed overview of what layouts are and the types of layouts shipped with Sencha Touch 2, check out the
  * [Layout Guide](#!/guide/layouts).
  */
-
-
 Ext.define('Ext.layout.Card', {
-    extend: 'Ext.layout.Default',
-
-    alias: 'layout.card',
+    extend: 'Ext.layout.Fit',
+    alternateClassName: 'Ext.layout.CardLayout',
 
     isCard: true,
 
@@ -61,14 +57,21 @@ Ext.define('Ext.layout.Card', {
      * @param {Mixed} newActiveItem The new active item
      * @param {Mixed} oldActiveItem The old active item
      */
-        
-    layoutClass: 'x-layout-card',
-
-    itemClass: 'x-layout-card-item',
 
     requires: [
         'Ext.fx.layout.Card'
     ],
+
+    alias: 'layout.card',
+
+    cls: Ext.baseCSSPrefix + 'layout-card',
+
+    itemCls: Ext.baseCSSPrefix + 'layout-card-item',
+
+    constructor: function() {
+        this.callParent(arguments);
+        this.container.onInitialized(this.onContainerInitialized, this);
+    },
 
     /**
      * @private
@@ -90,23 +93,33 @@ Ext.define('Ext.layout.Card', {
         }
     },
 
-    setContainer: function(container) {
-        this.callSuper(arguments);
+    /**
+     * @private
+     */
+    doItemAdd: function(item, index) {
+        if (item.isInnerItem()) {
+            item.hide();
+        }
 
-        container.innerElement.addCls(this.layoutClass);
-        container.onInitialized('onContainerInitialized', this);
+        this.callParent(arguments);
     },
 
-    onContainerInitialized: function() {
-        var container = this.container,
-            firstItem = container.getInnerAt(0),
-            activeItem = container.getActiveItem();
+    /**
+     * @private
+     */
+    doItemRemove: function(item, index, destroy) {
+        this.callParent(arguments);
+
+        if (!destroy && item.isInnerItem()) {
+            item.show();
+        }
+    },
+
+    onContainerInitialized: function(container) {
+        var activeItem = container.getActiveItem();
 
         if (activeItem) {
             activeItem.show();
-            if(firstItem && firstItem !== activeItem) {
-                firstItem.hide();
-            }
         }
 
         container.on('activeitemchange', 'onContainerActiveItemChange', this);
@@ -117,26 +130,6 @@ Ext.define('Ext.layout.Card', {
      */
     onContainerActiveItemChange: function(container) {
         this.relayEvent(arguments, 'doActiveItemChange');
-    },
-
-    onItemInnerStateChange: function(item, isInner, destroying) {
-        this.callSuper(arguments);
-        var container = this.container,
-            activeItem = container.getActiveItem();
-
-        item.toggleCls(this.itemClass, isInner);
-        item.setLayoutSizeFlags(isInner ? container.LAYOUT_BOTH : 0);
-
-        if (isInner) {
-            if (activeItem !== container.innerIndexOf(item) && activeItem !== item && item !== container.pendingActiveItem) {
-                item.hide();
-            }
-        }
-        else {
-            if (!destroying && !item.isDestroyed && item.isDestroying !== true) {
-                item.show();
-            }
-        }
     },
 
     /**
@@ -152,8 +145,16 @@ Ext.define('Ext.layout.Card', {
         }
     },
 
-    destroy:  function () {
+    doItemDockedChange: function(item, docked) {
+        var element = item.element;
+        // See https://sencha.jira.com/browse/TOUCH-1508
+        if (docked) {
+            element.removeCls(this.itemCls);
+        }
+        else {
+            element.addCls(this.itemCls);
+        }
+
         this.callParent(arguments);
-        Ext.destroy(this.getAnimation());
     }
 });

@@ -1,6 +1,6 @@
 /**
- * A event recognizer created to recognize horizontal swipe movements.
- *
+ * A event recogniser created to recognise horitzontal swipe movements.
+ * 
  * @private
  */
 Ext.define('Ext.event.recognizer.HorizontalSwipe', {

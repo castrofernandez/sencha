@@ -1,11 +1,7 @@
-//@tag foundation,core
-//@define Ext.String
-//@require Ext.Version
-
 /**
  * @class Ext.String
  *
- * A collection of useful static methods to deal with strings.
+ * A collection of useful static methods to deal with strings
  * @singleton
  */
 
@@ -17,8 +13,8 @@ Ext.String = {
 
     /**
      * Convert certain characters (&, <, >, and ") to their HTML character equivalents for literal display in web pages.
-     * @param {String} value The string to encode.
-     * @return {String} The encoded text.
+     * @param {String} value The string to encode
+     * @return {String} The encoded text
      * @method
      */
     htmlEncode: (function() {
@@ -44,8 +40,8 @@ Ext.String = {
 
     /**
      * Convert certain characters (&, <, >, and ") from their HTML character equivalents.
-     * @param {String} value The string to decode.
-     * @return {String} The decoded text.
+     * @param {String} value The string to decode
+     * @return {String} The decoded text
      * @method
      */
     htmlDecode: (function() {
@@ -78,7 +74,7 @@ Ext.String = {
      * a question mark or ampersand.
      * @param {String} url The URL to append to.
      * @param {String} string The content to append to the URL.
-     * @return {String} The resulting URL.
+     * @return (String) The resulting URL
      */
     urlAppend : function(url, string) {
         if (!Ext.isEmpty(string)) {
@@ -90,12 +86,11 @@ Ext.String = {
 
     /**
      * Trims whitespace from either end of a string, leaving spaces within the string intact.  Example:
-     *
-     *     @example
-     *     var s = '  foo bar  ';
-     *     alert('-' + s + '-'); // alerts "-  foo bar  -"
-     *     alert('-' + Ext.String.trim(s) + '-'); // alerts "-foo bar-"
-     *
+     * @example
+var s = '  foo bar  ';
+alert('-' + s + '-');         //alerts "- foo bar -"
+alert('-' + Ext.String.trim(s) + '-');  //alerts "-foo bar-"
+
      * @param {String} string The string to escape
      * @return {String} The trimmed string
      */
@@ -104,7 +99,7 @@ Ext.String = {
     },
 
     /**
-     * Capitalize the given string.
+     * Capitalize the given string
      * @param {String} string
      * @return {String}
      */
@@ -113,11 +108,11 @@ Ext.String = {
     },
 
     /**
-     * Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length.
-     * @param {String} value The string to truncate.
-     * @param {Number} length The maximum length to allow before truncating.
-     * @param {Boolean} word `true` to try to find a common word break.
-     * @return {String} The converted text.
+     * Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length
+     * @param {String} value The string to truncate
+     * @param {Number} length The maximum length to allow before truncating
+     * @param {Boolean} word True to try to find a common word break
+     * @return {String} The converted text
      */
     ellipsis: function(value, len, word) {
         if (value && value.length > len) {
@@ -134,7 +129,7 @@ Ext.String = {
     },
 
     /**
-     * Escapes the passed string for use in a regular expression.
+     * Escapes the passed string for use in a regular expression
      * @param {String} string
      * @return {String}
      */
@@ -143,9 +138,9 @@ Ext.String = {
     },
 
     /**
-     * Escapes the passed string for ' and \.
-     * @param {String} string The string to escape.
-     * @return {String} The escaped string.
+     * Escapes the passed string for ' and \
+     * @param {String} string The string to escape
+     * @return {String} The escaped string
      */
     escape: function(string) {
         return string.replace(Ext.String.escapeRe, "\\$1");
@@ -156,17 +151,17 @@ Ext.String = {
      * is compared to the current string, and if they are equal, the other value that was passed in is returned.  If
      * they are already different, the first value passed in is returned.  Note that this method returns the new value
      * but does not change the current string.
-     *
-     *     // alternate sort directions
-     *     sort = Ext.String.toggle(sort, 'ASC', 'DESC');
-     *
-     *     // instead of conditional logic:
-     *     sort = (sort == 'ASC' ? 'DESC' : 'ASC');
-     *
-     * @param {String} string The current string.
-     * @param {String} value The value to compare to the current string.
-     * @param {String} other The new value to use if the string already equals the first value passed in.
-     * @return {String} The new value.
+     * <pre><code>
+    // alternate sort directions
+    sort = Ext.String.toggle(sort, 'ASC', 'DESC');
+
+    // instead of conditional logic:
+    sort = (sort == 'ASC' ? 'DESC' : 'ASC');
+       </code></pre>
+     * @param {String} string The current string
+     * @param {String} value The value to compare to the current string
+     * @param {String} other The new value to use if the string already equals the first value passed in
+     * @return {String} The new value
      */
     toggle: function(string, value, other) {
         return string === value ? other : value;
@@ -176,13 +171,14 @@ Ext.String = {
      * Pads the left side of a string with a specified character.  This is especially useful
      * for normalizing number and date strings.  Example usage:
      *
-     *     var s = Ext.String.leftPad('123', 5, '0');
-     *     alert(s); // '00123'
-     *
-     * @param {String} string The original string.
-     * @param {Number} size The total length of the output string.
-     * @param {String} [character= ] (optional) The character with which to pad the original string (defaults to empty string " ").
-     * @return {String} The padded string.
+     * <pre><code>
+var s = Ext.String.leftPad('123', 5, '0');
+// s now contains the string: '00123'
+       </code></pre>
+     * @param {String} string The original string
+     * @param {Number} size The total length of the output string
+     * @param {String} character (optional) The character with which to pad the original string (defaults to empty string " ")
+     * @return {String} The padded string
      */
     leftPad: function(string, size, character) {
         var result = String(string);
@@ -196,16 +192,15 @@ Ext.String = {
     /**
      * Allows you to define a tokenized string and pass an arbitrary number of arguments to replace the tokens.  Each
      * token must be unique, and must increment in the format {0}, {1}, etc.  Example usage:
-     *
-     *     var cls = 'my-class',
-     *         text = 'Some text';
-     *     var s = Ext.String.format('<div class="{0}">{1}</div>', cls, text);
-     *     alert(s); // '<div class="my-class">Some text</div>'
-     *
-     * @param {String} string The tokenized string to be formatted.
-     * @param {String...} values First param value to replace token `{0}`, then next
-     * param to replace `{1}` etc.
-     * @return {String} The formatted string.
+     * <pre><code>
+var cls = 'my-class', text = 'Some text';
+var s = Ext.String.format('&lt;div class="{0}">{1}&lt;/div>', cls, text);
+// s now contains the string: '&lt;div class="my-class">Some text&lt;/div>'
+       </code></pre>
+     * @param {String} string The tokenized string to be formatted
+     * @param {String} value1 The value to replace token {0}
+     * @param {String} value2 Etc...
+     * @return {String} The formatted string
      */
     format: function(format) {
         var args = Ext.Array.toArray(arguments, 1);
@@ -215,11 +210,11 @@ Ext.String = {
     },
 
     /**
-     * Returns a string with a specified number of repetitions a given string pattern.
+     * Returns a string with a specified number of repititions a given string pattern.
      * The pattern be separated by a different string.
      *
-     *     var s = Ext.String.repeat('---', 4); // '------------'
-     *     var t = Ext.String.repeat('--', 3, '/'); // '--/--/--'
+     *      var s = Ext.String.repeat('---', 4); // = '------------'
+     *      var t = Ext.String.repeat('--', 3, '/'); // = '--/--/--'
      *
      * @param {String} pattern The pattern to repeat.
      * @param {Number} count The number of times to repeat the pattern (may be 0).
@@ -234,8 +229,8 @@ Ext.String = {
 };
 
 /**
- * Old alias to {@link Ext.String#htmlEncode}.
- * @deprecated Use {@link Ext.String#htmlEncode} instead.
+ * Old alias to {@link Ext.String#htmlEncode}
+ * @deprecated Use {@link Ext.String#htmlEncode} instead
  * @method
  * @member Ext
  * @alias Ext.String#htmlEncode
@@ -244,8 +239,8 @@ Ext.htmlEncode = Ext.String.htmlEncode;
 
 
 /**
- * Old alias to {@link Ext.String#htmlDecode}.
- * @deprecated Use {@link Ext.String#htmlDecode} instead.
+ * Old alias to {@link Ext.String#htmlDecode}
+ * @deprecated Use {@link Ext.String#htmlDecode} instead
  * @method
  * @member Ext
  * @alias Ext.String#htmlDecode
@@ -253,8 +248,8 @@ Ext.htmlEncode = Ext.String.htmlEncode;
 Ext.htmlDecode = Ext.String.htmlDecode;
 
 /**
- * Old alias to {@link Ext.String#urlAppend}.
- * @deprecated Use {@link Ext.String#urlAppend} instead.
+ * Old alias to {@link Ext.String#urlAppend}
+ * @deprecated Use {@link Ext.String#urlAppend} instead
  * @method
  * @member Ext
  * @alias Ext.String#urlAppend

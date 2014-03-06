@@ -2,31 +2,35 @@
  * @author Ed Spencer
  * @class Ext.data.reader.Array
  *
- * Data reader class to create an Array of {@link Ext.data.Model} objects from an Array.
+ * <p>Data reader class to create an Array of {@link Ext.data.Model} objects from an Array.
  * Each element of that Array represents a row of data fields. The
- * fields are pulled into a Record object using as a subscript, the `mapping` property
- * of the field definition if it exists, or the field's ordinal position in the definition.
+ * fields are pulled into a Record object using as a subscript, the <code>mapping</code> property
+ * of the field definition if it exists, or the field's ordinal position in the definition.</p>
  *
- * Example code:
+ * <p><u>Example code:</u></p>
  *
- *     Employee = Ext.define('Employee', {
- *         extend: 'Ext.data.Model',
- *         config: {
- *             fields: [
- *                 'id',
- *                 {name: 'name', mapping: 1}, // "mapping" only needed if an "id" field is present which
- *                 {name: 'occupation', mapping: 2} // precludes using the ordinal position as the index.
- *             ]
- *         }
- *     });
+<pre><code>
+Employee = Ext.define('Employee', {
+    extend: 'Ext.data.Model',
+    config: {
+        fields: [
+            'id',
+            {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
+            {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
+        ]
+    }
+});
+
+var myReader = new Ext.data.reader.Array({
+    model: 'Employee'
+}, Employee);
+</code></pre>
  *
- *     var myReader = new Ext.data.reader.Array({
- *         model: 'Employee'
- *     }, Employee);
+ * <p>This would consume an Array like this:</p>
  *
- * This would consume an Array like this:
- *
- *     [ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+<pre><code>
+[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+</code></pre>
  *
  * @constructor
  * Create a new ArrayReader
@@ -46,7 +50,7 @@ Ext.define('Ext.data.reader.Array', {
     /**
      * @private
      * Returns an accessor expression for the passed Field from an Array using either the Field's mapping, or
-     * its ordinal position in the fields collection as the index.
+     * its ordinal position in the fields collsction as the index.
      * This is used by buildExtractors to create optimized on extractor function which converts raw data into model instances.
      */
     createFieldAccessExpression: function(field, fieldVarName, dataName) {

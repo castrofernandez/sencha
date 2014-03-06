@@ -113,7 +113,7 @@
  *
  *     var proxy = Ext.create('Ext.data.proxy.Ajax', {
  *         url: '/users',
- *         pageParam: 'pageNumber'
+ *         pagePage: 'pageNumber'
  *     });
  *
  *     proxy.read(operation); // GET /users?pageNumber=2
@@ -195,7 +195,7 @@
  *              for (i = 0; i < length; i++) {
  *                  sorter = sorters[i];
  *
- *                  sortStrs[i] = sorter.property + '#' + sorter.direction;
+ *                  sortStrs[i] = sorter.property + '#' + sorter.direction
  *              }
  *
  *              return sortStrs.join(",");
@@ -225,37 +225,6 @@ Ext.define('Ext.data.proxy.Ajax', {
 
     config: {
         /**
-         * @cfg {Boolean} withCredentials
-         * This configuration is sometimes necessary when using cross-origin resource sharing.
-         * @accessor
-         */
-        withCredentials: false,
-
-        /**
-         * @cfg {Boolean} useDefaultXhrHeader
-         * Set this to false to not send the default Xhr header (X-Requested-With) with every request.
-         * This should be set to false when making CORS (cross-domain) requests.
-         * @accessor
-         */
-        useDefaultXhrHeader: true,
-
-        /**
-         * @cfg {String} username
-         * Most oData feeds require basic HTTP authentication. This configuration allows
-         * you to specify the username.
-         * @accessor
-         */
-        username: null,
-
-        /**
-         * @cfg {String} password
-         * Most oData feeds require basic HTTP authentication. This configuration allows
-         * you to specify the password.
-         * @accessor
-         */
-        password: null,
-
-        /**
          * @property {Object} actionMethods
          * Mapping of action name to HTTP request method. In the basic AjaxProxy these are set to
          * 'GET' for 'read' actions and 'POST' for 'create', 'update' and 'destroy' actions.
@@ -269,39 +238,37 @@ Ext.define('Ext.data.proxy.Ajax', {
         },
 
         /**
-         * @cfg {Object} [headers=undefined]
-         * Any headers to add to the Ajax request.
+         * @cfg {Object} headers
+         * Any headers to add to the Ajax request. Defaults to undefined.
          */
-        headers: {}
+        headers: {},
+
+        /**
+         * @cfg {Boolean} withCredentials
+         * This configuration is sometimes necessary when using cross-origin resource sharing.
+         * @accessor
+         */
+        withCredentials: false
     },
 
     /**
      * Performs Ajax request.
      * @protected
-     * @param {Ext.data.Operation} operation
-     * @param {Function} callback
-     * @param {Object} scope
-     * @return {Object}
      */
     doRequest: function(operation, callback, scope) {
-        var me = this,
-            writer  = me.getWriter(),
-            request = me.buildRequest(operation);
+        var writer  = this.getWriter(),
+            request = this.buildRequest(operation);
 
         request.setConfig({
-            headers: me.getHeaders(),
-            timeout: me.getTimeout(),
-            method: me.getMethod(request),
-            callback: me.createRequestCallback(request, operation, callback, scope),
-            scope: me,
-            proxy: me,
-            useDefaultXhrHeader: me.getUseDefaultXhrHeader()
+            headers        : this.getHeaders(),
+            timeout        : this.getTimeout(),
+            method         : this.getMethod(request),
+            callback       : this.createRequestCallback(request, operation, callback, scope),
+            scope          : this
         });
 
-        if (operation.getWithCredentials() || me.getWithCredentials()) {
+        if (operation.getWithCredentials() || this.getWithCredentials()) {
             request.setWithCredentials(true);
-            request.setUsername(me.getUsername());
-            request.setPassword(me.getPassword());
         }
 
         // We now always have the writer prepare the request
@@ -315,8 +282,8 @@ Ext.define('Ext.data.proxy.Ajax', {
     /**
      * Returns the HTTP method name for a given request. By default this returns based on a lookup on
      * {@link #actionMethods}.
-     * @param {Ext.data.Request} request The request object.
-     * @return {String} The HTTP method to use (should be one of 'GET', 'POST', 'PUT' or 'DELETE').
+     * @param {Ext.data.Request} request The request object
+     * @return {String} The HTTP method to use (should be one of 'GET', 'POST', 'PUT' or 'DELETE')
      */
     getMethod: function(request) {
         return this.getActionMethods()[request.getAction()];
@@ -324,12 +291,12 @@ Ext.define('Ext.data.proxy.Ajax', {
 
     /**
      * @private
-     * @param {Ext.data.Request} request The Request object.
-     * @param {Ext.data.Operation} operation The Operation being executed.
+     * @param {Ext.data.Request} request The Request object
+     * @param {Ext.data.Operation} operation The Operation being executed
      * @param {Function} callback The callback function to be called when the request completes.
-     * This is usually the callback passed to `doRequest`.
-     * @param {Object} scope The scope in which to execute the callback function.
-     * @return {Function} The callback function.
+     *        This is usually the callback passed to doRequest
+     * @param {Object} scope The scope in which to execute the callback function
+     * @return {Function} The callback function
      */
     createRequestCallback: function(request, operation, callback, scope) {
         var me = this;

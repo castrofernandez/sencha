@@ -16,6 +16,8 @@ Ext.define('Ext.fx.layout.card.Scroll', {
 
     constructor: function(config) {
         this.initConfig(config);
+
+        this.doAnimationFrame = Ext.Function.bind(this.doAnimationFrame, this);
     },
 
     getEasing: function() {
@@ -41,9 +43,6 @@ Ext.define('Ext.fx.layout.card.Scroll', {
             if (this.isAnimating) {
                 this.stopAnimation();
             }
-
-            newItem.setWidth('100%');
-            newItem.setHeight('100%');
 
             containerElement = this.getLayout().container.innerElement;
             containerWidth = containerElement.getWidth();
@@ -117,7 +116,8 @@ Ext.define('Ext.fx.layout.card.Scroll', {
     startAnimation: function() {
         this.isAnimating = true;
         this.getEasing().setStartTime(Date.now());
-        Ext.AnimationQueue.start(this.doAnimationFrame, this);
+        this.timer = setInterval(this.doAnimationFrame, 20);
+        this.doAnimationFrame();
     },
 
     doAnimationFrame: function() {
@@ -140,27 +140,24 @@ Ext.define('Ext.fx.layout.card.Scroll', {
     },
 
     stopAnimation: function() {
-        var me = this,
-            direction = me.getDirection(),
-            scroll = 'setTop',
-            oldItem = me.oldItem,
-            newItem = me.newItem;
+        var direction = this.getDirection(),
+            scroll = 'setTop';
 
         if (direction == 'left' || direction == 'right') {
             scroll = 'setLeft';
         }
 
-        me.currentEventController.resume();
+        this.currentEventController.resume();
 
-        if (me.isReverse && oldItem && oldItem.renderElement && oldItem.renderElement.dom) {
-            oldItem.renderElement[scroll](null);
+        if (this.isReverse) {
+            this.oldItem.renderElement[scroll](null);
         }
-        else if (newItem && newItem.renderElement && newItem.renderElement.dom) {
-            newItem.renderElement[scroll](null);
+        else {
+            this.newItem.renderElement[scroll](null);
         }
 
-        Ext.AnimationQueue.stop(this.doAnimationFrame, this);
-        me.isAnimating = false;
-        me.fireEvent('animationend', me);
+        clearInterval(this.timer);
+        this.isAnimating = false;
+        this.fireEvent('animationend', this);
     }
 });

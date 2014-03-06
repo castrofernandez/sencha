@@ -7,7 +7,7 @@ Ext.define('Ext.event.publisher.ComponentPaint', {
 
     targetType: 'component',
 
-    handledEvents: ['erased'],
+    handledEvents: ['painted', 'erased'],
 
     eventNames: {
         painted: 'painted',

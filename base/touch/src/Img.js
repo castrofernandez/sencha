@@ -72,24 +72,8 @@ Ext.define('Ext.Img', {
          * @cfg
          * @inheritdoc
          */
-        baseCls : Ext.baseCSSPrefix + 'img',
+        baseCls: Ext.baseCSSPrefix + 'img',
 
-        /**
-         * @cfg {String} imageCls The CSS class to be used when {@link #mode} is not set to 'background'
-         * @accessor
-         */
-        imageCls : Ext.baseCSSPrefix + 'img-image',
-
-        /**
-         * @cfg {String} backgroundCls The CSS class to be used when {@link #mode} is set to 'background'
-         * @accessor
-         */
-        backgroundCls : Ext.baseCSSPrefix + 'img-background',
-
-        /**
-         * @cfg {String} mode If set to 'background', uses a background-image CSS property instead of an
-         * `<img>` tag to display the image.
-         */
         mode: 'background'
     },
 
@@ -112,13 +96,13 @@ Ext.define('Ext.Img', {
     },
 
     hide: function() {
-        this.callParent(arguments);
+        this.callParent();
         this.hiddenSrc = this.hiddenSrc || this.getSrc();
         this.setSrc(null);
     },
 
     show: function() {
-        this.callParent(arguments);
+        this.callParent();
         if (this.hiddenSrc) {
             this.setSrc(this.hiddenSrc);
             delete this.hiddenSrc;
@@ -126,31 +110,16 @@ Ext.define('Ext.Img', {
     },
 
     updateMode: function(mode) {
-        var me            = this,
-            imageCls      = me.getImageCls(),
-            backgroundCls = me.getBackgroundCls();
-
         if (mode === 'background') {
-            if (me.imageElement) {
-                me.imageElement.destroy();
-                delete me.imageElement;
-                me.updateSrc(me.getSrc());
+            if (this.imageElement) {
+                this.imageElement.destroy();
+                delete this.imageElement;
+                this.updateSrc(this.getSrc());
             }
-
-            me.replaceCls(imageCls, backgroundCls);
-        } else {
-            me.imageElement = me.element.createChild({ tag: 'img' });
-
-            me.replaceCls(backgroundCls, imageCls);
         }
-    },
-
-    updateImageCls : function (newCls, oldCls) {
-        this.replaceCls(oldCls, newCls);
-    },
-
-    updateBackgroundCls : function (newCls, oldCls) {
-        this.replaceCls(oldCls, newCls);
+        else {
+            this.imageElement = this.element.createChild({ tag: 'img' });
+        }
     },
 
     onTap: function(e) {
@@ -203,12 +172,6 @@ Ext.define('Ext.Img', {
 
     onError : function(e) {
         this.detachListeners();
-
-        // Attempt to set the src even though the error event fired.
-        if (this.getMode() === 'background') {
-            this.element.dom.style.backgroundImage = 'url("' + this.imageObject.src + '")';
-        }
-
         this.fireEvent('error', this, e);
     },
 
@@ -231,9 +194,8 @@ Ext.define('Ext.Img', {
     destroy: function() {
         this.detachListeners();
 
-        Ext.destroy(this.imageObject, this.imageElement);
+        Ext.destroy(this.imageObject);
         delete this.imageObject;
-        delete this.imageElement;
 
         this.callParent();
     }

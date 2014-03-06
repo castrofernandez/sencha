@@ -13,14 +13,14 @@ Ext.define('Ext.tab.Tab', {
 
     config: {
         /**
-         * @cfg baseCls
+         * @cfg
          * @inheritdoc
          */
         baseCls: Ext.baseCSSPrefix + 'tab',
 
         /**
          * @cfg {String} pressedCls
-         * The CSS class to be applied to a Tab when it is pressed.
+         * The CSS class to be applied to a Tab when it is pressed. Defaults to 'x-tab-pressed'.
          * Providing your own CSS for this class enables you to customize the pressed state.
          * @accessor
          */
@@ -28,7 +28,7 @@ Ext.define('Ext.tab.Tab', {
 
         /**
          * @cfg {String} activeCls
-         * The CSS class to be applied to a Tab when it is active.
+         * The CSS class to be applied to a Tab when it is active. Defaults to 'x-tab-active'.
          * Providing your own CSS for this class enables you to customize the active state.
          * @accessor
          */
@@ -36,7 +36,7 @@ Ext.define('Ext.tab.Tab', {
 
         /**
          * @cfg {Boolean} active
-         * Set this to `true` to have the tab be active by default.
+         * Set this to true to have the tab be active by default.
          * @accessor
          */
         active: false,
@@ -49,17 +49,26 @@ Ext.define('Ext.tab.Tab', {
         title: '&nbsp;'
     },
 
-    updateIconCls : function(newCls, oldCls) {
-        this.callParent([newCls, oldCls]);
-
-        if (oldCls) {
-            this.removeCls('x-tab-icon');
+    // We need to override this so the iconElement is properly hidden using visibilty
+    // when we render it.
+    template: [
+        {
+            tag: 'span',
+            reference: 'badgeElement',
+            hidden: true
+        },
+        {
+            tag: 'span',
+            className: Ext.baseCSSPrefix + 'button-icon',
+            reference: 'iconElement',
+            style: 'visibility: hidden !important'
+        },
+        {
+            tag: 'span',
+            reference: 'textElement',
+            hidden: true
         }
-
-        if (newCls) {
-            this.addCls('x-tab-icon');
-        }
-    },
+    ],
 
     /**
      * @event activate
@@ -75,6 +84,14 @@ Ext.define('Ext.tab.Tab', {
 
     updateTitle: function(title) {
         this.setText(title);
+    },
+
+    hideIconElement: function() {
+        this.iconElement.dom.style.setProperty('visibility', 'hidden', '!important');
+    },
+
+    showIconElement: function() {
+        this.iconElement.dom.style.setProperty('visibility', 'visible', '!important');
     },
 
     updateActive: function(active, oldActive) {

@@ -4,8 +4,6 @@
  */
 Ext.define('Ext.util.Region', {
 
-    requires: ['Ext.util.Offset'],
-
     statics: {
         /**
          * @static
@@ -25,12 +23,8 @@ Ext.define('Ext.util.Region', {
          *     // the above is equivalent to:
          *     new Ext.util.Region(0, 5, 3, -1);
          *
-         * @param {Object} o An object with `top`, `right`, `bottom`, and `left` properties.
-         * @param {Number} o.top
-         * @param {Number} o.right
-         * @param {Number} o.bottom
-         * @param {Number} o.left
-         * @return {Ext.util.Region} The region constructed based on the passed object.
+         * @param {Object} o An object with top, right, bottom, left properties
+         * @return {Ext.util.Region} region The region constructed based on the passed object
          */
         from: function(o) {
             return new this(o.top, o.right, o.bottom, o.left);
@@ -44,20 +38,19 @@ Ext.define('Ext.util.Region', {
      * @param {Number} bottom Bottom
      * @param {Number} left Left
      */
-    constructor: function(top, right, bottom, left) {
+    constructor: function(t, r, b, l) {
         var me = this;
-        me.top = top;
-        me[1] = top;
-        me.right = right;
-        me.bottom = bottom;
-        me.left = left;
-        me[0] = left;
+        me.top = t;
+        me[1] = t;
+        me.right = r;
+        me.bottom = b;
+        me.left = l;
+        me[0] = l;
     },
 
     /**
      * Checks if this region completely contains the region that is passed in.
      * @param {Ext.util.Region} region
-     * @return {Boolean}
      */
     contains: function(region) {
         var me = this;
@@ -71,7 +64,7 @@ Ext.define('Ext.util.Region', {
     /**
      * Checks if this region intersects the region passed in.
      * @param {Ext.util.Region} region
-     * @return {Ext.util.Region/Boolean} Returns the intersected region or `false` if there is no intersection.
+     * @return {Ext.util.Region/Boolean} Returns the intersected region or false if there is no intersection.
      */
     intersect: function(region) {
         var me = this,
@@ -89,9 +82,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Returns the smallest region that contains the current AND `targetRegion`.
+     * Returns the smallest region that contains the current AND targetRegion.
      * @param {Ext.util.Region} region
-     * @return {Ext.util.Region}
      */
     union: function(region) {
         var me = this,
@@ -104,42 +96,39 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Modifies the current region to be constrained to the `targetRegion`.
+     * Modifies the current region to be constrained to the targetRegion.
      * @param {Ext.util.Region} targetRegion
-     * @return {Ext.util.Region} this
      */
-    constrainTo: function(targetRegion) {
+    constrainTo: function(r) {
         var me = this,
             constrain = Ext.util.Numbers.constrain;
-        me.top = constrain(me.top, targetRegion.top, targetRegion.bottom);
-        me.bottom = constrain(me.bottom, targetRegion.top, targetRegion.bottom);
-        me.left = constrain(me.left, targetRegion.left, targetRegion.right);
-        me.right = constrain(me.right, targetRegion.left, targetRegion.right);
+        me.top = constrain(me.top, r.top, r.bottom);
+        me.bottom = constrain(me.bottom, r.top, r.bottom);
+        me.left = constrain(me.left, r.left, r.right);
+        me.right = constrain(me.right, r.left, r.right);
         return me;
     },
 
     /**
      * Modifies the current region to be adjusted by offsets.
-     * @param {Number} top Top offset
-     * @param {Number} right Right offset
-     * @param {Number} bottom Bottom offset
-     * @param {Number} left Left offset
-     * @return {Ext.util.Region} this
-     * @chainable
+     * @param {Number} top top offset
+     * @param {Number} right right offset
+     * @param {Number} bottom bottom offset
+     * @param {Number} left left offset
      */
-    adjust: function(top, right, bottom, left) {
+    adjust: function(t, r, b, l) {
         var me = this;
-        me.top += top;
-        me.left += left;
-        me.right += right;
-        me.bottom += bottom;
+        me.top += t;
+        me.left += l;
+        me.right += r;
+        me.bottom += b;
         return me;
     },
 
     /**
-     * Get the offset amount of a point outside the region.
-     * @param {String/Object} axis optional.
-     * @param {Ext.util.Point} p The point.
+     * Get the offset amount of a point outside the region
+     * @param {String} axis optional
+     * @param {Ext.util.Point} p the point
      * @return {Ext.util.Region}
      */
     getOutOfBoundOffset: function(axis, p) {
@@ -150,17 +139,18 @@ Ext.define('Ext.util.Region', {
                 return this.getOutOfBoundOffsetY(p);
             }
         } else {
+            p = axis;
             var d = new Ext.util.Offset();
-                d.x = this.getOutOfBoundOffsetX(axis.x);
-                d.y = this.getOutOfBoundOffsetY(axis.y);
+                d.x = this.getOutOfBoundOffsetX(p.x);
+                d.y = this.getOutOfBoundOffsetY(p.y);
             return d;
         }
 
     },
 
     /**
-     * Get the offset amount on the x-axis.
-     * @param {Number} p The offset.
+     * Get the offset amount on the x-axis
+     * @param {Number} p the offset
      * @return {Number}
      */
     getOutOfBoundOffsetX: function(p) {
@@ -174,8 +164,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Get the offset amount on the y-axis.
-     * @param {Number} p The offset.
+     * Get the offset amount on the y-axis
+     * @param {Number} p the offset
      * @return {Number}
      */
     getOutOfBoundOffsetY: function(p) {
@@ -189,9 +179,9 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Check whether the point / offset is out of bounds.
+     * Check whether the point / offset is out of bound
      * @param {String} axis optional
-     * @param {Ext.util.Point/Number} p The point / offset.
+     * @param {Ext.util.Point/Number} p the point / offset
      * @return {Boolean}
      */
     isOutOfBound: function(axis, p) {
@@ -208,8 +198,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Check whether the offset is out of bound in the x-axis.
-     * @param {Number} p The offset.
+     * Check whether the offset is out of bound in the x-axis
+     * @param {Number} p the offset
      * @return {Boolean}
      */
     isOutOfBoundX: function(p) {
@@ -217,21 +207,20 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Check whether the offset is out of bound in the y-axis.
-     * @param {Number} p The offset.
+     * Check whether the offset is out of bound in the y-axis
+     * @param {Number} p the offset
      * @return {Boolean}
      */
     isOutOfBoundY: function(p) {
         return (p < this.top || p > this.bottom);
     },
 
-    /**
+    /*
      * Restrict a point within the region by a certain factor.
      * @param {String} axis Optional
-     * @param {Ext.util.Point/Object} p
+     * @param {Ext.util.Point/Ext.util.Offset/Object} p
      * @param {Number} factor
-     * @return {Ext.util.Point/Object/Number}
-     * @private
+     * @return {Ext.util.Point/Ext.util.Offset/Object/Number}
      */
     restrict: function(axis, p, factor) {
         if (Ext.isObject(axis)) {
@@ -263,10 +252,10 @@ Ext.define('Ext.util.Region', {
     },
 
     /*
-     * Restrict an offset within the region by a certain factor, on the x-axis.
+     * Restrict an offset within the region by a certain factor, on the x-axis
      * @param {Number} p
-     * @param {Number} [factor=1] (optional) The factor.
-     * @return {Number}
+     * @param {Number} factor The factor, optional, defaults to 1
+     * @return
      */
     restrictX: function(p, factor) {
         if (!factor) {
@@ -283,10 +272,9 @@ Ext.define('Ext.util.Region', {
     },
 
     /*
-     * Restrict an offset within the region by a certain factor, on the y-axis.
+     * Restrict an offset within the region by a certain factor, on the y-axis
      * @param {Number} p
-     * @param {Number} [factor=1] (optional) The factor.
-     * @return {Number}
+     * @param {Number} factor The factor, optional, defaults to 1
      */
     restrictY: function(p, factor) {
         if (!factor) {
@@ -303,10 +291,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /*
-     * Get the width / height of this region.
-     * @return {Object} An object with `width` and `height` properties.
-     * @return {Number} return.width
-     * @return {Number} return.height
+     * Get the width / height of this region
+     * @return {Object} an object with width and height properties
      */
     getSize: function() {
         return {
@@ -316,7 +302,7 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Copy a new instance.
+     * Copy a new instance
      * @return {Ext.util.Region}
      */
     copy: function() {
@@ -324,8 +310,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Dump this to an eye-friendly string, great for debugging.
-     * @return {String} For example `Region[0,1,3,2]`.
+     * Dump this to an eye-friendly string, great for debugging
+     * @return {String} For example `Region[0,1,3,2]`
      */
     toString: function() {
         return "Region[" + this.top + "," + this.right + "," + this.bottom + "," + this.left + "]";
@@ -333,10 +319,9 @@ Ext.define('Ext.util.Region', {
 
 
     /**
-     * Translate this region by the given offset amount.
+     * Translate this region by the given offset amount
      * @param {Object} offset
-     * @return {Ext.util.Region} This Region.
-     * @chainable
+     * @return {Ext.util.Region} this This Region
      */
     translateBy: function(offset) {
         this.left += offset.x;
@@ -348,9 +333,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Round all the properties of this region.
-     * @return {Ext.util.Region} This Region.
-     * @chainable
+     * Round all the properties of this region
+     * @return {Ext.util.Region} this This Region
      */
     round: function() {
         this.top = Math.round(this.top);
@@ -362,8 +346,8 @@ Ext.define('Ext.util.Region', {
     },
 
     /**
-     * Check whether this region is equivalent to the given region.
-     * @param {Ext.util.Region} region The region to compare with.
+     * Check whether this region is equivalent to the given region
+     * @param {Ext.util.Region} region The region to compare with
      * @return {Boolean}
      */
     equals: function(region) {

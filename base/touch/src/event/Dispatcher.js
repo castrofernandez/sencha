@@ -1,5 +1,3 @@
-//@require @core
-
 /**
  * @private
  */
@@ -210,17 +208,15 @@ Ext.define('Ext.event.Dispatcher', {
     addListener: function(targetType, target, eventName) {
         var publishers = this.getActivePublishers(targetType, eventName),
             ln = publishers.length,
-            i, result;
+            i;
 
-        result = this.doAddListener.apply(this, arguments);
-
-        if (result && ln > 0) {
+        if (ln > 0) {
             for (i = 0; i < ln; i++) {
                 publishers[i].subscribe(target, eventName);
             }
         }
 
-        return result;
+        return this.doAddListener.apply(this, arguments);
     },
 
     doAddListener: function(targetType, target, eventName, fn, scope, options, order) {
@@ -232,17 +228,15 @@ Ext.define('Ext.event.Dispatcher', {
     removeListener: function(targetType, target, eventName) {
         var publishers = this.getActivePublishers(targetType, eventName),
             ln = publishers.length,
-            i, result;
+            i;
 
-        result = this.doRemoveListener.apply(this, arguments);
-
-        if (result && ln > 0) {
+        if (ln > 0) {
             for (i = 0; i < ln; i++) {
                 publishers[i].unsubscribe(target, eventName);
             }
         }
 
-        return result;
+        return this.doRemoveListener.apply(this, arguments);
     },
 
     doRemoveListener: function(targetType, target, eventName, fn, scope, order) {
@@ -365,9 +359,5 @@ Ext.define('Ext.event.Dispatcher', {
         }
 
         return stacks;
-    },
-
-    getPublisher: function (name) {
-        return this.getPublishers()[name];
     }
 });

@@ -1,17 +1,25 @@
-//@tag dom,core
-//@require Ext-more
-
 /**
- * Provides information about browser.
+ * @aside guide environment_package
  *
- * Should not be manually instantiated unless for unit-testing.
- * Access the global instance stored in {@link Ext.browser} instead.
- * @private
+ * Provides useful information about the current browser. Should not be manually instantiated unless for unit-testing;
+ * access the global instance stored in Ext.browser instead. Example:
+ *
+ * <pre><code>
+ * if (Ext.browser.is.IE) {
+ *      // IE specific code here
+ * }
+ *
+ * if (Ext.browser.is.WebKit) {
+ *      // WebKit specific code here
+ * }
+ *
+ * console.log("Version " + Ext.browser.version);
+ * </code></pre>
+ *
+ * For a full list of supported values, refer to: {@link Ext.env.Browser#is}
  */
 Ext.define('Ext.env.Browser', {
-    requires: [
-        'Ext.Version'
-    ],
+    requires: ['Ext.Version'],
 
     statics: {
         browserNames: {
@@ -23,7 +31,6 @@ Ext.define('Ext.env.Browser', {
             dolfin: 'Dolfin',
             webosbrowser: 'webOSBrowser',
             chromeMobile: 'ChromeMobile',
-            chromeiOS: 'ChromeiOS',
             silk: 'Silk',
             other: 'Other'
         },
@@ -45,11 +52,10 @@ Ext.define('Ext.env.Browser', {
             firefox: 'Firefox/',
             chrome: 'Chrome/',
             safari: 'Version/',
-            opera: 'OPR/',
+            opera: 'Opera/',
             dolfin: 'Dolfin/',
             webosbrowser: 'wOSBrowser/',
             chromeMobile: 'CrMo/',
-            chromeiOS: 'CriOS/',
             silk: 'Silk/'
         }
     },
@@ -81,86 +87,54 @@ Ext.define('Ext.env.Browser', {
     // scope: Ext.env.Browser.prototype
 
     /**
-     * A "hybrid" property, can be either accessed as a method call, for example:
+     * A "hybrid" property, can be either accessed as a method call, i.e:
+     * <pre><code>
+     * if (Ext.browser.is('IE')) { ... }
+     * </code></pre>
      *
-     *     if (Ext.browser.is('IE')) {
-     *         // ...
-     *     }
-     *
-     * Or as an object with Boolean properties, for example:
-     *
-     *     if (Ext.browser.is.IE) {
-     *         // ...
-     *     }
+     * or as an object with boolean properties, i.e:
+     * <pre><code>
+     * if (Ext.browser.is.IE) { ... }
+     * </code></pre>
      *
      * Versions can be conveniently checked as well. For example:
+     * <pre><code>
+     * if (Ext.browser.is.IE6) { ... } // Equivalent to (Ext.browser.is.IE && Ext.browser.version.equals(6))
+     * </code></pre>
      *
-     *     if (Ext.browser.is.IE6) {
-     *         // Equivalent to (Ext.browser.is.IE && Ext.browser.version.equals(6))
-     *     }
-     *
-     * __Note:__ Only {@link Ext.Version#getMajor major component}  and {@link Ext.Version#getShortVersion simplified}
+     * Note that only {@link Ext.Version#getMajor major component}  and {@link Ext.Version#getShortVersion simplified}
      * value of the version are available via direct property checking.
      *
-     * Supported values are:
+     * Supported values are: IE, Firefox, Safari, Chrome, Opera, WebKit, Gecko, Presto, Trident and Other
      *
-     * - IE
-     * - Firefox
-     * - Safari
-     * - Chrome
-     * - Opera
-     * - WebKit
-     * - Gecko
-     * - Presto
-     * - Trident
-     * - WebView
-     * - Other
-     *
-     * @param {String} value The OS name to check.
+     * @param {String} value The OS name to check
      * @return {Boolean}
      */
     is: Ext.emptyFn,
 
     /**
-     * The full name of the current browser.
-     * Possible values are:
-     *
-     * - IE
-     * - Firefox
-     * - Safari
-     * - Chrome
-     * - Opera
-     * - Other
+     * Read-only - the full name of the current browser
+     * Possible values are: IE, Firefox, Safari, Chrome, Opera and Other
      * @type String
-     * @readonly
      */
     name: null,
 
     /**
-     * Refer to {@link Ext.Version}.
+     * Read-only, refer to {@link Ext.Version}
      * @type Ext.Version
-     * @readonly
      */
     version: null,
 
     /**
-     * The full name of the current browser's engine.
-     * Possible values are:
-     *
-     * - WebKit
-     * - Gecko
-     * - Presto
-     * - Trident
-     * - Other
+     * Read-only - the full name of the current browser's engine
+     * Possible values are: WebKit, Gecko, Presto, Trident and Other
      * @type String
-     * @readonly
      */
     engineName: null,
 
     /**
-     * Refer to {@link Ext.Version}.
+     * Read-only, refer to {@link Ext.Version}
      * @type Ext.Version
-     * @readonly
      */
     engineVersion: null,
 
@@ -182,6 +156,10 @@ Ext.define('Ext.env.Browser', {
          */
         this.userAgent = userAgent;
 
+        is = this.is = function(name) {
+            return is[name] === true;
+        };
+
         var statics = this.statics(),
             browserMatch = userAgent.match(new RegExp('((?:' + Ext.Object.getValues(statics.browserPrefixes).join(')|(?:') + '))([\\w\\._]+)')),
             engineMatch = userAgent.match(new RegExp('((?:' + Ext.Object.getValues(statics.enginePrefixes).join(')|(?:') + '))([\\w\\._]+)')),
@@ -194,12 +172,9 @@ Ext.define('Ext.env.Browser', {
             isWebView = false,
             is, i, name;
 
-        is = this.is = function(name) {
-            return is[name] === true;
-        };
-
         if (browserMatch) {
             browserName = browserNames[Ext.Object.getKey(statics.browserPrefixes, browserMatch[1])];
+
             browserVersion = new Ext.Version(browserMatch[2]);
         }
 
@@ -208,30 +183,11 @@ Ext.define('Ext.env.Browser', {
             engineVersion = new Ext.Version(engineMatch[2]);
         }
 
-        if (engineName == 'Trident' && browserName != 'IE') {
-            browserName = 'IE';
-            var version = userAgent.match(/.*rv:(\d+.\d+)/);
-            if (version && version.length) {
-                version = version[1];
-                browserVersion = new Ext.Version(version);
-            }
-        }
-
         // Facebook changes the userAgent when you view a website within their iOS app. For some reason, the strip out information
         // about the browser, so we have to detect that and fake it...
         if (userAgent.match(/FB/) && browserName == "Other") {
             browserName = browserNames.safari;
             engineName = engineNames.webkit;
-        }
-
-        if (userAgent.match(/Android.*Chrome/g)) {
-            browserName = 'ChromeMobile';
-        }
-
-        if (userAgent.match(/OPR/)) {
-            browserName = 'Opera';
-            browserMatch = userAgent.match(/OPR\/(\d+.\d+)/);
-            browserVersion = new Ext.Version(browserMatch[1]);
         }
 
         Ext.apply(this, {
@@ -273,22 +229,13 @@ Ext.define('Ext.env.Browser', {
 
         this.setFlag('Standalone', !!navigator.standalone);
 
-        this.setFlag('Ripple', !!document.getElementById("tinyhippos-injected") && !Ext.isEmpty(window.top.ripple));
-        this.setFlag('WebWorks', !!window.blackberry);
-
-        if (typeof window.PhoneGap != 'undefined' || typeof window.Cordova != 'undefined' || typeof window.cordova != 'undefined') {
+        if (typeof window.PhoneGap != 'undefined') {
             isWebView = true;
             this.setFlag('PhoneGap');
-            this.setFlag('Cordova');
         }
         else if (!!window.isNK) {
             isWebView = true;
             this.setFlag('Sencha');
-        }
-
-        // Check if running in UIWebView
-        if (/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)(?!.*FBAN)/i.test(userAgent)) {
-            isWebView = true;
         }
 
         // Flag to check if it we are in the WebView
@@ -296,13 +243,13 @@ Ext.define('Ext.env.Browser', {
 
         /**
          * @property {Boolean}
-         * `true` if browser is using strict mode.
+         * True if browser is using strict mode.
          */
         this.isStrict = document.compatMode == "CSS1Compat";
 
         /**
          * @property {Boolean}
-         * `true` if page is running over SSL.
+         * True if page is running over SSL.
          */
         this.isSecure = /^https/i.test(window.location.protocol);
 
@@ -325,44 +272,9 @@ Ext.define('Ext.env.Browser', {
         }
 
         return name;
-    },
-
-    getPreferredTranslationMethod: function(config) {
-        if (typeof config == 'object' && 'translationMethod' in config && config.translationMethod !== 'auto') {
-            return config.translationMethod;
-        } else {
-            if (this.is.AndroidStock2 || this.is.IE) {
-                return 'scrollposition';
-            }
-            else {
-                return 'csstransform';
-            }
-        }
     }
 
 }, function() {
-    /**
-     * @class Ext.browser
-     * @extends Ext.env.Browser
-     * @singleton
-     * Provides useful information about the current browser.
-     *
-     * Example:
-     *
-     *     if (Ext.browser.is.IE) {
-     *         // IE specific code here
-     *     }
-     *
-     *     if (Ext.browser.is.WebKit) {
-     *         // WebKit specific code here
-     *     }
-     *
-     *     console.log("Version " + Ext.browser.version);
-     *
-     * For a full list of supported values, refer to {@link #is} property/method.
-     *
-     * @aside guide environment_package
-     */
     var browserEnv = Ext.browser = new this(Ext.global.navigator.userAgent);
 
     //<deprecated product=touch since=2.0>

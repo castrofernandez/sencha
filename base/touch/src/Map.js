@@ -12,10 +12,9 @@
  *         useCurrentLocation: true
  *     });
  *
- * @aside example maps
  */
 Ext.define('Ext.Map', {
-    extend: 'Ext.Container',
+    extend: 'Ext.Component',
     xtype : 'map',
     requires: ['Ext.util.Geolocation'],
 
@@ -55,7 +54,7 @@ Ext.define('Ext.Map', {
 
         /**
          * @cfg {String} baseCls
-         * The base CSS class to apply to the Map's element
+         * The base CSS class to apply to the Maps's element
          * @accessor
          */
         baseCls: Ext.baseCSSPrefix + 'map',
@@ -85,24 +84,15 @@ Ext.define('Ext.Map', {
         /**
          * @cfg {Object} mapOptions
          * MapOptions as specified by the Google Documentation:
-         * [http://code.google.com/apis/maps/documentation/v3/reference.html](http://code.google.com/apis/maps/documentation/v3/reference.html)
+         * http://code.google.com/apis/maps/documentation/v3/reference.html
          * @accessor
          */
-        mapOptions: {},
-
-        /**
-         * @cfg {Object} mapListeners
-         * Listeners for any Google Maps events specified by the Google Documentation:
-         * [http://code.google.com/apis/maps/documentation/v3/reference.html](http://code.google.com/apis/maps/documentation/v3/reference.html)
-         *
-         * @accessor
-         */
-        mapListeners: null
+        mapOptions: {}
     },
 
     constructor: function() {
         this.callParent(arguments);
-        // this.element.setVisibilityMode(Ext.Element.OFFSETS);
+        this.element.setVisibilityMode(Ext.Element.OFFSETS);
 
         if (!(window.google || {}).maps) {
             this.setHtml('Google Maps API is required');
@@ -111,78 +101,11 @@ Ext.define('Ext.Map', {
 
     initialize: function() {
         this.callParent();
-        this.initMap();
-
         this.on({
             painted: 'doResize',
             scope: this
         });
-        this.innerElement.on('touchstart', 'onTouchStart', this);
-    },
-
-    initMap: function() {
-        var map = this.getMap();
-        if(!map) {
-            var gm = (window.google || {}).maps;
-            if(!gm) return null;
-
-            var element = this.mapContainer,
-                mapOptions = this.getMapOptions(),
-                event = gm.event,
-                me = this;
-
-            //Remove the API Required div
-            if (element.dom.firstChild) {
-                Ext.fly(element.dom.firstChild).destroy();
-            }
-
-            if (Ext.os.is.iPad) {
-                Ext.merge({
-                    navigationControlOptions: {
-                        style: gm.NavigationControlStyle.ZOOM_PAN
-                    }
-                }, mapOptions);
-            }
-
-            mapOptions.mapTypeId = mapOptions.mapTypeId || gm.MapTypeId.ROADMAP;
-            mapOptions.center = mapOptions.center || new gm.LatLng(37.381592, -122.135672); // Palo Alto
-
-            if (mapOptions.center && mapOptions.center.latitude && !Ext.isFunction(mapOptions.center.lat)) {
-                mapOptions.center = new gm.LatLng(mapOptions.center.latitude, mapOptions.center.longitude);
-            }
-
-            mapOptions.zoom = mapOptions.zoom || 12;
-
-            map = new gm.Map(element.dom, mapOptions);
-            this.setMap(map);
-
-            event.addListener(map, 'zoom_changed', Ext.bind(me.onZoomChange, me));
-            event.addListener(map, 'maptypeid_changed', Ext.bind(me.onTypeChange, me));
-            event.addListener(map, 'center_changed', Ext.bind(me.onCenterChange, me));
-            event.addListenerOnce(map, 'tilesloaded', Ext.bind(me.onTilesLoaded, me));
-            this.addMapListeners();
-        }
-        return this.getMap();
-    },
-
-    // added for backwards compatibility for touch < 2.3
-    renderMap: function() {
-        this.initMap();
-    },
-
-    getElementConfig: function() {
-        return {
-            reference: 'element',
-            className: 'x-container',
-            children: [{
-                reference: 'innerElement',
-                className: 'x-inner',
-                children: [{
-                    reference: 'mapContainer',
-                    className: Ext.baseCSSPrefix + 'map-container'
-                }]
-            }]
-        };
+        this.element.on('touchstart', 'onTouchStart', this);
     },
 
     onTouchStart: function(e) {
@@ -194,16 +117,17 @@ Ext.define('Ext.Map', {
     },
 
     updateMapOptions: function(newOptions) {
-        var gm = (window.google || {}).maps,
+        var me = this,
+            gm = (window.google || {}).maps,
             map = this.getMap();
 
         if (gm && map) {
             map.setOptions(newOptions);
         }
-    },
-
-    doMapCenter: function() {
-        this.setMapCenter(this.getMapOptions().center);
+        if (newOptions.center && !me.isPainted()) {
+            me.un('painted', 'setMapCenter', this);
+            me.on('painted', 'setMapCenter', this, { delay: 50, single: true, args: [newOptions.center] });
+        }
     },
 
     getMapOptions: function() {
@@ -213,7 +137,7 @@ Ext.define('Ext.Map', {
     updateUseCurrentLocation: function(useCurrentLocation) {
         this.setGeo(useCurrentLocation);
         if (!useCurrentLocation) {
-            this.setMapCenter();
+            this.renderMap();
         }
     },
 
@@ -247,50 +171,53 @@ Ext.define('Ext.Map', {
         }
     },
 
-	// @private
-	onTilesLoaded: function() {
-		this.fireEvent('maprender', this, this.getMap());
-	},
-
     // @private
-    addMapListeners: function() {
-        var gm = (window.google || {}).maps,
-            map = this.getMap(),
-            mapListeners = this.getMapListeners();
-
+    renderMap: function() {
+        var me = this,
+            gm = (window.google || {}).maps,
+            element = me.element,
+            mapOptions = me.getMapOptions(),
+            map = me.getMap(),
+            event;
 
         if (gm) {
-            var event = gm.event,
-                me = this,
-                listener, scope, fn, callbackFn, handle;
-            if (Ext.isSimpleObject(mapListeners)) {
-                for (var eventType in mapListeners) {
-                    listener = mapListeners[eventType];
-                    if (Ext.isSimpleObject(listener)) {
-                        scope = listener.scope;
-                        fn = listener.fn;
-                    } else if (Ext.isFunction(listener)) {
-                        scope = null;
-                        fn = listener;
+            if (Ext.os.is.iPad) {
+                Ext.merge({
+                    navigationControlOptions: {
+                        style: gm.NavigationControlStyle.ZOOM_PAN
                     }
-
-                    if (fn) {
-                        callbackFn = function() {
-                            this.fn.apply(this.scope, [me]);
-                            if(this.handle) {
-                                event.removeListener(this.handle);
-                                delete this.handle;
-                                delete this.fn;
-                                delete this.scope;
-                            }
-                        };
-                        handle = event.addListener(map, eventType, Ext.bind(callbackFn, callbackFn));
-                        callbackFn.fn = fn;
-                        callbackFn.scope = scope;
-                        if(listener.single === true) callbackFn.handle = handle;
-                    }
-                }
+                }, mapOptions);
             }
+
+            mapOptions = Ext.merge({
+                zoom: 12,
+                mapTypeId: gm.MapTypeId.ROADMAP
+            }, mapOptions);
+
+            // This is done separately from the above merge so we don't have to instantiate
+            // a new LatLng if we don't need to
+            if (!mapOptions.hasOwnProperty('center')) {
+                mapOptions.center = new gm.LatLng(37.381592, -122.135672); // Palo Alto
+            }
+
+            if (element.dom.firstChild) {
+                Ext.fly(element.dom.firstChild).destroy();
+            }
+
+            if (map) {
+                gm.event.clearInstanceListeners(map);
+            }
+
+            me.setMap(new gm.Map(element.dom, mapOptions));
+            map = me.getMap();
+
+            //Track zoomLevel and mapType changes
+            event = gm.event;
+            event.addListener(map, 'zoom_changed', Ext.bind(me.onZoomChange, me));
+            event.addListener(map, 'maptypeid_changed', Ext.bind(me.onTypeChange, me));
+            event.addListener(map, 'center_changed', Ext.bind(me.onCenterChange, me));
+
+            me.fireEvent('maprender', me, map);
         }
     },
 
@@ -317,27 +244,21 @@ Ext.define('Ext.Map', {
     setMapCenter: function(coordinates) {
         var me = this,
             map = me.getMap(),
-            mapOptions = me.getMapOptions(),
             gm = (window.google || {}).maps;
+
         if (gm) {
-            if (!coordinates) {
-                if (map && map.getCenter) {
-                    coordinates = map.getCenter();
-                }
-                else if (mapOptions.hasOwnProperty('center')) {
-                    coordinates = mapOptions.center;
-                }
-                else {
-                    coordinates = new gm.LatLng(37.381592, -122.135672); // Palo Alto
-                }
+            if (!me.isPainted()) {
+                me.un('painted', 'setMapCenter', this);
+                me.on('painted', 'setMapCenter', this, { delay: 50, single: true, args: [coordinates] });
+                return;
             }
+            coordinates = coordinates || new gm.LatLng(37.381592, -122.135672);
 
             if (coordinates && !(coordinates instanceof gm.LatLng) && 'longitude' in coordinates) {
                 coordinates = new gm.LatLng(coordinates.latitude, coordinates.longitude);
             }
 
             if (!map) {
-                mapOptions.center = mapOptions.center || coordinates;
                 me.renderMap();
                 map = me.getMap();
             }

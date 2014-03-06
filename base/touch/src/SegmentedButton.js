@@ -2,17 +2,21 @@
  * SegmentedButton is a container for a group of {@link Ext.Button}s. Generally a SegmentedButton would be
  * a child of a {@link Ext.Toolbar} and would be used to switch between different views.
  *
+ * # Useful Properties:
+ *
+ * - {@link #allowMultiple}
+ *
  * ## Example usage:
  *
  *     @example
- *     var segmentedButton = Ext.create('Ext.SegmentedButton', {
+ *     var segmentedButton = new Ext.SegmentedButton({
  *         allowMultiple: true,
  *         items: [
  *             {
  *                 text: 'Option 1'
  *             },
  *             {
- *                 text: 'Option 2',
+ *                 text   : 'Option 2',
  *                 pressed: true
  *             },
  *             {
@@ -21,11 +25,12 @@
  *         ],
  *         listeners: {
  *             toggle: function(container, button, pressed){
- *                 alert("User toggled the '" + button.getText() + "' button: " + (pressed ? 'on' : 'off'));
+ *                 console.log("User toggled the '" + button.text + "' button: " + (pressed ? 'on' : 'off'));
  *             }
  *         }
  *     });
  *     Ext.Viewport.add({ xtype: 'container', padding: 10, items: [segmentedButton] });
+ *
  */
 Ext.define('Ext.SegmentedButton', {
     extend: 'Ext.Container',
@@ -56,16 +61,10 @@ Ext.define('Ext.SegmentedButton', {
         /**
          * @cfg {Boolean} allowDepress
          * Allow toggling the pressed state of each button.
-         * Defaults to `true` when {@link #allowMultiple} is `true`.
+         * Defaults to true when `allowMultiple` is true.
          * @accessor
          */
-        allowDepress: false,
-
-        /**
-         * @cfg {Boolean} allowToggle Allow child buttons to be pressed when tapped on. Set to `false` to allow tapping but not toggling of the buttons.
-         * @accessor
-         */
-        allowToggle: true,
+        allowDepress: null,
 
         /**
          * @cfg {Array} pressedButtons
@@ -96,8 +95,8 @@ Ext.define('Ext.SegmentedButton', {
      * @event toggle
      * Fires when any child button's pressed state has changed.
      * @param {Ext.SegmentedButton} this
-     * @param {Ext.Button} button The toggled button.
-     * @param {Boolean} isPressed Boolean to indicate if the button was pressed or not.
+     * @param {Ext.Button} button The toggled button
+     * @param {Boolean} isPressed Boolean to indicate if the button was pressed or not
      */
 
     initialize: function() {
@@ -114,19 +113,18 @@ Ext.define('Ext.SegmentedButton', {
         me.onAfter({
             delegate: '> button',
             scope   : me,
-            hide: 'onButtonHiddenChange',
-            show: 'onButtonHiddenChange'
+            hiddenchange: 'onButtonHiddenChange'
         });
     },
 
-    updateAllowMultiple: function(allowMultiple) {
-        if (!this.initialized && !this.getInitialConfig().hasOwnProperty('allowDepress') && allowMultiple) {
+    updateAllowMultiple: function() {
+        if (!this.initialized && !this.getInitialConfig().hasOwnProperty('allowDepress')) {
             this.setAllowDepress(true);
         }
     },
 
     /**
-     * We override `initItems` so we can check for the pressed config.
+     * We override initItems so we can check for the pressed config.
      */
     applyItems: function() {
         var me = this,
@@ -153,13 +151,10 @@ Ext.define('Ext.SegmentedButton', {
 
     /**
      * Button sets a timeout of 10ms to remove the {@link #pressedCls} on the release event.
-     * We don't want this to happen, so lets return `false` and cancel the event.
+     * We don't want this to happen, so lets return false and cancel the event.
      * @private
      */
     onButtonRelease: function(button) {
-        if (!this.getAllowToggle()) {
-            return;
-        }
         var me             = this,
             pressedButtons = me.getPressedButtons() || [],
             buttons        = [],
@@ -181,17 +176,11 @@ Ext.define('Ext.SegmentedButton', {
             }
 
             me.setPressedButtons(buttons);
+
+            Ext.defer(function() {
+                me.fireEvent('toggle', me, button, me.isPressed(button));
+            }, 50);
         }
-    },
-
-    onItemAdd: function() {
-        this.callParent(arguments);
-        this.updateFirstAndLastCls(this.getItems());
-    },
-
-    onItemRemove: function() {
-        this.callParent(arguments);
-        this.updateFirstAndLastCls(this.getItems());
     },
 
     // @private
@@ -203,22 +192,13 @@ Ext.define('Ext.SegmentedButton', {
     updateFirstAndLastCls: function(items) {
         var ln = items.length,
             basePrefix = Ext.baseCSSPrefix,
-            firstCls = basePrefix + 'first',
-            lastCls = basePrefix + 'last',
             item, i;
-
-        //remove all existing classes
-        for (i = 0; i < ln; i++) {
-            item = items.items[i];
-            item.removeCls(firstCls);
-            item.removeCls(lastCls);
-        }
 
         //add a first cls to the first non-hidden button
         for (i = 0; i < ln; i++) {
             item = items.items[i];
             if (!item.isHidden()) {
-                item.addCls(firstCls);
+                item.addCls(basePrefix + 'first');
                 break;
             }
         }
@@ -227,7 +207,7 @@ Ext.define('Ext.SegmentedButton', {
         for (i = ln - 1; i >= 0; i--) {
             item = items.items[i];
             if (!item.isHidden()) {
-                item.addCls(lastCls);
+                item.addCls(basePrefix + 'last');
                 break;
             }
         }
@@ -241,20 +221,18 @@ Ext.define('Ext.SegmentedButton', {
             array = [],
             button, ln, i;
 
-        if (me.getAllowToggle()) {
-            if (Ext.isArray(newButtons)) {
-                ln = newButtons.length;
-                for (i = 0; i< ln; i++) {
-                    button = me.getComponent(newButtons[i]);
-                    if (button && array.indexOf(button) === -1) {
-                        array.push(button);
-                    }
-                }
-            } else {
-                button = me.getComponent(newButtons);
+        if (Ext.isArray(newButtons)) {
+            ln = newButtons.length;
+            for (i = 0; i< ln; i++) {
+                button = me.getComponent(newButtons[i]);
                 if (button && array.indexOf(button) === -1) {
                     array.push(button);
                 }
+            }
+        } else {
+            button = me.getComponent(newButtons);
+            if (button && array.indexOf(button) === -1) {
+                array.push(button);
             }
         }
 
@@ -265,57 +243,30 @@ Ext.define('Ext.SegmentedButton', {
      * Updates the pressed buttons.
      * @private
      */
-    updatePressedButtons: function(newButtons, oldButtons) {
+    updatePressedButtons: function(newButtons) {
         var me    = this,
             items = me.getItems(),
             pressedCls = me.getPressedCls(),
-            events = [],
-            item, button, ln, i, e;
+            item, button, ln, i;
 
         //loop through existing items and remove the pressed cls from them
         ln = items.length;
-        if (oldButtons && oldButtons.length) {
-            for (i = 0; i < ln; i++) {
-                item = items.items[i];
-
-                if (oldButtons.indexOf(item) != -1 && newButtons.indexOf(item) == -1) {
-                    item.removeCls([pressedCls, item.getPressedCls()]);
-                    events.push({
-                        item: item,
-                        toggle: false
-                    });
-                }
-            }
+        for (i = 0; i < ln; i++) {
+            item = items.items[i];
+            item.removeCls([pressedCls, item.getPressedCls()]);
         }
 
         //loop through the new pressed buttons and add the pressed cls to them
         ln = newButtons.length;
         for (i = 0; i < ln; i++) {
             button = newButtons[i];
-            if (!oldButtons || oldButtons.indexOf(button) == -1) {
-                button.addCls(pressedCls);
-                events.push({
-                    item: button,
-                    toggle: true
-                });
-            }
-        }
-
-        //loop through each of the events and fire them after a delay
-        ln = events.length;
-        if (ln && oldButtons !== undefined) {
-            Ext.defer(function() {
-                for (i = 0; i < ln; i++) {
-                    e = events[i];
-                    me.fireEvent('toggle', me, e.item, e.toggle);
-                }
-            }, 50);
+            button.addCls(pressedCls);
         }
     },
 
     /**
-     * Returns `true` if a specified {@link Ext.Button} is pressed.
-     * @param {Ext.Button} button The button to check if pressed.
+     * Returns true if a specified {@link Ext.Button} is pressed
+     * @param {Ext.Button} button The button to check if pressed
      * @return {Boolean} pressed
      */
     isPressed: function(button) {
@@ -341,11 +292,11 @@ Ext.define('Ext.SegmentedButton', {
 
     /**
      * Activates a button.
-     * @param {Number/String/Ext.Button} button The button to activate.
-     * @param {Boolean} pressed If defined, sets the pressed state of the button,
+     * @param {Number/String/Ext.Button} button. The button to activate.
+     * @param {Boolean} pressed if defined, sets the pressed state of the button,
      * otherwise the pressed state is toggled.
-     * @param {Boolean} suppressEvents `true` to suppress toggle events during the action.
-     * If {@link #allowMultiple} is `true`, then {@link #setPressed} will toggle the button state.
+     * @param {Boolean} suppressEvents true to suppress toggle events during the action.
+     * If allowMultiple is true, then setPressed will toggle the button state.
      * @method setPressed
      * @deprecated 2.0.0 Please use {@link #setPressedButtons} instead
      */

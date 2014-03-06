@@ -40,7 +40,7 @@
  *     userId.setValue(1234);
  */
 Ext.define('Ext.field.Hidden', {
-    extend: 'Ext.field.Text',
+    extend: 'Ext.field.Field',
     alternateClassName: 'Ext.form.Hidden',
     xtype: 'hiddenfield',
 
@@ -72,4 +72,5 @@ Ext.define('Ext.field.Hidden', {
          */
         tabIndex: -1
     }
+
 });

@@ -27,10 +27,6 @@ Ext.define('Ext.Evented', {
                     }
                 }
 
-                // The old value might have been changed at this point
-                // (after the apply call chain) so it should be read again
-                oldValue = this[internalName];
-
                 if (value !== oldValue) {
                     if (initialized) {
                         this.fireAction(changeEventName, [this, value, oldValue], this.doSet, this, {
@@ -39,9 +35,7 @@ Ext.define('Ext.Evented', {
                     }
                     else {
                         this[internalName] = value;
-                        if (this[doSetName]) {
-                            this[doSetName].call(this, value, oldValue);
-                        }
+                        this[doSetName].call(this, value, oldValue);
                     }
                 }
 
@@ -66,9 +60,7 @@ Ext.define('Ext.Evented', {
         var nameMap = options.nameMap;
 
         me[nameMap.internal] = value;
-        if (me[nameMap.doSet]) {
-          me[nameMap.doSet].call(this, value, oldValue);
-        }
+        me[nameMap.doSet].call(this, value, oldValue);
     },
 
     onClassExtended: function(Class, data) {

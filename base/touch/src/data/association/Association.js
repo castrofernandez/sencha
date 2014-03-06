@@ -34,10 +34,12 @@
  *
  * ## Further Reading
  *
- * - {@link Ext.data.association.HasMany hasMany associations}
- * - {@link Ext.data.association.BelongsTo belongsTo associations}
- * - {@link Ext.data.association.HasOne hasOne associations}
- * - {@link Ext.data.Model using Models}
+ * <ul style="list-style-type: disc; padding-left: 20px;">
+ *   <li>{@link Ext.data.association.HasMany hasMany associations}</li>
+ *   <li>{@link Ext.data.association.BelongsTo belongsTo associations}</li>
+ *   <li>{@link Ext.data.association.HasOne hasOne associations}</li>
+ *   <li>{@link Ext.data.Model using Models}</li>
+ * </ul>
  *
  * ### Self-associating Models
  *
@@ -55,21 +57,19 @@
  *                 "parent_id": null,
  *                 "name": "Parent Group"
  *             },
- *             "nested" : {
- *                 "child_groups": [{
- *                     "id": 2,
- *                     "parent_id": 10,
- *                     "name": "Child Group 1"
- *                 },{
- *                     "id": 3,
- *                     "parent_id": 10,
- *                     "name": "Child Group 2"
- *                 },{
- *                     "id": 4,
- *                     "parent_id": 10,
- *                     "name": "Child Group 3"
- *                 }]
- *             }
+ *             "child_groups": [{
+ *                 "id": 2,
+ *                 "parent_id": 10,
+ *                 "name": "Child Group 1"
+ *             },{
+ *                 "id": 3,
+ *                 "parent_id": 10,
+ *                 "name": "Child Group 2"
+ *             },{
+ *                 "id": 4,
+ *                 "parent_id": 10,
+ *                 "name": "Child Group 3"
+ *             }]
  *         }
  *     }
  *
@@ -92,7 +92,7 @@
  *                 primaryKey: 'id',
  *                 foreignKey: 'parent_id',
  *                 autoLoad: true,
- *                 associationKey: 'nested.child_groups' // read child data from nested.child_groups
+ *                 associationKey: 'child_groups' // read child data from child_groups
  *             }, {
  *                 type: 'belongsTo',
  *                 model: 'MyApp.model.Group',
@@ -124,7 +124,7 @@ Ext.define('Ext.data.association.Association', {
 
     config: {
         /**
-         * @cfg {Ext.data.Model/String} ownerModel (required) The full class name or reference to the class that owns this
+         * @cfg {Ext.data.Model/String} ownerModel The full class name or reference to the class that owns this
          * associations. This is a required configuration on every association.
          * @accessor
          */
@@ -137,7 +137,7 @@ Ext.define('Ext.data.association.Association', {
         ownerName: undefined,
 
         /**
-         * @cfg {String} associatedModel (required) The full class name or reference to the class that the {@link #ownerModel}
+         * @cfg {String} associatedModel The full class name or reference to the class that the {@link #ownerModel}
          * is being associated with. This is a required configuration on every association.
          * @accessor
          */
@@ -153,29 +153,30 @@ Ext.define('Ext.data.association.Association', {
 
         /**
          * @cfg {String} associationKey The name of the property in the data to read the association from.
-         * Defaults to the {@link #associatedName} plus '_id'.
+         * Defaults to the {@link #associatedName} plus _id.
          */
         associationKey: undefined,
 
         /**
-         * @cfg {String} primaryKey The name of the primary key on the associated model.
+         * @cfg {String} primaryKey The name of the primary key on the associated model. Defaults to 'id'.
          * In general this will be the {@link Ext.data.Model#idProperty} of the Model.
          */
         primaryKey: 'id',
 
         /**
-         * @cfg {Ext.data.reader.Reader} reader A special reader to read associated data.
+         * @cfg {Ext.data.reader.Reader} reader A special reader to read associated data
          */
         reader: null,
 
         /**
          * @cfg {String} type The type configuration can be used when creating associations using a configuration object.
-         * Use `hasMany` to create a HasMany association.
-         *
-         *     associations: [{
-         *         type: 'hasMany',
-         *         model: 'User'
-         *     }]
+         * Use 'hasMany' to create a HasMany association
+         * <pre><code>
+    associations: [{
+        type: 'hasMany',
+        model: 'User'
+    }]
+         * </code></pre>
          */
         type: null,
 

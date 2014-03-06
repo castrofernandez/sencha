@@ -41,21 +41,24 @@ Ext.define('Ext.device.Geolocation', {
 
     requires: [
         'Ext.device.Communicator',
-        'Ext.device.geolocation.Cordova',
+        // 'Ext.device.geolocation.PhoneGap',
         'Ext.device.geolocation.Sencha',
         'Ext.device.geolocation.Simulator'
     ],
 
     constructor: function() {
         var browserEnv = Ext.browser.is;
+
         if (browserEnv.WebView) {
-            if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.geolocation.Cordova');
-            } else if (browserEnv.Sencha) {
+            if (browserEnv.PhoneGap) {
+                return Ext.create('Ext.device.geolocation.PhoneGap');
+            }
+            else {
                 return Ext.create('Ext.device.geolocation.Sencha');
             }
         }
-
-        return Ext.create('Ext.device.geolocation.Simulator');
+        else {
+            return Ext.create('Ext.device.geolocation.Simulator');
+        }
     }
 });

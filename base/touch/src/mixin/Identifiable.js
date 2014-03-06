@@ -1,6 +1,3 @@
-//@tag dom,core
-//@require Ext.dom.Helper
-
 /**
  * An Identifiable mixin.
  * @private

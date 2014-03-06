@@ -7,8 +7,7 @@
 Ext.define('Ext.viewport.Viewport', {
     requires: [
         'Ext.viewport.Ios',
-        'Ext.viewport.Android',
-        'Ext.viewport.WindowsPhone'
+        'Ext.viewport.Android'
     ],
 
     constructor: function(config) {
@@ -17,24 +16,15 @@ Ext.define('Ext.viewport.Viewport', {
 
         switch (osName) {
             case 'Android':
-                viewportName = (Ext.browser.name == 'ChromeMobile') ? 'Default' : 'Android';
+                viewportName = 'Android';
                 break;
 
             case 'iOS':
                 viewportName = 'Ios';
                 break;
 
-            case 'Windows':
-                viewportName = (Ext.browser.name == 'IE') ? 'WindowsPhone' : 'Default';
-                break;
-
-            case 'WindowsPhone':
-                viewportName = 'WindowsPhone';
-                break;
-
             default:
                 viewportName = 'Default';
-                break;
         }
 
         viewport = Ext.create('Ext.viewport.' + viewportName, config);

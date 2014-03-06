@@ -9,6 +9,19 @@ Ext.define('Ext.behavior.Translatable', {
         'Ext.util.Translatable'
     ],
 
+    constructor: function() {
+        this.listeners = {
+            painted: 'onComponentPainted',
+            scope: this
+        };
+
+        this.callParent(arguments);
+    },
+
+    onComponentPainted: function() {
+        this.translatable.refresh();
+    },
+
     setConfig: function(config) {
         var translatable = this.translatable,
             component = this.component;
@@ -18,6 +31,12 @@ Ext.define('Ext.behavior.Translatable', {
                 this.translatable = translatable = new Ext.util.Translatable(config);
                 translatable.setElement(component.renderElement);
                 translatable.on('destroy', 'onTranslatableDestroy', this);
+
+                if (component.isPainted()) {
+                    this.onComponentPainted(component);
+                }
+
+                component.on(this.listeners);
             }
             else if (Ext.isObject(config)) {
                 translatable.setConfig(config);
@@ -35,7 +54,10 @@ Ext.define('Ext.behavior.Translatable', {
     },
 
     onTranslatableDestroy: function() {
+        var component = this.component;
+
         delete this.translatable;
+        component.un(this.listeners);
     },
 
     onComponentDestroy: function() {

@@ -30,7 +30,6 @@ Ext.define('Ext.XTemplateParser', {
 
     /**
      * This method is called to process simple tags (like `{tag}`).
-     * @param {String} tag 
      * @method doTag
      */
     // doTag: function (tag)
@@ -97,7 +96,7 @@ Ext.define('Ext.XTemplateParser', {
      * @param {Object} actions The other actions keyed by the attribute name (such as 'exec').
      * @method doEnd
      */
-    // doEnd: function (type, actions) 
+    // doEnd: function (type, actions)
 
     /**
      * This method is called to process `<tpl for="action">`. If there are other attributes,
@@ -130,8 +129,7 @@ Ext.define('Ext.XTemplateParser', {
             aliases = { elseif: 'elif' },
             topRe = me.topRe,
             actionsRe = me.actionsRe,
-            index, stack, s, m, t, prev, frame, subMatch, begin, end, actions,
-            prop;
+            index, stack, s, m, t, prev, frame, subMatch, begin, end, actions;
 
         me.level = 0;
         me.stack = stack = [];
@@ -162,7 +160,7 @@ Ext.define('Ext.XTemplateParser', {
                 end += 2;
             } else if (m[3]) { // if ('{' token)
                 me.doTag(m[3]);
-            } else if (m[4]) { // content of a <tpl xxxxxx xxx> tag
+            } else if (m[4]) { // content of a <tpl xxxxxx> tag
                 actions = null;
                 while ((subMatch = actionsRe.exec(m[4])) !== null) {
                     s = subMatch[2] || subMatch[3];
@@ -194,11 +192,11 @@ Ext.define('Ext.XTemplateParser', {
                     }
                 }
                 else if (actions['if']) {
-                    me.doIf(actions['if'], actions);
+                    me.doIf(actions['if'], actions)
                     stack.push({ type: 'if' });
                 }
                 else if (actions['switch']) {
-                    me.doSwitch(actions['switch'], actions);
+                    me.doSwitch(actions['switch'], actions)
                     stack.push({ type: 'switch' });
                 }
                 else if (actions['case']) {
@@ -209,11 +207,6 @@ Ext.define('Ext.XTemplateParser', {
                 }
                 else if (actions['for']) {
                     ++me.level;
-
-                    // Extract property name to use from indexed item
-                    if (prop = me.propRe.exec(m[4])) {
-                        actions.propName = prop[1] || prop[2];
-                    }
                     me.doFor(actions['for'], actions);
                     stack.push({ type: 'for', actions: actions });
                 }
@@ -225,11 +218,7 @@ Ext.define('Ext.XTemplateParser', {
                 else {
                     // todo - error
                 }
-                */
-            } else if (m[0].length === 5) {
-                // if the length of m[0] is 5, assume that we're dealing with an opening tpl tag with no attributes (e.g. <tpl>...</tpl>)
-                // in this case no action is needed other than pushing it on to the stack
-                stack.push({ type: 'tpl' });
+                /**/
             } else {
                 frame = stack.pop();
                 me.doEnd(frame.type, frame.actions);
@@ -241,10 +230,9 @@ Ext.define('Ext.XTemplateParser', {
     },
 
     // Internal regexes
-    
+
     topRe:     /(?:(\{\%)|(\{\[)|\{([^{}]*)\})|(?:<tpl([^>]*)\>)|(?:<\/tpl>)/g,
-    actionsRe: /\s*(elif|elseif|if|for|exec|switch|case|eval)\s*\=\s*(?:(?:"([^"]*)")|(?:'([^']*)'))\s*/g,
-    propRe:    /prop=(?:(?:"([^"]*)")|(?:'([^']*)'))/,
+    actionsRe: /\s*(elif|elseif|if|for|exec|switch|case|eval)\s*\=\s*(?:(?:["]([^"]*)["])|(?:[']([^']*)[']))\s*/g,
     defaultRe: /^\s*default\s*$/,
     elseRe:    /^\s*else\s*$/
 });
