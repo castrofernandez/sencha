@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Blog - Redacción</title>
+		<style>
+			textarea {
+				width: 100%;
+				height: 6em;
+				font-size: 1.3em;
+			}
+			
+			input[type=submit] {
+				float: right;
+				font-size: 1.5em;
+				background-color: black;
+				color: #fff;
+				width: 4em;
+				padding: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Redactar</h1>
+		<form method="post" action="cross.php">
+			<textarea name="entrada"></textarea>
+			<input type="submit" value="Enviar" />
+		</form>
+	</body>
+</html>

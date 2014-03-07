@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>JSON-P</title>
+		<style>
+			body {
+				font-family: sans-serif;
+			}
+		
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			
+			td {
+				padding: 1em;
+				border-bottom: 0.1em solid #ccc;
+			}
+			
+			tr:nth-child(even) {
+				background-color: #ddd;
+			}
+			
+			h1 {
+				position: relative;
+				margin-top: 0;
+				margin-bottom: 0.5em;
+				text-align: center;
+			}
+			
+			h1:before {
+			    border-top: 0.08em solid #555;
+			    content: "";
+			    margin: 0 auto;
+			    position: absolute;
+			    top: 60%;
+			    left: 0;
+			    width: 100%;
+			    z-index: -1;
+			}
+			
+			h1 span {
+				background-color: #fff;
+				padding: 0 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1><span>JSON-P</span></h1>
+		<div id="contenido"></div>
+		<script>
+			function procesar(datos) {
+				var contenido = document.getElementById('contenido');
+				
+				var table = document.createElement('table');
+				contenido.appendChild(table);
+				
+				var tbody = document.createElement('tbody');
+				table.appendChild(tbody);
+				
+				for (var i = 0; i < datos.length; i++) {
+					var tr = document.createElement('tr');
+					tbody.appendChild(tr);
+					
+					var td = document.createElement('td');
+					tr.appendChild(td);
+					td.innerHTML = datos[i].nombre;
+					
+					var td = document.createElement('td');
+					tr.appendChild(td);
+					td.innerHTML = datos[i].categoria;
+				}
+			}
+		</script>
+		<script src="servidor/datos.php?retorno=procesar"></script>
+	</body>
+</html>

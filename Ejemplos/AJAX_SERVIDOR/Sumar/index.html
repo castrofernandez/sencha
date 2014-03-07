@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>JSON-P</title>
+	</head>
+	<body>
+		<h1><span>AJAX</span></h1>
+		<form id="formulario">
+			<input type="number" name="operando1" />
+			<input type="number" name="operando2" />
+			<button id="sumar">Sumar</button>
+		</form>
+		<script src="ajax.js"></script>
+		<script>
+			function sumar() {
+				var operando1 = document.querySelector('input[name=operando1]').value;
+				var operando2 = document.querySelector('input[name=operando2]').value;
+			
+				var parametros = "operando1=" + operando1 + "&operando2=" + operando2;
+		
+				ajax({
+					url: 'sumar.php',
+					parametros: parametros,
+					retorno: function(datos) {
+						datos = JSON.parse(datos);
+						
+						if (datos.resultado == "OK")
+							alert(datos.valor);
+					}
+				});
+				
+				return false;
+			}
+			
+			//document.querySelector('form').onsubmit = sumar;
+			document.getElementById('formulario').onsubmit = sumar;
+
+		</script>
+	</body>
+</html>

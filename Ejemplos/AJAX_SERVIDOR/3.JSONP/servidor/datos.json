@@ -1,0 +1,26 @@
+[
+	{
+		"nombre": "León",
+		"categoria": "Mamíferos"
+	},
+	{
+		"nombre": "Tiburón",
+		"categoria": "Peces"
+	},
+	{
+		"nombre": "Cocodrilo",
+		"categoria": "Reptiles"
+	},
+	{
+		"nombre": "Águila",
+		"categoria": "Aves"
+	},
+	{
+		"nombre": "Lobo",
+		"categoria": "Mamíferos"
+	},
+	{
+		"nombre": "Buitre",
+		"categoria": "Aves"
+	}
+]

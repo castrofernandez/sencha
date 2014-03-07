@@ -1,0 +1,360 @@
+{
+  "contenedorropas": {
+    "contenedorropa": [
+      {
+        "titulo": "CALLE DON JUAN DE AUSTRIA_132 - 2",
+        "latitud": "43.5393924313031",
+        "longitud": "-5.7048221630729",
+        "lugar": "S.PUBLICO: OF EMPLEO GRAN CAPITAN"
+      },
+      {
+        "titulo": "CALLE CONCEJO DE ILLANO_2 - 1",
+        "latitud": "43.5436138204839",
+        "longitud": "-5.70469674603696",
+        "lugar": "S.PUBLICO: CONCEJO ILLANO"
+      },
+      {
+        "titulo": "CALLE LLOREU_2 - 1",
+        "latitud": "43.5381155368972",
+        "longitud": "-5.68762625787082",
+        "lugar": "S.PUBLICO: FRENTE AAVV LLOREU"
+      },
+      {
+        "titulo": "CALLE DESFILADERO DE LOS BEYOS_10 - 1",
+        "latitud": "43.5365478167573",
+        "longitud": "-5.68527088213945",
+        "lugar": "S. PUBLICO: DESFILADERO DE LOS BEYOS"
+      },
+      {
+        "titulo": "CALLE PUERTO DE PIEDRAFITA_3 - 1",
+        "latitud": "43.5299986911142",
+        "longitud": "-5.67526480945064",
+        "lugar": "S. PUBLICO: PIEDRAFITA"
+      },
+      {
+        "titulo": "CALLE PUERTO DE CERREDO_6 - 1",
+        "latitud": "43.5345435816628",
+        "longitud": "-5.67497406094054",
+        "lugar": "S.PUBLICO: PUERTO CERREDO"
+      },
+      {
+        "titulo": "CALLE JUANIN DE MIERES_6 - 1",
+        "latitud": "43.5369706281799",
+        "longitud": "-5.67062836232346",
+        "lugar": "S.PUBLICO: C.D. LAVIADA"
+      },
+      {
+        "titulo": "CALLE VALENCIA_17 - 1",
+        "latitud": "43.5281603473726",
+        "longitud": "-5.6717236016879",
+        "lugar": "S.PUBLICO CP SAN MIGUEL"
+      },
+      {
+        "titulo": "CALLE ELEUTERIO QUINTANILLA_64 - 1",
+        "latitud": "43.5308415581469",
+        "longitud": "-5.66471468570745",
+        "lugar": "S.PUBLICO: ELEUT. QUINTANILLA PARQUE"
+      },
+      {
+        "titulo": "AVDA  DEL LLANO_62 - 1",
+        "latitud": "43.5273618184248",
+        "longitud": "-5.66222829092333",
+        "lugar": "S.PUBLICO: PISCINA LLANO"
+      },
+      {
+        "titulo": "CALLE RIO CARES_20 - 3",
+        "latitud": "43.5196298578968",
+        "longitud": "-5.66594846529384",
+        "lugar": "S.PUBLICO: RIO CARES"
+      },
+      {
+        "titulo": "CALLE AVELINO GONZALEZ MALLADA_27 - 1",
+        "latitud": "43.5327616757275",
+        "longitud": "-5.64909864185687",
+        "lugar": "S. PUBLICO: AV. GLEZ MALLADA CENTRO MUNICIPAL"
+      },
+      {
+        "titulo": "CTRA AS-19 (GIJON-AVILES)_980 - 1",
+        "latitud": "43.538527727508",
+        "longitud": "-5.72114833386485",
+        "lugar": "S.PRIVADO: GASOL TREMA&#209;ES"
+      },
+      {
+        "titulo": "AVDA MANUEL LLANEZA_66 - 1",
+        "latitud": "43.5342507615079",
+        "longitud": "-5.66794950661108",
+        "lugar": "S.PUBLICO: MANUEL LLANEZA PARKING"
+      },
+      {
+        "titulo": "CALLE JUAN BOTAS_1 - 1",
+        "latitud": "43.5278994986181",
+        "longitud": "-5.65421219553633",
+        "lugar": "S. PUBLICO: LA TEJERONA AAVV"
+      },
+      {
+        "titulo": "CALLE ANSELMO SOLAR_58 - 1",
+        "latitud": "43.529815759661",
+        "longitud": "-5.64414381810905",
+        "lugar": "S. PUBLICO: ANSELMO SOLAR CP BEGO&#209;A"
+      },
+      {
+        "titulo": "CALLE PIO BAROJA_2B - 1",
+        "latitud": "43.5199593408176",
+        "longitud": "-5.67027820685284",
+        "lugar": "S. PUBLICO: CTRA CARBONERA-PARKING"
+      },
+      {
+        "titulo": "CALLE SIERRA DEL SUEVE_20 - 1",
+        "latitud": "43.5289403521332",
+        "longitud": "-5.68225632766012",
+        "lugar": "S. PUBLICO: SIERRA DEL SUEVE"
+      },
+      {
+        "titulo": "CAMIN  DE  ERIA DE POLIA (JOVE)_49 - 1",
+        "latitud": "43.5459177538298",
+        "longitud": "-5.70245223557237",
+        "lugar": "S.PUBLICO: ERIA DE POLIA"
+      },
+      {
+        "titulo": "AVDA  DE ROCES_250 - 1",
+        "latitud": "43.5132883629627",
+        "longitud": "-5.66146366108394",
+        "lugar": "S. PUBLICO: ROCES. CAMPO LA BRA&#209;A"
+      },
+      {
+        "titulo": "CALLE DIONISIO FERNANDEZ-NESPRAL AZA_S/N - 1",
+        "latitud": "43.5403969549329",
+        "longitud": "-5.67170855220914",
+        "lugar": "S.PUBLICO: JUAN CARLOS I"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5366094822183",
+        "longitud": "-5.69587355478504",
+        "lugar": ""
+      },
+      {
+        "titulo": "CALLE SEVERO OCHOA_36 - 1",
+        "latitud": "43.5271412093011",
+        "longitud": "-5.67592149783019",
+        "lugar": "S.PRIVADO: FORO GASOLINERA"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.510583393078",
+        "longitud": "-5.69376780547023",
+        "lugar": ""
+      },
+      {
+        "titulo": "AVDA ARGENTINA_118 - 1",
+        "latitud": "43.5383404678222",
+        "longitud": "-5.7033635795787",
+        "lugar": "S. PRIVADO: AV. ARGENTINA GASOLIN."
+      },
+      {
+        "titulo": "CTRA  DE LA CAMPA DE TORRES_60 - 1",
+        "latitud": "43.5374931931428",
+        "longitud": "-5.71227750201278",
+        "lugar": "S. PRIVADO: TREMA&#209;ES GASOLIN."
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5427626177841",
+        "longitud": "-5.69509135687712",
+        "lugar": "S.PRIVADO: CASA DEL MAR"
+      },
+      {
+        "titulo": "CALLE SAN NICOLAS_68 - 1",
+        "latitud": "43.5226017735717",
+        "longitud": "-5.67145088746141",
+        "lugar": "S.PRIVADO: RESIDENCIA SAN NICOLAS"
+      },
+      {
+        "titulo": "CALLE ESMERALDA MASEDA_20 - 1",
+        "latitud": "43.5176149407989",
+        "longitud": "-5.68155416498321",
+        "lugar": "S. PRIVADO: SALVADOR ALLENDE"
+      },
+      {
+        "titulo": "CAMIN  DE  VI&#209;AO (BERNUECES)_39 - 1",
+        "latitud": "43.52454183534",
+        "longitud": "-5.64130033876619",
+        "lugar": "S. PRIVADO: VIESQUES ELEF. AZUL"
+      },
+      {
+        "titulo": "CALLE DIONISIO DE LA HUERTA (SOMIO)_00 - 1",
+        "latitud": "43.5311239434636",
+        "longitud": "-5.63397548644088",
+        "lugar": "S. PRIVADO: GUIA EROSKI"
+      },
+      {
+        "titulo": "CALLE CALDERON DE LA BARCA_27 - 1",
+        "latitud": "43.5340703184871",
+        "longitud": "-5.64894651462436",
+        "lugar": "S. PRIVADO: CC OPCION"
+      },
+      {
+        "titulo": "PASEO  DEL DOCTOR FLEMING_S/N - 1",
+        "latitud": "43.5347973140625",
+        "longitud": "-5.63412634267047",
+        "lugar": "S. PRIVADO: CP. PILES"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5359275673394",
+        "longitud": "-5.63165313675585",
+        "lugar": "S. PUBLICO: PALACIO DEPORTES"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5076726342417",
+        "longitud": "-5.65852260352321",
+        "lugar": "S. PRIVADO: ES GRANDA"
+      },
+      {
+        "titulo": "CTRA LAVANDERA_721 - 1",
+        "latitud": "43.4872224710972",
+        "longitud": "-5.65134672763007",
+        "lugar": "S. PUBLICO: MERCADO LA CAMOCHA"
+      },
+      {
+        "titulo": "CALLE ISAAC NEWTON_216 - 1",
+        "latitud": "43.5079224301421",
+        "longitud": "-5.67930449124359",
+        "lugar": "S. PRIVADO: LA COOPERATIVA"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5221854284601",
+        "longitud": "-5.68384151416948",
+        "lugar": "S. PRIVADA: ES SANTA BARBARA"
+      },
+      {
+        "titulo": "GRUP NUESTRA SE&#209;ORA DEL CARMEN_34 - 1",
+        "latitud": "43.5532823415448",
+        "longitud": "-5.70241022267531",
+        "lugar": "S. PUBLICO: PORTUARIOS"
+      },
+      {
+        "titulo": "CALLE  LOS BOLOS_4 - 1",
+        "latitud": "43.5267931970159",
+        "longitud": "-5.70811944853404",
+        "lugar": "S. PUBLICO: LLOREDA, BOLOS"
+      },
+      {
+        "titulo": "PLAZA  DE EUROPA_5 - 1",
+        "latitud": "43.5388342531812",
+        "longitud": "-5.66401724590363",
+        "lugar": "S.PRIVADO: MERCADO DEL SUR"
+      },
+      {
+        "titulo": "CMNO OLMOS (SOMIO)_89 - 1",
+        "latitud": "43.5417362502616",
+        "longitud": "-5.64318962876833",
+        "lugar": "S.PRIVADO: LAVADERO PILES"
+      },
+      {
+        "titulo": "CTRA VILLAVICIOSA_23 - 1",
+        "latitud": "43.5341878653412",
+        "longitud": "-5.63871653649594",
+        "lugar": "S.PRIVADO: ARGENTA"
+      },
+      {
+        "titulo": "CALLE PRADOS (CABUE&#209;ES)_121 - 1",
+        "latitud": "43.5238097418191",
+        "longitud": "-5.61176977022877",
+        "lugar": "S.PRIVADO: PARQUE TECNOLOGICO"
+      },
+      {
+        "titulo": "AUTO AS-II_3322 - 1",
+        "latitud": "43.4983993171696",
+        "longitud": "-5.70948886909222",
+        "lugar": "S.PRIVADO: ES PORCEYO"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5378304439936",
+        "longitud": "-5.63761875608722",
+        "lugar": "S. PRIVADO: FIDMA"
+      },
+      {
+        "titulo": "AVDA CONSTITUCION_48 - 1",
+        "latitud": "43.534423743429",
+        "longitud": "-5.66848528409651",
+        "lugar": "S. PRIVADO: REPSOL CONSTITUCION"
+      },
+      {
+        "titulo": "CALLE RIO EO_48 - 1",
+        "latitud": "43.5233205296589",
+        "longitud": "-5.67357661696589",
+        "lugar": "S. PRIVADO: CP MONTEVIL"
+      },
+      {
+        "titulo": "CALLE PUERTO DE LEITARIEGOS_6 - 1",
+        "latitud": "43.5344023779347",
+        "longitud": "-5.67336516054917",
+        "lugar": "S. PRIVADO: LEITARIEGOS RESIDENCIA CLARA FERRER"
+      },
+      {
+        "titulo": "CTRA  DE LA PROVIDENCIA_33 - 1",
+        "latitud": "43.5457282405434",
+        "longitud": "-5.6393020974774",
+        "lugar": "S. PRIVADO: SOMIO PARK"
+      },
+      {
+        "titulo": "CALLE PE&#209;A_28 - 1",
+        "latitud": "43.5410279203759",
+        "longitud": "-5.68717281107872",
+        "lugar": "S. PRIVADO: C/ PE&#209;A"
+      },
+      {
+        "titulo": "CALLE NI&#209;O JESUS_32 - 1",
+        "latitud": "43.5253334952732",
+        "longitud": "-5.66681884748598",
+        "lugar": "S. PRIVADO: C/ NI&#209;O JESUS CENTRO DE DIA"
+      },
+      {
+        "titulo": "CTRA RIBADESELLA A CANERO (N-632)_5860 - 1",
+        "latitud": "43.5171236536148",
+        "longitud": "-5.58416143366516",
+        "lugar": "S.PRIVADO: ES ALTO INFANZON"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5147460995717",
+        "longitud": "-5.6795882660737",
+        "lugar": "PL ROCES"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5298996856828",
+        "longitud": "-5.70142939170042",
+        "lugar": "PL TREMA&#209;ES"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.5414992767226",
+        "longitud": "-5.63653110735573",
+        "lugar": "PL SOMIO"
+      },
+      {
+        "titulo": "CALLE SIMON BOLIVAR_6 - 1",
+        "latitud": "43.5356110013647",
+        "longitud": "-5.70028204879611",
+        "lugar": "PL CALZADA"
+      },
+      {
+        "titulo": "",
+        "latitud": "43.4964417868964",
+        "longitud": "-5.68069859249708",
+        "lugar": "S.PRIVADO: ESCUELA MAREO"
+      },
+      {
+        "titulo": "CALLE PEDRO DURO_16 - 1",
+        "latitud": "43.5406365933266",
+        "longitud": "-5.66627319128598",
+        "lugar": "S.PRIVADO: PARKING FEVE"
+      }
+    ]
+  }
+}
