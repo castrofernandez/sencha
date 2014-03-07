@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>JSON-P</title>
+	</head>
+	<body>
+		<h1>JSON-P</h1>
+		<script>
+			function cargar(datos) {
+				console.log(datos.directorios.directorio);
+			}
+		</script>
+		<script src="http://json2jsonp.com/?url=http://datos.gijon.es/doc/turismo/alojamientos.json&callback=cargar"></script>
+	</body>
+</html>
