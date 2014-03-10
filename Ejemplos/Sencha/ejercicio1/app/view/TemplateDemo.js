@@ -18,7 +18,7 @@ Ext.define('Ejercicio1.view.TemplateDemo', {
             }]
         },
         tpl: Ext.create('Ext.XTemplate', '<tpl for="countries">',
-            '<div>{#}. {country}: {flagColors:this.join}</div>',
+            '<div class="pais"><span class="numero">{#}</span>. {country}: {flagColors:this.join}</div>',
             '</tpl>', {
                 join: function(value) {
                     return value.join(', ');
