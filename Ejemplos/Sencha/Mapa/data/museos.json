@@ -1,0 +1,1358 @@
+{
+  "directorios": {
+    "directorio": [
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "info@bustiello.com",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">En mayo del presente a&#241;o se inaugur&#243; el Centru d'Interpretaci&#243;n \r\n del Poblau Mineru de Bustiello, con la intenci&#243;n de ser un punto \r\n dinamizador del poblado y su entorno, a trav&#233;s de un espacio de \r\n exposici&#243;n permanente y la organizaci&#243;n de visitas guiadas \r\n a todo el conjunto.<br/></div><br/>\r\n Los servicios que ofrecemos son los siguientes:<br/><br/><ul><li>Itinerarios guiados por los valles mineros</li><li>Exposiciones temporales</li><li>Actos culturales diversos</li><li>Visitas teatralizadas a los m&#225;s peque&#241;os</li></ul><span style=\"font-weight: bold;\">Descansa<br/></span>Lunes<br/><br/><h4><span style=\"font-weight: bold;\">Descuento del 20% con la tarjeta tur&#237;stica Gij&#243;n Card</span></h4><em></em><em><span style=\"font-weight: bold;\"></span><span style=\"font-weight: bold;\"></span><br/></em>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Bustiello s/n. santa Cruz de Mieres. 33612",
+          {
+            "content": "Centro de Interpretaci&#243;n Poblado Minero de Bustiello - Santa Cruz de Mieres s/n - Bustiello s/n. santa Cruz de Mieres. 33612",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 422 114",
+        "fecha-actualizacion": "2014-01-22 12:05:08 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f0/f3/35837/227x156_v1_recepcion.gif",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Martes \r\n a S&#225;bados 10 a 14h y de 16 a 19h <br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Domingo de 10 a 15 h",
+        "identificador": 7012,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.188317 -5.769402",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Poblado Minero de Bustiello",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/7012-poblado-minero-de-bustiello",
+        "telefono": {
+          "content": "985 422 185",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos y salas de exposiciones,Turismo",
+        "url": "http://www.gijon.es/directorios/show/7012-poblado-minero-de-bustiello",
+        "web": "http://www.bustiello.com/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Servicio Atenci&#243;n al Ciudadano",
+              "id": 97,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Edificios Municipales",
+              "id": 93,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cajeros Ciudadanos",
+              "id": 94,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicios Municipales",
+              "id": 98,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicios Sociales",
+              "id": 99,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Mediatecas",
+              "id": 200,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Zona Wifi",
+              "id": 202,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Ludotecas",
+              "id": 390,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Bibliotecas",
+              "id": 186,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Teatro",
+              "id": 190,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Sala de Exposiciones",
+              "id": 201,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Otros Espacios Deportivos",
+              "id": 397,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Pabellones",
+              "id": 398,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Piscinas Municipales",
+              "id": 399,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Pistas Polideportivas",
+              "id": 400,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Aparcamientos",
+              "id": 439,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Establecimientos de Recarga del Monedero Transporte",
+              "id": 440,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Lineas de autobuses urbanos",
+              "id": 444,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Centros culturales",
+              "id": 932,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Teatros",
+              "id": 938,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Aseos p&#250;blicos",
+              "id": 947,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Administraci&#243;n",
+              "id": 92,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Comunicaciones",
+              "id": 191,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Deporte",
+              "id": 192,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Transporte",
+              "id": 198,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "cmillano@gijon.es",
+        "descripcion": {
+          "content": "<p>Es el equipamiento m&#225;s moderno de la red de centros integrados. Fue inaugurado en el a&#241;o 2007 tras seguir, en su dise&#241;o, las pautas sobre equipamientos de proximidad publicadas en los estudios de la fundaci&#243;n Kaleidos.Red, de la que le ayuntamiento de Gij&#243;n fue patrono fundador. Se situa en una&#160;&#225;rea de&#160;reciente crecimiento y reforma urbana y atiende a una extensa zona muy poblada con los&#160;recursos m&#225;s modernos, por ejemplo una gran ludoteca. Aunque ofrece servicios deportivos en su gran sala polivalente, no tiene una zona deportiva propiamente dicha pues, al otro lado de la calle, comparte espacio con&#160;una&#160;de las zona mejor&#160;equipadas, en&#160;instalaciones deportivas, de Gij&#243;n.</p><p>Dispone de: oficina de atenci&#243;n al ciudadano, Servicios Sociales, concejal&#237;a de distrito, sal&#243;n de actos, sala de exposiciones, ludoteca,&#160;sala polivalente, aulas, taller de cocina, sala de estudio (120 puestos), biblioteca, mediateca y cajero ciudadano.</p><p><img src=\"/data/images/f0/f4/42473/700x333_v1_ElLlanoPG.JPG\" alt=\"Fachada centro de El Llano\" class=\"nicedit_sin-alinear magnify\" height=\"333\" width=\"700\" width=\"700\" height=\"333\"/><br/></p><p><br/></p><p style=\"font-weight: bold;\"><a href=\"http://issuu.com/agendasdeloscentrosintegrados/docs/red_de_centros_municipales_integrad\" title=\"Ir a http://issuu.com/agendasdeloscentrosintegrados/docs/red_de_centros_municipales_integrad\" rel=\"external\">Espacios en el centro municipal integrado de El Llano (ver espacios).</a><br/></p><p></p><table><thead><tr><th style=\"text-align: center;\">Espacio<br/></th><th style=\"text-align: center;\">Puestos y aforo<br/></th></tr></thead><tbody><tr><td>Sal&#243;n de Actos<br/></td><td style=\"text-align: right;\">156<br/></td></tr><tr><td>Aulas 1 y 2<br/></td><td style=\"text-align: right;\">18<br/></td></tr><tr><td>Aulas 3 y 4<br/></td><td style=\"text-align: right;\">36<br/></td></tr><tr><td>Aula de cocina<br/></td><td style=\"text-align: right;\">16<br/></td></tr><tr><td>Sala Polivalente<br/></td><td style=\"text-align: right;\">350 m2<br/></td></tr><tr><td>Sala de estudio<br/></td><td style=\"text-align: right;\">120<br/></td></tr><tr><td>Biblioteca<br/></td><td style=\"text-align: right;\">Adultos:43<br/>Infantil:12<br/>Lectura de prensa:24<br/></td></tr><tr><td>Mediateca<br/></td><td style=\"text-align: right;\">16<br/></td></tr><tr><td>Sala de exposiciones <br/>(Los patios interiores est&#225;n <br/>habilitados para exponer)<br/></td><td style=\"text-align: right;\">26 metros lineales<br/></td></tr><tr><td>Sala de reuniones (1 y 2)<br/></td><td style=\"text-align: right;\">10 y 14<br/></td></tr><tr><td style=\"vertical-align: top;\">Ludoteca<br/></td><td style=\"vertical-align: top; text-align: right;\">40<br/></td></tr></tbody></table>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Calle R&#237;o de Oro, 37",
+          {
+            "content": "Calle R&#237;o de Oro, 37",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 185 244",
+        "fecha-actualizacion": "2014-02-10 10:48:41 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f0/f4/42473/1776x846_v1_ElLlanoPG.JPG",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Lunes a S&#225;bado de 8.00 a 22.00 horas. Domingos de 8.00 a 15.00 horas. Cajero: 24h",
+        "identificador": 3443,
+        "locale": "es",
+        "localizacion": {
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Centro Municipal Integrado de El Llano",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/3443-centro-municipal-integrado-de-el-llano",
+        "telefono": {
+          "content": "985 185 240",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Servicio Atenci&#243;n al Ciudadano,Edificios Municipales,Cajeros Ciudadanos,Servicios Municipales,Servicios Sociales,Mediatecas,Zona Wifi,Ludotecas,Bibliotecas,Teatro,Sala de Exposiciones,Otros Espacios Deportivos,Pabellones,Piscinas Municipales,Pistas Polideportivas,Aparcamientos,Establecimientos de Recarga del Monedero Transporte,Lineas de autobuses urbanos,Museos y salas de exposiciones,Centros culturales,Teatros,Aseos p&#250;blicos,Administraci&#243;n,Comunicaciones,Cultura y Ocio,Deporte,Transporte,Turismo",
+        "url": "http://www.gijon.es/directorios/show/3443-centro-municipal-integrado-de-el-llano",
+        "web": "http://www.gijon.es"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Monumentos",
+              "id": 189,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museosarqueologicos@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">La villa romana de Veranes est&#225; situada en el concejo de Gij&#243;n pr&#243;xima a la \r\nantigua ruta romana que comunicaba estos territorios con su capital Asturica \r\nAugusta (Astorga).<br/><br/>Este museo de sitio, abierto al p&#250;blico en 2007, forma \r\nparte de los Museos Arqueol&#243;gicos de Gij&#243;n junto con el museo de las Termas \r\nRomanas de Campo Vald&#233;s y el Parque Arqueol&#243;gico-Natural de la Campa \r\nTorres.<br/><br/>Los restos arqueol&#243;gicos que actualmente se pueden visitar en \r\nVeranes, pertenecen a la pars urbana de un gran establecimiento de tipo villa \r\nque se construy&#243; en el bajo imperio (s. IV d. C.) sobre las primitivas ruinas de \r\nun asentamiento r&#250;stico altoimperial de considerable relevancia. Esta gran casa \r\nse&#241;orial presenta tres fases de reforma y ampliaci&#243;n arquitect&#243;nica que se \r\ndesarrollan a lo largo del siglo IV d. C. La mansi&#243;n continu&#243; en uso hasta el \r\nsiglo V d. C.<br/><br/>La visita al museo comprende un recorrido por el edificio \r\nde recepci&#243;n y un itinerario por el yacimiento con diferentes puntos de \r\nobservaci&#243;n para contemplar los restos arqueol&#243;gicos conservados. De ellos \r\nsobresale el mosaico pol&#237;cromo de la estancia de representaci&#243;n (oecus), \r\nprotegido por una cubierta que evoca el volumen que en su origen tuvo esta \r\nhabitaci&#243;n.<br/><br/>Este recorrido se apoya con una videogu&#237;a de uso individual, \r\ndisponible en la recepci&#243;n del museo, que recrea los muros y las dependencias \r\noriginales de la villa y proporciona una visi&#243;n m&#225;s completa del antiguo \r\nedificio de la villa de Veranes.</div><br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card</h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "",
+          {
+            "content": "Veranes, s/n. L' Abad&#237;a Cenero ( AS-II, Salida 17)- 33393.",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "",
+        "fecha-actualizacion": "2014-01-29 09:47:25 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f0/f2/25300/260x150_v1_veranes.jpeg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "<p><b>Horario de invierno:</b> del 16 de septiembre a 15 de junio, martes a domingos y festivos (excepto los de cierre oficial), de 10.00 a 15.00 horas<br/><b><br/>Horario de verano:</b>del 16 de junio al 15 de septiembre, de martes a domingos y festivos (excepto los de cierre oficial), de 10.30 a 19.00 horas<br/><br/><b>Semana Santa:</b>de 10.00 a 17.00 horas, de martes a domingo</p><h3>Tarifas: museo con entrada de pago. Los domingos entrada gratuita<br/></h3><br/><a href=\"http://museums.gijon.es/page/4901-tarifas\" title=\"Ir a http://museums.gijon.es/page/4901-tarifas\" rel=\"external\">M&#225;s informaci&#243;n sobre las tarifas</a>",
+        "identificador": 1395,
+        "locale": "es",
+        "localizacion": {
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Villa Romana de Veranes",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/1395-villa-romana-de-veranes",
+        "telefono": {
+          "content": "985 185 129 , 629 755 409",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Monumentos,Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/1395-villa-romana-de-veranes",
+        "web": "http://museos.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Empresa adherida al Sistema De Calidad Turistica en Destino (SICTED)",
+              "id": 2331,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos",
+              "id": 163,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos de Bellas Artes",
+              "id": 2626,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museo Nicanor Pi&#241;ole",
+              "id": 2416,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museojovellanos@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">El museo est&#225; ubicado en el antiguo Asilo Pola, proyectado a principios del siglo xx por Luis Bellido y construido bajo la direcci&#243;n de Miguel Garc&#237;a de la Cruz. <br/><br/>Es un museo monogr&#225;fico que presenta el entorno hist&#243;rico, social, econ&#243;mico y cultural del artista Nicanor Pi&#241;ole (Gij&#243;n, 1878-1978). Su objetivo principal es dar a conocer la obra de este pintor gijon&#233;s, haciendo referencia a todo lo que rodeaba su vida y poniendo especial &#233;nfasis en su trayectoria art&#237;stica, los elementos constitutivos de su obra y el significado de la misma en el contexto de la pl&#225;stica asturiana y nacional.\r\n\r\n<br/>El Museo Nicanor Pi&#241;ole re&#250;ne una colecci&#243;n de m&#225;s de cuatro mil obras que recogen de forma exhaustiva la trayectoria de este autor. Su extensa obra pict&#243;rica aborda diversidad de g&#233;neros y t&#233;cnicas: retratos, paisajes, naturalezas muertas y escenas populares de car&#225;cter asturiano realizados al &#243;leo, la acuarela, el pastel, etc.\r\n\r\nPor otra parte, el museo cuenta con una serie de objetos personales vinculados a Nicanor Pi&#241;ole anteriores y posteriores a la Guerra Civil. Se trata de objetos relacionados con su actividad art&#237;stica tales como algunas esculturas, actividad que practic&#243; ocasionalmente, la paleta y la caja de pinceles, y los cat&#225;logos de algunas de las exposiciones en las que particip&#243;. Asimismo son interesantes las fotograf&#237;as, que ilustran aspectos cotidianos de su vida y de los escenarios donde esta se desarroll&#243;. <br/></div><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card<br/></h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "",
+          {
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "",
+        "fecha-actualizacion": "2014-01-23 15:31:00 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f0/f2/29110/115x76_v1_FachadaMuseo.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "<p><br/>Martes a viernes: 9.30-14.00 y 17.00-19.30 h<br/>S&#225;bados, domingos y festivos: 10.00-14.00 y 17.00-19.30 h<br/><br/>D&#237;as de cierre:<br/></p><p></p><ul><li>Todos los lunes del a&#241;o</li><li>1 y 6 de Enero</li><li>Martes de Carnaval</li><li>15 de Agosto</li><li>24, 25 y 31 de Diciembre<br/><br/>La entrada es gratuita. Los servicios complementarios de audiogu&#237;as, visitas guiadas e itinerios culturales son de pago.</li></ul><a href=\"http://museums.gijon.es/page/4901-tarifas\" title=\"Ir a museums.gijon.es/page/4901-tarifas\" rel=\"external\">Informaci&#243;n sobre las tarifas de museos<br/></a>",
+        "identificador": 951,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.538026 -5.664101",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo Nicanor Pi&#241;ole",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/951-museo-nicanor-pinole",
+        "telefono": {
+          "content": "985 359 594 , 985 185 152",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/951-museo-nicanor-pinole",
+        "web": "http://museos.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museo@evaristovalle.com",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">El Museo Evaristo Valle, constitu&#237;do en 1981 como Fundaci&#243;n Cultural, es fruto del cari&#241;o y la generosidad de Mar&#237;a Rodr&#237;guez del Valle -sobrina del pintor- quien desde su muerte en 1951 atesor&#243; con admirable celo obras, objetos personales y documentos del artista que hoy integran los fondos del museo, a los que uni&#243; una dotaci&#243;n y su residencia con dos edificios en Somi&#243; (Gij&#243;n): uno de ellos constru&#237;do expresamente para museo en 1971, el otro es un antiguo palacete de finales de siglo XIX, reformado en 1942 y adaptado posteriormente a los nuevos fines.\r\nCon independencia de las exposiciones temporales, actividades educativas y musicales, el museo exhibe permanentemente m&#225;s de un centenar de obras de Evaristo Valle, que organizadas de forma cronol&#243;gica, tem&#225;tica o t&#233;cnica, nos permiten aproximarnos a su profundo, variado y rico legado dibuj&#237;stico y pict&#243;rico.\r\nSe exhibe igualmente, junto a la reconstrucci&#243;n de su estudio, la sugerente colecci&#243;n de conchas heredada por el pintor de su padre.</div><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card</h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Camino de Cabue&#241;es, 261 - Somi&#243;, 33203 Gij&#243;n",
+          {
+            "content": "Camino de Cabue&#241;es, 261 - Somi&#243;, 33203 Gij&#243;n",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 338 092",
+        "fecha-actualizacion": "2014-01-22 12:02:45 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6769/150x200_v1_Directoriomuseosevaristo.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Martes a S&#225;bados:16:00-18:00h. Domingos y festivos:12:00-14:00h.(Verano):17:00-20:00h.",
+        "identificador": 950,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.533982 -5.619871",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo Evaristo Valle",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/950-museo-evaristo-valle",
+        "telefono": {
+          "content": "985 334 000",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/950-museo-evaristo-valle",
+        "web": "http://www.evaristovalle.com/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Monumentos",
+              "id": 189,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museopa@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">Construida en Ser&#237;n (Gij&#243;n) en 1757 por don Antonio Gonz&#225;lez de la Vega. Fue transladada al museo en 1972. Constituye una buena muestra de casona rural asturiana con corredor, escudo y capilla situada en el portal de entrada. En ella est&#225; el Museo de la Gaita en el que se presenta una colecci&#243;n de gaitas del norte de &#193;frica y Europa, especialmente de Francia, Reino Unido y Pen&#237;nsula Ib&#233;rica (Asturias, Galicia, Mallorca, Arag&#243;n y Tras-os-Montes). Tiene una sala dedicada a la gaita asturiana y otra al resto de instrumentos de la tradici&#243;n musical en Asturias, desde los m&#225;s sencillos (carracas, casta&#241;uelas, pandeiros) hasta los reproductores mec&#225;nicos popularizados a fines del siglo XIX (organillo, gram&#243;fono, etc..).. \r\nEntrada gratuita solo los domingos.</div><br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card</h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Paseo del Doctor Fleming, 877 (La G&#252;elga)",
+          {
+            "content": "Paseo del Doctor Fleming, 877 (La G&#252;elga)",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 182 964",
+        "fecha-actualizacion": "2014-01-22 12:02:44 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6767/197x295_v1_Directoriomuseosgaita.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Martes a S&#225;bado: 10:00-13:00h. y 17:00-20:00h. Domingos y festivos: 11:00-14:00h. y 17:00-19:00h.",
+        "identificador": 947,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.537692 -5.633497",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo de la Gaita",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/947-museo-de-la-gaita",
+        "telefono": {
+          "content": "985 332 244",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Monumentos,Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/947-museo-de-la-gaita",
+        "web": "http://museos.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Monumentos",
+              "id": 189,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museojovellanos@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">El Museo Casa Natal de Jovellanos abri&#243; sus puertas al p&#250;blico, el d&#237;a 6 de \r\nagosto de 1971, con la colecci&#243;n art&#237;stica municipal que hasta entonces se hab&#237;a \r\nexpuesto en la planta baja del antiguo Instituto Jovellanos. Desde entonces, el \r\nMuseo centra sus esfuerzos en la ilustraci&#243;n de la sociedad a trav&#233;s de la \r\nhistoria y del arte, a partir de un m&#233;todo riguroso y cient&#237;fico que une a la \r\nsensibilidad del gusto por lo art&#237;stico objetivos concretos en documentaci&#243;n, \r\ninvestigaci&#243;n, conservaci&#243;n, educaci&#243;n y difusi&#243;n de sus colecciones.<br/>Las dos \r\nsalas dedicadas permanentemente a la difusi&#243;n de la vida y obra de Jovellanos, \r\nse complementan con un amplio recorrido por el arte asturiano de los siglos XIX \r\ny XX, junto a una interesante representaci&#243;n de las principales escuelas \r\neuropeas de los siglos XVII y XVIII, fundamentalmente de la flamenca y \r\nholandesa. <br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card<br/></h4></div>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "",
+          {
+            "content": "Plaza de Jovellanos, s/n.- 33201.",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "",
+        "fecha-actualizacion": "2014-01-22 12:02:44 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6766/225x300_v1_Directoriomuseoscasajovellanos.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "<a href=\"http://museums.gijon.es/page/9138-horarios\" title=\"Ir a http://museums.gijon.es/page/9138-horarios\" rel=\"external\">M&#225;s informaci&#243;n sobre horarios</a><br/><a href=\"http://museums.gijon.es/page/4901-tarifas\" title=\"Ir a http://museums.gijon.es/page/4901-tarifas\" rel=\"external\">M&#225;s informaci&#243;n sobre tarifas</a>",
+        "identificador": 946,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.545861 -5.662578",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo Casa Natal de Jovellanos",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/946-museo-casa-natal-de-jovellanos",
+        "telefono": {
+          "content": "985 185 152",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Monumentos,Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/946-museo-casa-natal-de-jovellanos",
+        "web": "http://museos.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "mbarjola@asturias.org",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">Se inaugur&#243; el 16 de diciembre de 1988, dotado con una generosa donaci&#243;n de obras del pintor Juan Barjola y de su esposa, la asturiana Honesta Fern&#225;ndez, realizada en 1985.\r\nEl museo alberga y muestra la importante donaci&#243;n de obras de Juan Barjola que forman su colecci&#243;n permanente, y organiza y produce muestras temporales de arte contempor&#225;neo, principalmente de escultura e instalaciones, en la sala conocida como Capilla de la Trinidad, y de pintura, fotograf&#237;a u obra gr&#225;fica en las plantas superiores del centro.</div><br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjtea tur&#237;stica Gij&#243;n Card</h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "C/Trinidad, 17",
+          {
+            "content": "C/Trinidad, 17",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 176 231",
+        "fecha-actualizacion": "2014-01-22 12:02:44 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6765/250x188_v1_Directoriomuseosbarjola.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Martes a S&#225;bados: 11:30-13:30h. y 17:00-20:00h. Domingos y festivos: 12:00-14:00h.",
+        "identificador": 945,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.544132 -5.663841",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo Barjola",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/945-museo-barjola",
+        "telefono": {
+          "content": "985 357 939",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/945-museo-barjola",
+        "web": "http://www.museobarjola.es/es/portada.asp"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Ocio",
+              "id": 392,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Parques y Jardines",
+              "id": 415,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Recintos singulares",
+              "id": 1211,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Parques y jardines",
+              "id": 935,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Empresa certificada 2005 Sistema de Calidad Turistica en Destino (SICTED)",
+              "id": 2327,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Establecimiento accesible",
+              "id": 1225,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Medio Ambiente",
+              "id": 193,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "informacion.botanico@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">  <h2>Organiza tu evento en el Bot&#225;nico</h2><p>El Bot&#225;nico te ofrece un espacio inigualable y totalmente vers&#225;til en el que organizar eventos, actos culturales y corporativos de muy diverso tipo. Ponemos a tu disposici&#243;n nuestros espacios exteriores e interiores, ubicados en un marco natural excepcional...todo un plus de calidad a tener en cuenta en el momento de organizar tu actividad.</p><p>Consulta <a title=\"Ir a http://botanico.gijon.es/servicios/show/256-uso-de-espacios-del-jardin-botanico\" href=\"http://botanico.gijon.es/servicios/show/256-uso-de-espacios-del-jardin-botanico\">aqu&#237;</a> las condiciones de reserva.</p><p></p><h4 style=\"font-weight: bold;\">Entrada y visita guiada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card (previa reserva)<br/></h4><br/><br/><p></p></div>    <h2>Espacios exteriores</h2><p>Disponemos de TRES &#193;REAS AL AIRE LIBRE en las que, por capacidad de acogida y versatilidad, se concentran los eventos:</p><table><thead><tr><th>QUINTANA DE RIONDA</th><th>Inserte su texto...</th></tr></thead><tbody><tr><td><p>Conjunto arquitect&#243;nico tradicional en el que los edificios han sido habilitados como &#225;reas museogr&#225;ficas donde se desarrollan los contenidos de algunas de las colecciones bot&#225;nicas.<br/>La Quintana de Rionda se halla muy pr&#243;xima al Caf&#233; del Bot&#225;nico.</p><p><u>SUPERFICIE</u>: 650 m<sup>2</sup> exteriores, repartidos en dos espacios de<br/>450 m<sup>2</sup> y 200 m<sup>2</sup> cada uno.</p></td><td><img alt=\"Rionda\" src=\"http://botanico.gijon.es/data/images/f0/f2/27827/220x165_v1_Evento_rionda2.jpg\"/></td></tr></tbody></table><table><thead><tr><th>PRADERA DEL JARD&#205;N DE LA ISLA</th><th>Inserte su texto...</th></tr></thead><tbody><tr><td><p>La pradera del Jard&#237;n de La Isla se ubica en este magn&#237;fico jard&#237;n hist&#243;rico creado por el industrial gijon&#233;s Florencio Vald&#233;s en 1870, que ha mantenido el trazado original rom&#225;ntico, lo que permite apreciar elementos b&#225;sicos en la jardiner&#237;a de los &#250;ltimos 200 a&#241;os.</p><p><u>SUPERFICIE</u>: 4.150 m<sup>2.</sup><br/><strong></strong></p></td><td><img alt=\"Pradera\" src=\"http://botanico.gijon.es/data/images/f0/f2/27830/220x165_v1_Evento_pradera.jpg\"/></td></tr></tbody></table><table><thead><tr><th>PISTA DE TENIS DEL JARD&#205;N DE LA ISLA</th><th><br/></th></tr></thead><tbody><tr><td><p>La pista de tenis del Jard&#237;n de la Isla, hecha con tierra batida a finales del siglo XIX, mantiene su dise&#241;o y composici&#243;n original y es uno de los elementos singulares de este jard&#237;n hist&#243;rico.</p><p><br/><u>SUPERFICIE</u>: 260 m<sup>2<br/></sup></p></td><td><img alt=\"Pista de tenis\" src=\"http://botanico.gijon.es/data/images/f0/f2/27831/220x165_v1_Evento_pistTenis.jpg\"/></td></tr></tbody></table>    <h2>Espacios cubiertos</h2><br/><table><thead><tr><th>SALA DE USOS M&#218;LTIPLES</th><th><br/></th></tr></thead><tbody><tr><td><p>LOCALIZACI&#211;N: Edificio de Recepci&#243;n del Jard&#237;n Bot&#225;nico.<br/>AFORO: m&#225;ximo 70 personas<br/>SUPERFICIE: 68 m<sup>2</sup><br/>PROYECCIONES AUDIOVISUALES: si<br/>ACCESO A INTERNET: si</p></td><td> <img alt=\"Audiovisuales\" src=\"http://botanico.gijon.es/data/images/f0/f2/27924/220x165_v1_Audiovisuales.jpg\"/></td></tr></tbody></table><table><thead><tr><th>AULARIO</th><th><br/></th></tr></thead><tbody><tr><td>LOCALIZACI&#211;N: Edificio de Recepci&#243;n del Jard&#237;n Bot&#225;nico.<br/>AFORO: m&#225;ximo 50 personas<br/>SUPERFICIE: 62 m<sup>2</sup><br/>PROYECCIONES AUDIOVISUALES: si<br/>ACCESO A INTERNET: si</td><td><p><img alt=\"Aulario\" src=\"http://botanico.gijon.es/data/images/f0/f2/27912/220x165_v1_Aulario.jpg\"/></p></td></tr></tbody></table><table><thead><tr><th>PABELL&#211;N DE LINNEO Y TERRAZA</th><th><br/></th></tr></thead><tbody><tr><td><p>LOCALIZACI&#211;N: al lado de la laguna cercana a la finca de La Isla. Cuenta, adem&#225;s, con una terraza semicubierta de 100 m 2, un selecto mirador sobre la laguna. El acceso al Pabell&#243;n de Linneo y la terraza est&#225; m&#225;s limitado que al resto de espacios cubiertos, especialmente para veh&#237;culos; a&#250;n as&#237; el espacio ha acogido presentaciones de algunas marcas, exposiciones de moda, etc.</p><p>SUPERFICIE interior: 80 m 2<br/>SUPERFICIE TERRAZA SEMICUBIERTA:100 m 2<br/>PROYECCIONES AUDIOVISUALES: si<br/>ACCESO A INTERNET: si</p></td><td><p><img alt=\"Boreal terraza\" src=\"http://botanico.gijon.es/data/images/f0/f2/28020/220x165_v1_Boreal_terraza.jpg\"/></p></td></tr></tbody></table><table><thead><tr><th>EL CAF&#201; DEL BOT&#193;NICO</th><th><br/></th></tr></thead><tbody><tr><td><p>LOCALIZACI&#211;N: al lado de la Quintana de Rionda. <br/>Un agradable punto de encuentro que permite, gracias a su cierre acristalado, disfrutar desde cualquiera de sus mesas de las vistas del Jard&#237;n. El Caf&#233; del Bot&#225;nico permanece abierto como un servicio m&#225;s, en los horarios de apertura al p&#250;blico vigentes en cada momento, y acompa&#241;a a los asistentes en actividades fuera de dicho horario.</p><p>SUPERFICIE interior: 60 m 2<br/>SUPERFICIE TERRAZA SEMICUBIERTA: 40 m 2<br/>ACCESO A INTERNET: wifi</p></td><td><img alt=\"Cafe\" src=\"http://botanico.gijon.es/data/images/f0/f2/27834/219x165_v1_Cafe2.JPG\"/></td></tr></tbody></table><table><thead><tr><th>EDIFICIO LA ISLA</th><th><br/></th></tr></thead><tbody><tr><td><p>La Casa del Jard&#237;n de la Isla, de propiedad privada y anexa al Bot&#225;nico, acoge eventos de gran capacidad (Congresos, banquetes...). El Jard&#237;n Bot&#225;nico mantiene un convenio con su due&#241;o para colaborar y compartir espacios y recursos.<br/><br/>M&#225;s informaci&#243;n en su p&#225;gina web: <a title=\"Ir a http://www.fincalaisla.com/\" href=\"http://www.fincalaisla.com/\">http://www.fincalaisla.com/</a></p></td><td><img alt=\"Casa la isla\" src=\"http://botanico.gijon.es/data/images/f0/f2/28017/220x165_v1_Casa_LaIsla.jpg\"/></td></tr></tbody></table>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "<p>Avenida del Jard&#237;n Bot&#225;nico 2230, 33394 Gij&#243;n, Asturias</p>",
+          {
+            "content": "<p>Avenida del Jard&#237;n Bot&#225;nico 2230, 33394 Gij&#243;n, Asturias</p>",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 130 685",
+        "fecha-actualizacion": "2014-01-22 12:02:43 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6725/291x224_v1_Directoriomuseosentr.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "(Verano) Junio a Septiembre: 10:00-21:00h.<br/>(Invierno) Octubre a Mayo: 10:00-18:00h.",
+        "identificador": 884,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.521535 -5.615795",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Jard&#237;n Bot&#225;nico Atl&#225;ntico de Gij&#243;n",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/884-jardin-botanico-atlantico-de-gijon",
+        "telefono": {
+          "content": "+34 985 185 130 (Taquillas)",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Ocio,Parques y Jardines,Museos y salas de exposiciones,Parques y jardines,Cultura y Ocio,Medio Ambiente,Turismo",
+        "url": "http://www.gijon.es/directorios/show/884-jardin-botanico-atlantico-de-gijon",
+        "web": "http://botanico.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museos@gijon.es",
+        "descripcion": {
+          "content": "Edificio construido a principios del s. xx. Empieza a funcionar 1924 hasta los a&#241;os 80 que es automatizado. En el 2001 se adecuado el Faro de Torres para ser incorporado como un nuevo equipamiento del Parque Arqueol&#243;gico-Natural de la Campa Torres.\r\nCuenta con dos &#225;mbitos, uno museogr&#225;fico que se sit&#250;a en la planta baja, donde se ha instalado una exposici&#243;n permanente sobre la evoluci&#243;n de la bah&#237;a de Gij&#243;n desde &#233;poca prerromana hasta nuestros d&#237;as; y otro espacio administrativo ubicado en la planta superior, que alberga la sede de la Biblioteca arqueol&#243;gica Manuel Fern&#225;ndez-Miranda y oficinas de los Museos Arqueol&#243;gicos de Gij&#243;n.\r\nEn el exterior, se ha construido un mirador sobre el mar con documentaci&#243;n gr&#225;fica sobre las aves marinas del entorno.",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Cabo Torres",
+          {
+            "content": "Cabo Torres",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 185 216",
+        "fecha-actualizacion": "2014-01-22 12:02:40 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6632/429x286_v1_DirectoriomuseosFarodelcabotorres.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Martes a S&#225;bados: 10:00-13:00 h. Domingos y festivos: 11:00-14:00h.",
+        "identificador": 711,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.574581 -5.697991",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Faro del Cabo Torres",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/711-faro-del-cabo-torres",
+        "telefono": {
+          "content": "985 185 215",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/711-faro-del-cabo-torres",
+        "web": "http://museos.gijon.es"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museopa@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">La Ciudadela de Celestino Solar, tambi&#233;n conocida como 'Ciudadela de Capua', presenta uno de los modelos de vivienda obrera existente en Asturias.<br/>Las \r\nciudadelas fueron habitadas por la clase obrera gijonesa a finales del siglo XIX \r\ny durante gran parte del siglo XX. En Gij&#243;n llegaron a documentarse m&#225;s de \r\ndoscientas ciudadelas, siendo la m&#225;s representativa la de Celestino Solar. \r\nConstruida en 1877 en la calle Capua, estaba formada por 23 casas y \r\npermaneci&#243; habitada durante m&#225;s de un siglo</div>.<br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card</h4>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "",
+          {
+            "content": "C/Capua, 15- 33202",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 182 964",
+        "fecha-actualizacion": "2014-01-22 12:02:31 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6430/280x210_v1_Directoriomuseoscelestino.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "<a href=\"http://museums.gijon.es/page/9138-horarios\" title=\"Ir a http://museums.gijon.es/page/9138-horarios\" rel=\"external\">Informaci&#243;n sobre Horarios</a><br/><a href=\"http://museums.gijon.es/page/4901-tarifas\" title=\"Ir a http://museums.gijon.es/page/4901-tarifas\" rel=\"external\">Informaci&#243;n sobre Tarifas</a>",
+        "identificador": 455,
+        "locale": "es",
+        "localizacion": {
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Ciudadela de Celestino Solar -Cerrada Temporalmente-",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/455-ciudadela-de-celestino-solar-cerrada-temporalmente",
+        "telefono": {
+          "content": "985 182 963   /960",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/455-ciudadela-de-celestino-solar-cerrada-temporalmente",
+        "web": "http://museos.gijon.es/"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Sala de Exposiciones",
+              "id": 201,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicios Municipales",
+              "id": 98,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cajeros Ciudadanos",
+              "id": 94,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Mediatecas",
+              "id": 200,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Zona Wifi",
+              "id": 202,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicio Atenci&#243;n al Ciudadano",
+              "id": 97,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Otras salas de congresos",
+              "id": 1233,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicios Sociales",
+              "id": 99,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Ocio",
+              "id": 392,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Bibliotecas",
+              "id": 186,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Piscinas Municipales",
+              "id": 399,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Pictogr&#225;mas",
+              "id": 517,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Aparcamientos",
+              "id": 439,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Establecimientos de Recarga del Monedero Transporte",
+              "id": 440,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Lineas de autobuses urbanos",
+              "id": 444,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Taxis",
+              "id": 446,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Servicios municipales",
+              "id": 927,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Centros culturales",
+              "id": 932,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Aseos p&#250;blicos",
+              "id": 947,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Administraci&#243;n",
+              "id": 92,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Comunicaciones",
+              "id": 191,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Deporte",
+              "id": 192,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Transporte",
+              "id": 198,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "cmicoto@gijon.es",
+        "descripcion": {
+          "content": "Es el centro pionero de la red de centros integrados. Un edificio de servicios m&#250;ltiples, cabecera del distrito Este. Supone la presencia efectiva del ayuntamiento en ese territorio, con todos sus servicios y con sus nuevas estructuras y dotaciones. Su idea es la de reunir servicios y actividades coordinadas y cercanas a cualquier residencia. Todos los servicios descentralizados por el ayuntamiento en esta zona de Gij&#243;n est&#225;n aqu&#237; presentes presididos por la idea de la integraci&#243;n. Es decir, un servicio hecho de servicios diferentes, que se prestan como uno s&#243;lo para que el usuario elija, seg&#250;n su gusto o necesidades. <p>&#160;</p><p>Dispone de: oficina de atenci&#243;n al ciudadano, Servicios Sociales, Empleo, Patronato Deportivo Municipal, Servicio de Prevenci&#243;n y Salud Laboral, concejal&#237;a de distrito,&#160;biblioteca, mediateca (10 puestos), cajero ciudadano,&#160;sala de exposiciones, sal&#243;n de actos y&#160;salas polivalentes.</p><p><img src=\"/data/images/f0/f4/42475/298x400_v1_CentroCoto%28exteriorgenerallosa%29.JPG\" alt=\"Fachada El Coto\" class=\"image-izquierda magnify\" width=\"298\" height=\"400\" width=\"298\" height=\"400\"/><img src=\"/data/images/f0/f4/42476/300x400_v1_CentroCoto%28bibliotecainteriordesdepisosuperior%29.JPG\" alt=\"El coto interior\" class=\"image-derecha magnify\" width=\"300\" height=\"400\" width=\"300\" height=\"400\"/><br/><br/></p><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><br/></h3><h3><a href=\"http://issuu.com/agendasdeloscentrosintegrados/docs/red_de_centros_municipales_integrad\" title=\"Ir a http://issuu.com/agendasdeloscentrosintegrados/docs/red_de_centros_municipales_integrad\" rel=\"external\">Espacios del Centro Municipal Integrado de El Coto (ver espacios).<br/></a></h3><br/><table><thead><tr><th style=\"text-align: center;\">Espacio<br/></th><th style=\"text-align: center;\">Puestos y Aforo<br/></th></tr></thead><tbody><tr><td>Sal&#243;n de actos<br/></td><td style=\"text-align: right;\">207<br/></td></tr><tr><td>Sala Polivalente<br/></td><td style=\"text-align: right;\">166 &#243; 331<br/></td></tr><tr><td>Sala Paraninfo<br/></td><td style=\"text-align: right;\">84<br/></td></tr><tr><td>Aula 1<br/></td><td style=\"text-align: right;\">36<br/></td></tr><tr><td>Aula 2<br/></td><td style=\"text-align: right;\">44<br/></td></tr><tr><td style=\"vertical-align: top;\">Aula 3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <br/></td><td style=\"vertical-align: top; text-align: right;\">&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; 52 <br/></td></tr><tr><td style=\"vertical-align: top;\">Aula auxiliar<br/></td><td style=\"vertical-align: top; text-align: right;\">6<br/></td></tr><tr><td style=\"vertical-align: top;\">Sala de estudio<br/></td><td style=\"vertical-align: top; text-align: right;\">52<br/></td></tr><tr><td style=\"vertical-align: top;\">Biblioteca<br/></td><td style=\"vertical-align: top; text-align: right;\">Adultos: 68<br/>Infantil:32<br/>Lectura prensa: 24<br/></td></tr><tr><td style=\"vertical-align: top;\">Mediateca<br/></td><td style=\"vertical-align: top; text-align: right;\">10<br/></td></tr><tr><td style=\"vertical-align: top;\">Sala de exposiciones<br/></td><td style=\"vertical-align: top; text-align: right;\">137 m2<br/></td></tr></tbody></table>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Plaza de la Rep&#250;blica, s/n.",
+          {
+            "content": "Centro Municipal Integrado El Coto - Plaza de la Rep&#250;blica, s/n.",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "985 132 299",
+        "fecha-actualizacion": "2014-01-22 12:02:30 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f6/6418/150x113_v1_DirectorioedificiosmunicipalesCMI-elcoto.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "Lunes a Viernes: 8:00-22:00h. Cajero: 24h.",
+        "identificador": 441,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.533605 -5.649089",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Centro Municipal Integrado de El Coto",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/441-centro-municipal-integrado-de-el-coto",
+        "telefono": {
+          "content": "+34 985 181 701",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Sala de Exposiciones,Servicios Municipales,Cajeros Ciudadanos,Mediatecas,Zona Wifi,Servicio Atenci&#243;n al Ciudadano,Servicios Sociales,Ocio,Bibliotecas,Piscinas Municipales,Pictogr&#225;mas,Aparcamientos,Establecimientos de Recarga del Monedero Transporte,Lineas de autobuses urbanos,Taxis,Servicios municipales,Museos y salas de exposiciones,Centros culturales,Aseos p&#250;blicos,Administraci&#243;n,Comunicaciones,Cultura y Ocio,Deporte,Transporte,Turismo",
+        "url": "http://www.gijon.es/directorios/show/441-centro-municipal-integrado-de-el-coto",
+        "web": "http://www.gijon.es"
+      },
+      {
+        "categorias": {
+          "categoria": [
+            {
+              "content": "Museos",
+              "id": 391,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2010,
+              "id": 12,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n",
+              "id": 44,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos y salas de exposiciones",
+              "id": 931,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Recintos singulares",
+              "id": 1211,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": 2011,
+              "id": 13,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n Card",
+              "id": 2741,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Gij&#243;n card. tarjeta tur&#237;stica",
+              "id": 1227,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Cultura y Ocio",
+              "id": 185,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Turismo",
+              "id": 199,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museos",
+              "id": 163,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            },
+            {
+              "content": "Museo del Ferrocarril de Asturias",
+              "id": 2627,
+              "rdfa-property": "http://purl.org/dc/terms/subject"
+            }
+          ]
+        },
+        "correo-electronico": "museoferrocarril@gijon.es",
+        "descripcion": {
+          "content": "<div style=\"text-align: justify;\">Situado en los terrenos de la antigua estaci&#243;n del Norte de Gij&#243;n, el Museo del Ferrocarril de Asturias es el centro dedicado a la conservaci&#243;n, investigaci&#243;n y difusi&#243;n de la historia ferroviaria de Asturias. El museo ofrece al visitante una amplia visi&#243;n de la relaci&#243;n establecida entre el ferrocarril y la historia social, t&#233;cnica y econ&#243;mica; estudiando no s&#243;lo la influencia de la Revoluci&#243;n Industrial y el desarrollo tecnol&#243;gico, sino tambi&#233;n la evoluci&#243;n social y econ&#243;mica que trajo consigo la implantaci&#243;n del ferrocarril en la regi&#243;n. As&#237;, el museo se articula en una serie de unidades tem&#225;ticas que muestran la historia social, econ&#243;mica e industrial asociada al mundo del ferrocarril en Asturias. Estas unidades presentan no s&#243;lo peque&#241;o material relacionado con el mundo del ferrocarril, sino tambi&#233;n mas de medio centenar de piezas de material m&#243;vil restaurado, alguna de ellas en funcionamiento, procedentes de la red ferroviaria asturiana, una de las m&#225;s densas de Espa&#241;a. El museo organiza exposiciones temporales dedicadas a los ferrocarriles y el patrimonio industrial, as&#237; como otros temas que complementan los contenidos de la exposici&#243;n permanente. Adem&#225;s, cuenta con un centro de documentaci&#243;n que re&#250;ne un valioso conjunto de testimonios gr&#225;ficos y documentales, fundamental para el conocimiento de la historia industrial y el mundo del ferrocarril. Entrada gratutia domingos, D&#237;a Internacional de los Museos (18 de mayo), jornadas de puertas abiertas, y otros se&#241;alados al efecto<br/></div><br/><br/><h4 style=\"font-weight: bold;\">Entrada gratuita con la tarjeta tur&#237;stica Gij&#243;n Card<br/></h4><br/>\r\n<h3>Espacios:</h3><span style=\"font-weight: bold;\">Informaci&#243;n sobre el espacio del Museo del Ferrocarril</span><br/><br/>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Espacio</th>\r\n<th>Aforo<br/></th>\r\n</tr></thead>\r\n<tbody>\r\n<tr>\r\n<td>Sal&#243;n de actos<br/></td>\r\n<td>50</td>\r\n</tr>\r\n<tr>\r\n<td>And&#233;n<br/></td>\r\n<td>300</td>\r\n</tr></tbody></table>",
+          "rdfa-property": "http://purl.org/dc/terms/description"
+        },
+        "direccion": [
+          "Plaza de la Estaci&#243;n del Norte s/n - 33212 Gij&#243;n",
+          {
+            "content": "Plaza de la Estaci&#243;n del Norte s/n - 33212 Gij&#243;n",
+            "rdfa-property": "http://www.w3.org/2002/12/cal#street-address"
+          }
+        ],
+        "fax": "",
+        "fecha-actualizacion": "2014-01-23 13:34:01 +0100",
+        "foto": {
+          "content": "http://www.gijon.es/data/images/f2/2888/250x188_v1_ferrocarril.jpg",
+          "rdfa-property": "http://purl.org/dc/terms/relation"
+        },
+        "horario": "<a title=\"Ir a http://museums.gijon.es/page/9138-horarios\" href=\"http://museums.gijon.es/page/9138-horarios\">M&#225;s informaci&#243;n sobre los horarios</a><br/><a title=\"Ir a http://museums.gijon.es/page/4901-tarifas\" href=\"http://museums.gijon.es/page/4901-tarifas\">M&#225;s informaci&#243;n sobre las tarifas</a>",
+        "identificador": 79,
+        "locale": "es",
+        "localizacion": {
+          "content": "43.54095 -5.672668",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#location"
+        },
+        "nombre": {
+          "content": "Museo del Ferrocarril de Asturias",
+          "rdfa-property": "http://www.geonames.org/ontology#name"
+        },
+        "rdfa-id": "http://www.gijon.es/directorios/show/79-museo-del-ferrocarril-de-asturias",
+        "telefono": {
+          "content": "+34 985 181 777",
+          "rdfa-property": "http://www.w3.org/2002/12/cal#tel"
+        },
+        "tipo": "Museos,Museos y salas de exposiciones,Cultura y Ocio,Turismo",
+        "url": "http://www.gijon.es/directorios/show/79-museo-del-ferrocarril-de-asturias",
+        "web": "http://museos.gijon.es/"
+      }
+    ],
+    "rdfa": true,
+    "rdfa-class": "http://www.geonames.org/ontology#Feature"
+  }
+}
