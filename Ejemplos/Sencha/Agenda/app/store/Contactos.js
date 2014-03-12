@@ -8,7 +8,11 @@ Ext.define('Agenda.store.Contactos', {
         model: 'Agenda.model.Contacto',
         grouper: function(record)
         {
-            var nombre = record.data.nombre[0];
+        	var nombre = "";
+        	
+        	if (record.data.nombre && record.data.nombre.length >= 1)
+            	nombre = record.data.nombre[0];
+            	
             return nombre.toUpperCase();
         },
         proxy: {

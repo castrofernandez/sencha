@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "nombre": "Bartolomé",
+        "apellidos": "Suárez Blanco",
+        "telefono": "985 123 XXX",
+        "direccion": "Avda. Juan Carlos I 1, 4D",
+        "grupo": "amigos"
+    },
+    {
+        "id": 2,
+        "nombre": "Benito",
+        "apellidos": "Fernández Barredo",
+        "telefono": "985 456 XXX",
+        "direccion": "Avda. Constitución 40, 8C",
+        "grupo": "familia"
+    },
+    {
+        "id": 3,
+        "nombre": "Bruno",
+        "apellidos": "García García",
+        "telefono": "985 123 XXX",
+        "direccion": "Los Moros 23, 4C",
+        "grupo": "amigos"
+    },
+    {
+        "id": 4,
+        "nombre": "Tomás",
+        "apellidos": "Álvarez Álvarez",
+        "telefono": "985 456 XXX",
+        "direccion": "Uría 23, S/N",
+        "grupo": "familia"
+    },
+    {
+        "id": 5,
+        "nombre": "Antonio",
+        "apellidos": "Pérez García",
+        "telefono": "985 123 XXX",
+        "direccion": "Los Álamos 23, 5C",
+        "grupo": "amigos"
+    },
+    {
+        "id": 6,
+        "nombre": "Carmen",
+        "apellidos": "Cadierno García",
+        "telefono": "985 123 XXX",
+        "direccion": "Puerto de Tarna 2, 6C",
+        "grupo": "familia"
+    },
+    {
+        "id": 7,
+        "nombre": "Fermín",
+        "apellidos": "Pérez Fernández",
+        "telefono": "985 123 XXX",
+        "direccion": "Carlos Marx 13, 2A",
+        "grupo": "amigos"
+    }
+]
