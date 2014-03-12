@@ -18,10 +18,11 @@ Ext.define('Icono.view.Main', {
                 items: {
                     docked: 'top',
                     xtype: 'titlebar',
-                    title: 'Icono 1'
+                    title: 'Icono 1',
+                    cls: 'barra'
                 },
 
-                html: "Icono de televisión"
+                html: "<p class='descripcion'>Icono de Televisión</p>"
             },
             {
                 title: 'Lápiz',
@@ -33,13 +34,14 @@ Ext.define('Icono.view.Main', {
                 items: {
                     docked: 'top',
                     xtype: 'titlebar',
-                    title: 'Icono 2'
+                    title: 'Icono 2',
+                    cls: 'barra'
                 },
 
-                html: "Icono de lápiz"
+                html: "<p class='descripcion'>Icono de Lápiz</p>"
             },
             {
-                title: 'Lápiz',
+                title: 'Corazón',
                 iconCls: 'corazon',
 
                 styleHtmlContent: true,
@@ -48,10 +50,11 @@ Ext.define('Icono.view.Main', {
                 items: {
                     docked: 'top',
                     xtype: 'titlebar',
-                    title: 'Icono 2'
+                    title: 'Icono 3',
+                    cls: 'barra'
                 },
 
-                html: "Icono de lápiz"
+                html: "<p class='descripcion'>Icono de Corazón</p>"
             }
         ]
     }
