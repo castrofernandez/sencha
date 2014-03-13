@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Venta de entradas</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+	</head>
+	<body>
+		<h1>Venta de entradas</h1>
+		<div id="conciertos">
+			<h2>Paso 1: Selección de conciertos</h2>
+			<p>Selecciona los conciertos a los que deseas asistir.</p>
+			<div class="concierto">
+				<h3>Red Hot Chili Peppers</h3>
+				<p class="cartel"><img src="img/red-hot-chili-peppers-w05.jpg"/></p>
+				<p class="fecha">15-09-2012 a las 22:00</p>
+				<p class="precio"><span>40</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="concierto">
+				<h3>Amaral</h3>
+				<p class="cartel"><img src="img/amaral.jpg"/></p>
+				<p class="fecha">16-09-2012 a las 21:30</p>
+				<p class="precio"><span>25</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="concierto">
+				<h3>Love of Lesbian</h3>
+				<p class="cartel"><img src="img/love-of-lesbian.jpg"/></p>
+				<p class="fecha">18-09-2012 a las 22:00</p>
+				<p class="precio"><span>14</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="concierto">
+				<h3>Fito y Fitipaldis</h3>
+				<p class="cartel"><img src="img/fito-y-fitipaldis.jpg"/></p>
+				<p class="fecha">19-09-2012 a las 00:00</p>
+				<p class="precio"><span>18</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="concierto">
+				<h3>Maldita Nerea</h3>
+				<p class="cartel"><img src="img/maldita-nerea.jpg"/></p>
+				<p class="fecha">19-09-2012 a las 21:00</p>
+				<p class="precio"><span>12</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="concierto">
+				<h3>Maryland</h3>
+				<p class="cartel"><img src="img/maryland.jpeg"/></p>
+				<p class="fecha">21-09-2012 a las 22:00</p>
+				<p class="precio"><span>30</span>€</p>
+				<p class="entradas">Entradas: <input type="number" class="nentradas" min="1" max="10" value="1" autocomplete="off"/></p>
+			</div>
+			<div class="clearboth"><p class="boton">Continuar compra</p></div>
+		</div>
+
+		<div id="datos-compra">
+			<h2>Paso 2: Datos de la compra</h2>
+			<p>Estos son los conciertos que has seleccionado para tu compra. Si lo deseas, puedes volver al Paso 1 para marcar más conciertos.</p>
+			<p class="boton volver">Volver al Paso 1</p>
+			<div id="conciertos-final">
+
+			</div>
+			<div id="precio-total">
+				<p>Precio total: <span id="cantidad">0</span>€</p>
+			</div>
+		</div>
+		<script src="jquery.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>

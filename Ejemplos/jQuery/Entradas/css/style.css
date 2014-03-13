@@ -1,0 +1,106 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+h1{
+	text-align:center;
+	margin-top: 30px;
+}
+
+h2 {
+	margin-bottom: 1em;
+}
+
+.clearboth{
+	clear: both;
+}
+
+#conciertos{
+	width: 1000px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+#conciertos h2{
+	text-align: center;
+}
+
+/* CSS PARA LOS EFECTOS DE LOS CONCIERTOS */
+.concierto{
+	float: left;
+	border: solid 2px #888;
+	width: 260px;
+	margin: 14px;
+	padding: 20px;
+	text-align: center;
+	overflow: auto;
+}
+#conciertos .concierto:hover{
+	background: #e0e0e0;
+	cursor: pointer;
+}
+#conciertos .concierto.selected{
+	background: #F2D479;
+}
+
+
+#conciertos .concierto h3{
+	font-size: 20px;
+}
+.concierto .precio{
+	font-size: 25px;
+	margin-top: 1em;
+}
+.concierto .precio span{
+	font-weight: bold;
+}
+.concierto .cartel img{
+	height: 150px;
+	border: solid 1px #e0e0e0;
+	box-shadow: 0 0 15px #e0e0e0;
+	margin-top: 1em;
+}
+#conciertos .concierto .entradas{
+	display: none;
+}
+
+/* CSS PARA LOS EFECTOS DE LOS BOTONES*/
+.boton{
+	text-align: center;
+	border-radius: 5px;
+	border: solid 1px #888;
+	width: 300px;
+	margin: 10px auto;
+	padding: 10px;
+}
+.boton:hover{
+	background: #e0e0e0;
+	cursor: pointer;
+}
+
+
+#datos-compra{
+	width: 1000px;
+	margin: auto;
+}
+#datos-compra h2{
+	text-align: center;
+}
+#datos-compra .concierto{
+
+}
+#datos-compra .concierto .entradas{
+	display: inherit;
+}
+#datos-compra .concierto .entradas .nentradas{
+	width: 30px;
+	padding: 5px;
+}
+#datos-compra #precio-total{
+	clear: both;
+	font-size: 50px;
+	text-align: center;
+}
+#datos-compra #precio-total #cantidad{
+	font-weight: bolder;
+}
