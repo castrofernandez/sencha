@@ -11,7 +11,7 @@ Ext.define("Notas.model.Nota", {
         validations: [
             { type: 'presence', field: 'id' },
             { type: 'presence', field: 'creacion' },
-            { type: 'presence', field: 'title', message: 'Introduzca una nota' }
+            { type: 'presence', field: 'nota', message: 'Introduzca una nota' }
         ]
     }
 });

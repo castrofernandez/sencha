@@ -5,13 +5,14 @@ Ext.define('Filtros.store.MuseoStore', {
         autoLoad: true,
         storeId: 'museosStore',
         filters: [
-                new Ext.util.Filter({
+                {
 					filterFn: function(item) {
 						var localizacion = item.data.localizacion;
 						
 						return localizacion && localizacion.length > 1;
 					}
-		})],
+				}
+		],
         proxy: {
             type: 'ajax',
             url: 'data/museos.json',
